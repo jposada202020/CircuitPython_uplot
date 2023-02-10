@@ -5,7 +5,6 @@
 import time
 import board
 import displayio
-import vectorio
 from uplot import Uplot
 
 display = board.DISPLAY
@@ -16,9 +15,7 @@ group = displayio.Group()
 palette = displayio.Palette(1)
 palette[0] = 0xFFFFFF
 
-circle = vectorio.Circle(pixel_shader=palette, radius=5, x=100, y=100)
-plot.append(circle)
-
+plot.draw_circle(radius=8, x=120, y=120)
 
 display.show(plot)
 while True:

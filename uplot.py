@@ -23,6 +23,7 @@ Implementation Notes
 
 import displayio
 from bitmaptools import draw_line
+from vectorio import Circle
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
@@ -43,6 +44,8 @@ class Uplot(displayio.Group):
 
         self._width = width - 1
         self._height = height - 1
+
+        self._axeslinethikness = 1
 
         self._plotbitmap = displayio.Bitmap(self._width, height - 1, 2)
 
@@ -138,6 +141,22 @@ class Uplot(displayio.Group):
                 self._axesybitmap,
                 pixel_shader=self._axesy_palette,
                 x=15 - self._axesybitmap_width,
-                y=self._height - self._axesybitmap_height - self._axesxbitmap_height,
+                y=self._height
+                - self._axesybitmap_height
+                - self._axesxbitmap_height
+                - self._axeslinethikness
+                - 2,
             )
         )
+
+    def draw_circle(self, radius=5, x=100, y=100):
+        """
+        Draw a circle in the plot area
+        :param radius: circle radius
+        :param x: circles center x coordinate position in pixels, Defaults to 100.
+        :param y: circles center y coordinate position in pixels. Defaults to 100.
+        :return: None
+        """
+        palette = displayio.Palette(1)
+        palette[0] = 0xFFFFFF
+        self.append(Circle(pixel_shader=palette, radius=radius, x=x, y=y))
