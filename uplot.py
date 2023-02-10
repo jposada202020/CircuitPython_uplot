@@ -28,7 +28,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments, too-many-instance-attributes)
 
 
 class Uplot(displayio.Group):
@@ -63,9 +63,13 @@ class Uplot(displayio.Group):
         self._axesybitmap_height = self._height - 30
         self._axesybitmap_width = 20
 
-        self._axesxbitmap = displayio.Bitmap(self._axesxbitmap_width, self._axesxbitmap_height, 2)
-        self._axesybitmap = displayio.Bitmap(self._axesybitmap_width, self._axesybitmap_height, 4)
-        #self._axesybitmap.fill(2)
+        self._axesxbitmap = displayio.Bitmap(
+            self._axesxbitmap_width, self._axesxbitmap_height, 2
+        )
+        self._axesybitmap = displayio.Bitmap(
+            self._axesybitmap_width, self._axesybitmap_height, 4
+        )
+        # self._axesybitmap.fill(2)
         self.append(
             displayio.TileGrid(
                 self._plotbitmap, pixel_shader=self._axes_palette, x=0, y=0
@@ -104,16 +108,36 @@ class Uplot(displayio.Group):
         :param line_color: index of the color palette
         :return: None
         """
-        draw_line(self._axesxbitmap, 0, self._axesxbitmap_height//2, self._axesxbitmap_width, self._axesxbitmap_height//2, line_color)
-        draw_line(self._axesybitmap, self._axesybitmap_width-1, 0, self._axesybitmap_width-1, self._axesybitmap_height, line_color)
+        draw_line(
+            self._axesxbitmap,
+            0,
+            self._axesxbitmap_height // 2,
+            self._axesxbitmap_width,
+            self._axesxbitmap_height // 2,
+            line_color,
+        )
+        draw_line(
+            self._axesybitmap,
+            self._axesybitmap_width - 1,
+            0,
+            self._axesybitmap_width - 1,
+            self._axesybitmap_height,
+            line_color,
+        )
 
         self.append(
             displayio.TileGrid(
-                self._axesxbitmap, pixel_shader=self._axes_palette, x=15, y=self._yorigin
+                self._axesxbitmap,
+                pixel_shader=self._axes_palette,
+                x=15,
+                y=self._yorigin,
             )
         )
         self.append(
             displayio.TileGrid(
-                self._axesybitmap, pixel_shader=self._axesy_palette, x=15- self._axesybitmap_width, y=self._height-self._axesybitmap_height  - self._axesxbitmap_height
+                self._axesybitmap,
+                pixel_shader=self._axesy_palette,
+                x=15 - self._axesybitmap_width,
+                y=self._height - self._axesybitmap_height - self._axesxbitmap_height,
             )
         )
