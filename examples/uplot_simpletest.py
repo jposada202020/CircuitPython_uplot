@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: Unlicense
 
+import time
 import board
 import displayio
-import time
 import vectorio
 from uplot import Uplot
 
