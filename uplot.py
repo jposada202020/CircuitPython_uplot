@@ -5,8 +5,8 @@
 """
 
 `uplot`
-
 ================================================================================
+
 CircuitPython Plot Class
 
 * Author(s): Jose D. Montoya
