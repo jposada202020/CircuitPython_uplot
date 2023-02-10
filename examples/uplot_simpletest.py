@@ -2,6 +2,9 @@
 #
 # SPDX-License-Identifier: Unlicense
 
+"""
+Simple test
+"""
 import time
 import board
 import displayio

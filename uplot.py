@@ -12,7 +12,7 @@ CircuitPython Plot Class
 * Author(s): Jose D. Montoya
 
 Implementation Notes
---------------------
+---------------------
 
 **Software and Dependencies:**
 
