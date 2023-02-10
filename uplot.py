@@ -24,6 +24,8 @@ Implementation Notes
 import displayio
 from bitmaptools import draw_line
 from vectorio import Circle
+from ulab import numpy as np
+
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
@@ -37,17 +39,21 @@ class Uplot(displayio.Group):
     Main class to display different graphics
     """
 
-    def __init__(self, x=0, y=0, width=None, height=None):
+    def __init__(self, x=0, y=0, width=None, height=None, padding=15):
         super().__init__(x=x, y=y, scale=1)
-        fontsize = 35
-        self._yorigin = height - fontsize
 
-        self._width = width - 1
-        self._height = height - 1
+        self.padding = padding
+        self._newxmin = padding
+        self._newxmax = width - 2 * padding
+        self._newymin = height - 2 * padding
+        self._newymax = padding
+
+        self._width = width
+        self._height = height
 
         self._axeslinethikness = 1
 
-        self._plotbitmap = displayio.Bitmap(self._width, height - 1, 2)
+        self._plotbitmap = displayio.Bitmap(width, height, 2)
 
         self._axes_palette = displayio.Palette(2)
         self._axes_palette[0] = 0x000000
@@ -72,14 +78,12 @@ class Uplot(displayio.Group):
         self._axesybitmap = displayio.Bitmap(
             self._axesybitmap_width, self._axesybitmap_height, 4
         )
-        # self._axesybitmap.fill(2)
         self.append(
             displayio.TileGrid(
-                self._plotbitmap, pixel_shader=self._axes_palette, x=0, y=0
+                self._plotbitmap, pixel_shader=self._axes_palette, x=x, y=y
             )
         )
         self._drawbox()
-        self.axes()
 
     @property
     def width(self):
@@ -96,13 +100,37 @@ class Uplot(displayio.Group):
         return self._height
 
     def _drawbox(self):
-        draw_line(self._plotbitmap, 0, 0, self._width - 1, 0, 1)
-        draw_line(self._plotbitmap, 0, 0, 0, self._height - 1, 1)
         draw_line(
-            self._plotbitmap, self._width - 1, 0, self._width - 1, self._height - 1, 1
+            self._plotbitmap,
+            self.padding,
+            self.padding,
+            self._width - self.padding,
+            self.padding,
+            1,
         )
         draw_line(
-            self._plotbitmap, 0, self._height - 1, self._width - 1, self._height - 1, 1
+            self._plotbitmap,
+            self.padding,
+            self.padding,
+            self.padding,
+            self._height - self.padding,
+            1,
+        )
+        draw_line(
+            self._plotbitmap,
+            self._width - self.padding,
+            self.padding,
+            self._width - self.padding,
+            self._height - self.padding,
+            1,
+        )
+        draw_line(
+            self._plotbitmap,
+            self.padding,
+            self._height - self.padding,
+            self._width - self.padding,
+            self._height - self.padding,
+            1,
         )
 
     def axes(self, line_color=1):
@@ -160,3 +188,52 @@ class Uplot(displayio.Group):
         palette = displayio.Palette(1)
         palette[0] = 0xFFFFFF
         self.append(Circle(pixel_shader=palette, radius=radius, x=x, y=y))
+
+    @staticmethod
+    def normalize(oldrangemin, oldrangemax, newrangemin, newrangemax, value):
+        """
+        This function converts the original value into a new defined value in the new range
+        :param oldrangemin: minimum of the original range
+        :param oldrangemax: maximum of the original range
+        :param newrangemin: minimum of the new range
+        :param newrangemax: maximum of the new range
+        :param value: value to be converted
+        :return: converted value
+        """
+        return (
+            ((value - oldrangemin) * (newrangemax - newrangemin))
+            / (oldrangemax - oldrangemin)
+        ) + newrangemin
+
+    def draw_plot(self, x, y):
+        """
+        Function to draw the plot
+
+        :param x: data for x points
+        :param y: data for y points
+        :return: None
+
+        """
+        x = np.array(x)
+        y = np.array(y)
+        xnorm = np.array(
+            self.normalize(np.min(x), np.max(x), self._newxmin, self._newxmax, x),
+            dtype=np.uint16,
+        )
+        ynorm = np.array(
+            self.normalize(np.min(y), np.max(y), self._newymin, self._newymax, y),
+            dtype=np.uint16,
+        )
+
+        # np.set_printoptions(threshold=200)
+        for index, _ in enumerate(xnorm):
+            if index + 1 >= len(xnorm):
+                break
+            draw_line(
+                self._plotbitmap,
+                xnorm[index],
+                ynorm[index],
+                xnorm[index + 1],
+                ynorm[index + 1],
+                1,
+            )
