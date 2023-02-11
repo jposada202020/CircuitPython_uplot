@@ -18,7 +18,7 @@ Introduction
 Framework to display different plots in displayio. Similar to widget
 Take a look in the examples section in RTD to see the gallery.
 
-.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/uplot_ex4.jpg
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/master/docs/uplot_ex5.jpg
 
 
 Dependencies
