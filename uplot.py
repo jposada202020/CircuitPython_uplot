@@ -50,75 +50,26 @@ class Uplot(displayio.Group):
         self._newymax = padding
 
         self._tickheight = 8
+        self._tickcolor = 0xFFFFFF
+        self._showticks = False
 
         self._width = width
         self._height = height
 
         self._axeslinethikness = 1
 
-        self._plotbitmap = displayio.Bitmap(width, height, 2)
+        self._plotbitmap = displayio.Bitmap(width, height, 4)
 
-        self._axes_palette = displayio.Palette(2)
-        self._axes_palette[0] = 0x000000
-        self._axes_palette[1] = 0xFFFFFF
-        self._axescolorindex = 2
-
-        self._axesy_palette = displayio.Palette(4)
-        self._axesy_palette.make_transparent(0)
-        self._axesy_palette[1] = 0xFFFFFF
-        self._axesy_palette[2] = 0x00FF00
-        self._axesy_palette[3] = 0x0000FF
-
-        self._axesxbitmap_height = 20
-        self._axesxbitmap_width = self._width - 30
-
-        self._axesybitmap_height = self._height - 30
-        self._axesybitmap_width = 20
-
-        self._axesxbitmap = displayio.Bitmap(
-            self._axesxbitmap_width, self._axesxbitmap_height, 2
-        )
-        self._axesybitmap = displayio.Bitmap(
-            self._axesybitmap_width, self._axesybitmap_height, 4
-        )
+        self._plot_palette = displayio.Palette(4)
+        self._plot_palette[0] = 0x000000
+        self._plot_palette[1] = 0xFFFFFF
+        self._plot_palette[2] = self._tickcolor
         self.append(
             displayio.TileGrid(
-                self._plotbitmap, pixel_shader=self._axes_palette, x=x, y=y
+                self._plotbitmap, pixel_shader=self._plot_palette, x=x, y=y
             )
         )
         self._drawbox()
-
-    @property
-    def tickheight(self):
-        """
-        The plot width, in pixels. (getter only)
-        :return: int
-
-        """
-        return self._tickheight
-
-    @tickheight.setter
-    def tickheight(self, tick_height):
-        """
-        The plot width, in pixels.
-
-        """
-
-        self._tickheight = tick_height
-
-    @property
-    def width(self):
-        """The plot width, in pixels. (getter only)
-        :return: int
-        """
-        return self._width
-
-    @property
-    def height(self):
-        """The plot height, in pixels. (getter only)
-        :return: int
-        """
-        return self._height
 
     def _drawbox(self):
         draw_line(
@@ -152,53 +103,6 @@ class Uplot(displayio.Group):
             self._width - self.padding,
             self._height - self.padding,
             1,
-        )
-
-    def axes(self, line_color=1):
-        """
-
-        Function to display the plot axes
-
-        :param line_color: index of the color palette
-        :return: None
-
-        """
-        draw_line(
-            self._axesxbitmap,
-            0,
-            self._axesxbitmap_height // 2,
-            self._axesxbitmap_width,
-            self._axesxbitmap_height // 2,
-            line_color,
-        )
-        draw_line(
-            self._axesybitmap,
-            self._axesybitmap_width - 1,
-            0,
-            self._axesybitmap_width - 1,
-            self._axesybitmap_height,
-            line_color,
-        )
-
-        self.append(
-            displayio.TileGrid(
-                self._axesxbitmap,
-                pixel_shader=self._axes_palette,
-                x=15,
-                y=self._yorigin,
-            )
-        )
-        self.append(
-            displayio.TileGrid(
-                self._axesybitmap,
-                pixel_shader=self._axesy_palette,
-                x=15 - self._axesybitmap_width,
-                y=self._height
-                - self._axesybitmap_height
-                - self._axesxbitmap_height
-                - self._axeslinethikness
-                - 2,
-            )
         )
 
     def draw_circle(self, radius=5, x=100, y=100):
@@ -238,6 +142,41 @@ class Uplot(displayio.Group):
         :return: None
 
         """
+
+        x = np.array(x)
+        y = np.array(y)
+
+        xnorm = np.array(
+            self.normalize(np.min(x), np.max(x), self._newxmin, self._newxmax, x),
+            dtype=np.uint16,
+        )
+        ynorm = np.array(
+            self.normalize(np.min(y), np.max(y), self._newymin, self._newymax, y),
+            dtype=np.uint16,
+        )
+
+        # np.set_printoptions(threshold=200)
+        for index, _ in enumerate(xnorm):
+            if index + 1 >= len(xnorm):
+                break
+            draw_line(
+                self._plotbitmap,
+                xnorm[index],
+                ynorm[index],
+                xnorm[index + 1],
+                ynorm[index + 1],
+                1,
+            )
+        if self._showticks:
+            self._draw_ticks(x, y)
+
+    def _draw_ticks(self, x, y):
+        """
+        Draw ticks in the plot area
+
+        :return:
+
+        """
         ticks = np.array([10, 30, 50, 70, 90])
         subticks = np.array([20, 40, 60, 80, 100])
         ticksxnorm = np.array(self.normalize(10, 100, np.min(x), np.max(x), ticks))
@@ -249,16 +188,7 @@ class Uplot(displayio.Group):
         subticksynorm = np.array(
             self.normalize(10, 100, np.min(y), np.max(y), subticks)
         )
-        x = np.array(x)
-        y = np.array(y)
-        xnorm = np.array(
-            self.normalize(np.min(x), np.max(x), self._newxmin, self._newxmax, x),
-            dtype=np.uint16,
-        )
-        ynorm = np.array(
-            self.normalize(np.min(y), np.max(y), self._newymin, self._newymax, y),
-            dtype=np.uint16,
-        )
+
         ticksxrenorm = np.array(
             self.normalize(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, ticksxnorm
@@ -284,35 +214,23 @@ class Uplot(displayio.Group):
             dtype=np.uint16,
         )
 
-        # np.set_printoptions(threshold=200)
-        for index, _ in enumerate(xnorm):
-            if index + 1 >= len(xnorm):
-                break
-            draw_line(
-                self._plotbitmap,
-                xnorm[index],
-                ynorm[index],
-                xnorm[index + 1],
-                ynorm[index + 1],
-                1,
-            )
         for tick in ticksxrenorm:
             draw_line(
                 self._plotbitmap,
                 tick,
                 self._newymin,
                 tick,
-                self._newymin - self.tickheight,
-                1,
+                self._newymin - self._tickheight,
+                2,
             )
         for tick in ticksyrenorm:
             draw_line(
                 self._plotbitmap,
                 self._newxmin,
                 tick,
-                self._newxmin + self.tickheight,
+                self._newxmin + self._tickheight,
                 tick,
-                1,
+                2,
             )
         for tick in subticksxrenorm:
             draw_line(
@@ -320,15 +238,29 @@ class Uplot(displayio.Group):
                 tick,
                 self._newymin,
                 tick,
-                self._newymin - self.tickheight // 2,
-                1,
+                self._newymin - self._tickheight // 2,
+                2,
             )
         for tick in subticksyrenorm:
             draw_line(
                 self._plotbitmap,
                 self._newxmin,
                 tick,
-                self._newxmin + self.tickheight // 2,
+                self._newxmin + self._tickheight // 2,
                 tick,
-                1,
+                2,
             )
+
+    def tick_params(self, tickheight=8, tickcolor=0xFFFFFF):
+        """
+        Function to set ticks parameters
+
+        :param tickheight:
+        :param tickcolor:
+        :return:
+
+        """
+
+        self._showticks = True
+        self._tickheight = tickheight
+        self._plot_palette[2] = tickcolor
