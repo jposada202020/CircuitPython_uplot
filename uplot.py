@@ -52,6 +52,7 @@ class Uplot(displayio.Group):
         self._tickheight = 8
         self._tickcolor = 0xFFFFFF
         self._showticks = False
+        self._tickgrid = False
 
         self._width = width
         self._height = height
@@ -178,16 +179,12 @@ class Uplot(displayio.Group):
 
         """
         ticks = np.array([10, 30, 50, 70, 90])
-        subticks = np.array([20, 40, 60, 80, 100])
-        ticksxnorm = np.array(self.normalize(10, 100, np.min(x), np.max(x), ticks))
-        ticksynorm = np.array(self.normalize(10, 100, np.min(y), np.max(y), ticks))
+        subticks = np.array([20, 40, 60, 80])
+        ticksxnorm = np.array(self.normalize(0, 100, np.min(x), np.max(x), ticks))
+        ticksynorm = np.array(self.normalize(0, 100, np.min(y), np.max(y), ticks))
 
-        subticksxnorm = np.array(
-            self.normalize(10, 100, np.min(x), np.max(x), subticks)
-        )
-        subticksynorm = np.array(
-            self.normalize(10, 100, np.min(y), np.max(y), subticks)
-        )
+        subticksxnorm = np.array(self.normalize(0, 100, np.min(x), np.max(x), subticks))
+        subticksynorm = np.array(self.normalize(0, 100, np.min(y), np.max(y), subticks))
 
         ticksxrenorm = np.array(
             self.normalize(
@@ -251,16 +248,66 @@ class Uplot(displayio.Group):
                 2,
             )
 
-    def tick_params(self, tickheight=8, tickcolor=0xFFFFFF):
+        if self._tickgrid:
+            self._draw_gridx(ticksxrenorm)
+            self._draw_gridy(ticksyrenorm)
+
+    def tick_params(self, tickheight=8, tickcolor=0xFFFFFF, tickgrid=False):
         """
         Function to set ticks parameters
 
         :param tickheight:
         :param tickcolor:
-        :return:
+
+        :return: None
 
         """
 
         self._showticks = True
         self._tickheight = tickheight
         self._plot_palette[2] = tickcolor
+        self._tickgrid = tickgrid
+
+    def _draw_gridx(self, ticks_data):
+        """
+        draw plot grid
+
+        :return: None
+
+        """
+        grid_espace = 10
+        line_lenght = 10
+        for tick in ticks_data:
+            start = self._newymin
+            while start >= self._newymax:
+                draw_line(
+                    self._plotbitmap,
+                    tick,
+                    start,
+                    tick,
+                    start - line_lenght,
+                    2,
+                )
+                start = start - grid_espace - line_lenght
+
+    def _draw_gridy(self, ticks_data):
+        """
+        draw plot grid
+
+        :return: None
+
+        """
+        grid_espace = 10
+        line_lenght = 10
+        for tick in ticks_data:
+            start = self._newxmin
+            while start <= self._newxmax:
+                draw_line(
+                    self._plotbitmap,
+                    start,
+                    tick,
+                    start + line_lenght,
+                    tick,
+                    2,
+                )
+                start = start + grid_espace + line_lenght

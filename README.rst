@@ -15,7 +15,10 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-framework to display different plots in displayio. similar to widget
+Framework to display different plots in displayio. Similar to widget
+Take a look in the examples section in RTD to see the gallery.
+
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/uplot_ex4.jpg
 
 
 Dependencies
@@ -31,9 +34,6 @@ or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.Installing from PyPI
 
 =====================
-
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/circuitpython-uplot/>`_.
