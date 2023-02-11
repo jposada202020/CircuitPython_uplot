@@ -31,7 +31,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-many-arguments, too-many-instance-attributes)
+# pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
 
 
 class Uplot(displayio.Group):
@@ -41,12 +41,15 @@ class Uplot(displayio.Group):
 
     def __init__(self, x=0, y=0, width=None, height=None, padding=15):
         super().__init__(x=x, y=y, scale=1)
+        np.set_printoptions(threshold=200)
 
         self.padding = padding
         self._newxmin = padding
-        self._newxmax = width - 2 * padding
-        self._newymin = height - 2 * padding
+        self._newxmax = width - 1 * padding
+        self._newymin = height - 1 * padding
         self._newymax = padding
+
+        self._tickheight = 8
 
         self._width = width
         self._height = height
@@ -84,6 +87,24 @@ class Uplot(displayio.Group):
             )
         )
         self._drawbox()
+
+    @property
+    def tickheight(self):
+        """
+        The plot width, in pixels. (getter only)
+        :return: int
+
+        """
+        return self._tickheight
+
+    @tickheight.setter
+    def tickheight(self, tick_height):
+        """
+        The plot width, in pixels.
+
+        """
+
+        self._tickheight = tick_height
 
     @property
     def width(self):
@@ -135,9 +156,12 @@ class Uplot(displayio.Group):
 
     def axes(self, line_color=1):
         """
-        Fucntion to display the plot axes
+
+        Function to display the plot axes
+
         :param line_color: index of the color palette
         :return: None
+
         """
         draw_line(
             self._axesxbitmap,
@@ -214,6 +238,17 @@ class Uplot(displayio.Group):
         :return: None
 
         """
+        ticks = np.array([10, 30, 50, 70, 90])
+        subticks = np.array([20, 40, 60, 80, 100])
+        ticksxnorm = np.array(self.normalize(10, 100, np.min(x), np.max(x), ticks))
+        ticksynorm = np.array(self.normalize(10, 100, np.min(y), np.max(y), ticks))
+
+        subticksxnorm = np.array(
+            self.normalize(10, 100, np.min(x), np.max(x), subticks)
+        )
+        subticksynorm = np.array(
+            self.normalize(10, 100, np.min(y), np.max(y), subticks)
+        )
         x = np.array(x)
         y = np.array(y)
         xnorm = np.array(
@@ -222,6 +257,30 @@ class Uplot(displayio.Group):
         )
         ynorm = np.array(
             self.normalize(np.min(y), np.max(y), self._newymin, self._newymax, y),
+            dtype=np.uint16,
+        )
+        ticksxrenorm = np.array(
+            self.normalize(
+                np.min(x), np.max(x), self._newxmin, self._newxmax, ticksxnorm
+            ),
+            dtype=np.uint16,
+        )
+        ticksyrenorm = np.array(
+            self.normalize(
+                np.min(y), np.max(y), self._newymin, self._newymax, ticksynorm
+            ),
+            dtype=np.uint16,
+        )
+        subticksxrenorm = np.array(
+            self.normalize(
+                np.min(x), np.max(x), self._newxmin, self._newxmax, subticksxnorm
+            ),
+            dtype=np.uint16,
+        )
+        subticksyrenorm = np.array(
+            self.normalize(
+                np.min(y), np.max(y), self._newymin, self._newymax, subticksynorm
+            ),
             dtype=np.uint16,
         )
 
@@ -235,5 +294,41 @@ class Uplot(displayio.Group):
                 ynorm[index],
                 xnorm[index + 1],
                 ynorm[index + 1],
+                1,
+            )
+        for tick in ticksxrenorm:
+            draw_line(
+                self._plotbitmap,
+                tick,
+                self._newymin,
+                tick,
+                self._newymin - self.tickheight,
+                1,
+            )
+        for tick in ticksyrenorm:
+            draw_line(
+                self._plotbitmap,
+                self._newxmin,
+                tick,
+                self._newxmin + self.tickheight,
+                tick,
+                1,
+            )
+        for tick in subticksxrenorm:
+            draw_line(
+                self._plotbitmap,
+                tick,
+                self._newymin,
+                tick,
+                self._newymin - self.tickheight // 2,
+                1,
+            )
+        for tick in subticksyrenorm:
+            draw_line(
+                self._plotbitmap,
+                self._newxmin,
+                tick,
+                self._newxmin + self.tickheight // 2,
+                tick,
                 1,
             )
