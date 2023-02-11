@@ -152,8 +152,8 @@ class Uplot(displayio.Group):
         :return: converted value
         """
         return (
-                ((value - oldrangemin) * (newrangemax - newrangemin))
-                / (oldrangemax - oldrangemin)
+            ((value - oldrangemin) * (newrangemax - newrangemin))
+            / (oldrangemax - oldrangemin)
         ) + newrangemin
 
     def draw_plot(self, x, y):
