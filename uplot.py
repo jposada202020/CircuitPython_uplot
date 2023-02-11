@@ -26,7 +26,6 @@ from bitmaptools import draw_line
 from vectorio import Circle
 from ulab import numpy as np
 
-
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
@@ -42,6 +41,8 @@ class Uplot(displayio.Group):
     def __init__(self, x=0, y=0, width=None, height=None, padding=15):
         super().__init__(x=x, y=y, scale=1)
         np.set_printoptions(threshold=200)
+
+        self._axesparams = "box"
 
         self.padding = padding
         self._newxmin = padding
@@ -70,41 +71,62 @@ class Uplot(displayio.Group):
                 self._plotbitmap, pixel_shader=self._plot_palette, x=x, y=y
             )
         )
-        self._drawbox()
+
+    def axs_params(self, axstype="box"):
+        """
+        :param axs:
+        :return: none
+
+        """
+        print("aca", axstype)
+        self._axesparams = axstype
 
     def _drawbox(self):
-        draw_line(
-            self._plotbitmap,
-            self.padding,
-            self.padding,
-            self._width - self.padding,
-            self.padding,
-            1,
-        )
-        draw_line(
-            self._plotbitmap,
-            self.padding,
-            self.padding,
-            self.padding,
-            self._height - self.padding,
-            1,
-        )
-        draw_line(
-            self._plotbitmap,
-            self._width - self.padding,
-            self.padding,
-            self._width - self.padding,
-            self._height - self.padding,
-            1,
-        )
-        draw_line(
-            self._plotbitmap,
-            self.padding,
-            self._height - self.padding,
-            self._width - self.padding,
-            self._height - self.padding,
-            1,
-        )
+        print(self._axesparams)
+        if self._axesparams == "cartesian":
+            draw_box = [True, True, False, False]
+        elif self._axesparams == "line":
+            draw_box = [False, True, False, False]
+        else:
+            draw_box = [True, True, True, True]
+
+        if draw_box[0]:
+            # y axes line
+            draw_line(
+                self._plotbitmap,
+                self.padding,
+                self.padding,
+                self.padding,
+                self._height - self.padding,
+                1,
+            )
+        if draw_box[1]:
+            draw_line(
+                self._plotbitmap,
+                self.padding,
+                self._height - self.padding,
+                self._width - self.padding,
+                self._height - self.padding,
+                1,
+            )
+        if draw_box[2]:
+            draw_line(
+                self._plotbitmap,
+                self._width - self.padding,
+                self.padding,
+                self._width - self.padding,
+                self._height - self.padding,
+                1,
+            )
+        if draw_box[3]:
+            draw_line(
+                self._plotbitmap,
+                self.padding,
+                self.padding,
+                self._width - self.padding,
+                self.padding,
+                1,
+            )
 
     def draw_circle(self, radius=5, x=100, y=100):
         """
@@ -130,8 +152,8 @@ class Uplot(displayio.Group):
         :return: converted value
         """
         return (
-            ((value - oldrangemin) * (newrangemax - newrangemin))
-            / (oldrangemax - oldrangemin)
+                ((value - oldrangemin) * (newrangemax - newrangemin))
+                / (oldrangemax - oldrangemin)
         ) + newrangemin
 
     def draw_plot(self, x, y):
@@ -143,6 +165,7 @@ class Uplot(displayio.Group):
         :return: None
 
         """
+        self._drawbox()
 
         x = np.array(x)
         y = np.array(y)
