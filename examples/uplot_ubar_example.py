@@ -3,11 +3,9 @@
 # SPDX-License-Identifier: Unlicense
 
 import time
-from random import choice
 import board
-from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.scatter import scatter
+from circuitpython_uplot.ubar import ubar
 
 
 # Setting up the display
@@ -16,13 +14,10 @@ display = board.DISPLAY
 plot = Uplot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
-plot.tick_params(tickheight=12, tickcolor=0xFF0008, tickgrid=True)
-plot.axs_params(axstype="cartesian")
-a = np.linspace(1, 100)
-b = [choice(a) for _ in a]
-scatter(plot, a, b)
-
-# Seeting some date to plot
+plot.axs_params(axstype="box")
+a = ["a", "b", "c", "d"]
+b = [3, 5, 1, 7]
+ubar(plot, a, b, 0xFF1000)
 
 # Plotting and showing the plot
 display.show(plot)

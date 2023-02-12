@@ -46,8 +46,8 @@ Scatter Example
 
 Scatter plot Example
 
-.. literalinclude:: ../examples/uplot_scatter.py
-    :caption: examples/uplot_scatter.py
+.. literalinclude:: ../examples/uplot_uscatter.py
+    :caption: examples/uplot_uscatter.py
     :linenos:
 .. image:: ../docs/uplot_ex7.jpg
 
@@ -60,3 +60,13 @@ Display Shapes integration example
     :caption: examples/uplot_display_shapes.py
     :linenos:
 .. image:: ../docs/uplot_ex6.jpg
+
+Ubar Example
+----------------
+
+ubar example
+
+.. literalinclude:: ../examples/uplot_ubar_example.py
+    :caption: examples/uplot_ubar_example.py
+    :linenos:
+.. image:: ../docs/uplot_ex8.jpg

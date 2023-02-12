@@ -7,5 +7,9 @@
 .. automodule:: circuitpython_uplot.uplot
     :members:
 
-.. automodule:: circuitpython_uplot.scatter
+.. automodule:: circuitpython_uplot.uscatter
+    :members:
+
+
+.. automodule:: circuitpython_uplot.ubar
     :members:

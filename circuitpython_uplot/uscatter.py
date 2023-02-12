@@ -5,10 +5,10 @@
 
 """
 
-`scatter`
+`uscatter`
 ================================================================================
 
-CircuitPython scatter graph
+CircuitPython uscatter graph
 
 * Author(s): Jose D. Montoya
 
@@ -19,7 +19,7 @@ import displayio
 from vectorio import Circle
 
 # pylint: disable=too-few-public-methods, invalid-name
-class scatter:
+class uscatter:
     """
     Main class to display different graphics
     """
@@ -27,7 +27,7 @@ class scatter:
     def __init__(self, plot, x: any, y: any, radius: int = 3) -> None:
         """
 
-        :param plot: Plot object for the scatter to be drawn
+        :param plot: Plot object for the uscatter to be drawn
         :param x: x points coordinates
         :param y: y points coordinates
         :param int radius: circle radius
