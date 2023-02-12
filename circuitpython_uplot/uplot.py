@@ -21,6 +21,12 @@ Implementation Notes
 
 """
 
+try:
+    from typing import Union
+    from typing_extensions import Literal
+except ImportError:
+    pass
+
 import displayio
 from bitmaptools import draw_line
 from vectorio import Circle
@@ -36,10 +42,25 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 class Uplot(displayio.Group):
     """
-    Main class to display different graphics
+    Canvas Class to add different elements to the screen.
+    The origin point set by ``x`` and ``y`` properties
+
+    :param int x: origin x coordinate
+    :param int y: origin y coordinate
+    :param int width: plot box width in pixels
+    :param int height: plot box height in pixels
+    :param int padding: padding for the plot box in all directions
+
     """
 
-    def __init__(self, x=0, y=0, width=None, height=None, padding=15):
+    def __init__(
+        self,
+        x: int = 0,
+        y: int = 0,
+        width: int = 100,
+        height: int = 100,
+        padding: int = 15,
+    ) -> None:
         super().__init__(x=x, y=y, scale=1)
         np.set_printoptions(threshold=200)
 
@@ -73,17 +94,24 @@ class Uplot(displayio.Group):
             )
         )
 
-    def axs_params(self, axstype="box"):
+    def axs_params(self, axstype: Literal["box", "cartesian", "line"] = "box") -> None:
         """
         Setting up axs visibility
 
-        :param axs: argument with the kind of axs you selected
-        :return: none
+        :param axstype: argument with the kind of axs you selected
+        :return: None
 
         """
         self._axesparams = axstype
 
     def _drawbox(self):
+        """
+        Draw the plot box
+
+        :return: None
+
+        """
+
         if self._axesparams == "cartesian":
             draw_box = [True, True, False, False]
         elif self._axesparams == "line":
@@ -129,40 +157,52 @@ class Uplot(displayio.Group):
                 1,
             )
 
-    def draw_circle(self, radius=5, x=100, y=100):
+    def draw_circle(self, radius: int = 5, x: int = 100, y: int = 100) -> None:
         """
         Draw a circle in the plot area
-        :param radius: circle radius
-        :param x: circles center x coordinate position in pixels, Defaults to 100.
-        :param y: circles center y coordinate position in pixels. Defaults to 100.
+
+        :param int radius: circle radius
+        :param int x: circles center x coordinate position in pixels, Defaults to 100.
+        :param int y: circles center y coordinate position in pixels. Defaults to 100.
+
         :return: None
+
         """
         palette = displayio.Palette(1)
         palette[0] = 0xFFFFFF
         self.append(Circle(pixel_shader=palette, radius=radius, x=x, y=y))
 
     @staticmethod
-    def normalize(oldrangemin, oldrangemax, newrangemin, newrangemax, value):
+    def normalize(
+        oldrangemin: Union[float, int],
+        oldrangemax: Union[float, int],
+        newrangemin: Union[float, int],
+        newrangemax: Union[float, int],
+        value: Union[float, int],
+    ) -> Union[float, int]:
         """
         This function converts the original value into a new defined value in the new range
-        :param oldrangemin: minimum of the original range
-        :param oldrangemax: maximum of the original range
-        :param newrangemin: minimum of the new range
-        :param newrangemax: maximum of the new range
-        :param value: value to be converted
-        :return: converted value
+
+        :param int|float oldrangemin: minimum of the original range
+        :param int|float oldrangemax: maximum of the original range
+        :param int|float newrangemin: minimum of the new range
+        :param int|float newrangemax: maximum of the new range
+        :param int|float value: value to be converted
+        :return int|float: converted value
+
         """
+
         return (
             ((value - oldrangemin) * (newrangemax - newrangemin))
             / (oldrangemax - oldrangemin)
         ) + newrangemin
 
-    def draw_plot(self, x, y):
+    def draw_plot(self, x: int, y: int) -> None:
         """
         Function to draw the plot
 
-        :param x: data for x points
-        :param y: data for y points
+        :param int x: data for x points
+        :param int y: data for y points
         :return: None
 
         """
@@ -195,13 +235,16 @@ class Uplot(displayio.Group):
         if self._showticks:
             self._draw_ticks(x, y)
 
-    def _draw_ticks(self, x, y):
+    def _draw_ticks(self, x: int, y: int) -> None:
         """
         Draw ticks in the plot area
 
-        :return:
+        :param int x: x coord
+        :param int y: y coord
+        :return:None
 
         """
+
         ticks = np.array([10, 30, 50, 70, 90])
         subticks = np.array([20, 40, 60, 80])
         ticksxnorm = np.array(self.normalize(0, 100, np.min(x), np.max(x), ticks))
@@ -276,13 +319,15 @@ class Uplot(displayio.Group):
             self._draw_gridx(ticksxrenorm)
             self._draw_gridy(ticksyrenorm)
 
-    def tick_params(self, tickheight=8, tickcolor=0xFFFFFF, tickgrid=False):
+    def tick_params(
+        self, tickheight: int = 8, tickcolor: int = 0xFFFFFF, tickgrid: bool = False
+    ) -> None:
         """
         Function to set ticks parameters
 
-        :param tickheight:
-        :param tickcolor:
-
+        :param int tickheight: tick height in pixels
+        :param int tickcolor: tick color in hex
+        :param bool tickgrid: defines if the grid is to be shown
         :return: None
 
         """
@@ -292,10 +337,10 @@ class Uplot(displayio.Group):
         self._plot_palette[2] = tickcolor
         self._tickgrid = tickgrid
 
-    def _draw_gridx(self, ticks_data):
+    def _draw_gridx(self, ticks_data: list[int]) -> None:
         """
-        draw plot grid
-
+        Draws the plot grid
+        :param list[int] ticks_data: ticks data information
         :return: None
 
         """
@@ -314,10 +359,10 @@ class Uplot(displayio.Group):
                 )
                 start = start - grid_espace - line_lenght
 
-    def _draw_gridy(self, ticks_data):
+    def _draw_gridy(self, ticks_data: list[int]) -> None:
         """
-        draw plot grid
-
+        Draws plot grid in the y axs
+        :param list[int] ticks_data: ticks data information
         :return: None
 
         """
@@ -335,3 +380,13 @@ class Uplot(displayio.Group):
                     2,
                 )
                 start = start + grid_espace + line_lenght
+
+    def update_plot(self) -> None:
+        """
+        Function to update graph
+
+        :return: None
+
+        """
+
+        self._drawbox()

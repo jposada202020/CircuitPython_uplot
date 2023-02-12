@@ -24,13 +24,13 @@ class scatter:
     Main class to display different graphics
     """
 
-    def __init__(self, plot, x, y, radius=3):
+    def __init__(self, plot, x: any, y: any, radius: int = 3) -> None:
         """
 
-        :param plot: Plot Object for the scatter to be drawn
+        :param plot: Plot object for the scatter to be drawn
         :param x: x points coordinates
         :param y: y points coordinates
-        :param radius: circle radius
+        :param int radius: circle radius
 
         """
         plot._drawbox()
