@@ -34,9 +34,27 @@ Setting up the ticks parameters
 Integration Example
 -------------------
 
-Example showing different graphcals elements integration
+Example showing different graphics elements integration
 
 .. literalinclude:: ../examples/uplot_integration_example.py
     :caption: examples/uplot_integration_example.py
     :linenos:
 .. image:: ../docs/uplot_ex5.jpg
+
+Scatter Example
+-------------------
+
+Scatter plot Example
+
+.. literalinclude:: ../examples/uplot_scatter.py
+    :caption: examples/uplot_scatter.py
+    :linenos:
+
+Display_shapes Example
+-----------------------
+
+Display Shapes integration example
+
+.. literalinclude:: ../examples/uplot_display_shapes.py
+    :caption: examples/uplot_display_shapes.py
+    :linenos:

@@ -53,3 +53,6 @@ class scatter:
             plot.append(
                 Circle(pixel_shader=palette, radius=radius, x=xnorm[i], y=ynorm[i])
             )
+
+        if plot._showticks:
+            plot._draw_ticks(x, y)
