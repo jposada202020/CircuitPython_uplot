@@ -5,7 +5,7 @@
 import time
 import board
 from ulab import numpy as np
-from uplot import Uplot
+from circuitpython_uplot.uplot import Uplot
 
 display = board.DISPLAY
 plot = Uplot(0, 0, display.width, display.height)

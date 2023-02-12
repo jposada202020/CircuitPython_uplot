@@ -26,6 +26,7 @@ from bitmaptools import draw_line
 from vectorio import Circle
 from ulab import numpy as np
 
+
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
@@ -74,15 +75,15 @@ class Uplot(displayio.Group):
 
     def axs_params(self, axstype="box"):
         """
-        :param axs:
+        Setting up axs visibility
+
+        :param axs: argument with the kind of axs you selected
         :return: none
 
         """
-        print("aca", axstype)
         self._axesparams = axstype
 
     def _drawbox(self):
-        print(self._axesparams)
         if self._axesparams == "cartesian":
             draw_box = [True, True, False, False]
         elif self._axesparams == "line":

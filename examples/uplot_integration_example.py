@@ -5,8 +5,7 @@
 import board
 from ulab import numpy as np
 from uhistogram import Histogram
-from uplot import Uplot
-
+from circuitpython_uplot.uplot import Uplot
 
 # Setting Up the histogram
 data = [5, 4, 3, 2, 7, 5, 3, 3, 3, 3, 2, 9, 7, 6]
