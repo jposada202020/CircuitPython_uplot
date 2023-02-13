@@ -70,3 +70,12 @@ ubar example
     :caption: examples/uplot_ubar_example.py
     :linenos:
 .. image:: ../docs/uplot_ex8.jpg
+
+Upie Example
+----------------
+
+upie example
+
+.. literalinclude:: ../examples/uplot_upie_example.py
+    :caption: examples/uplot_upie_example.py
+    :linenos:

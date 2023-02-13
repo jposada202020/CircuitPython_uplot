@@ -18,6 +18,9 @@ from ulab import numpy as np
 import displayio
 from vectorio import Circle
 
+__version__ = "0.0.0+auto.0"
+__repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
+
 # pylint: disable=too-few-public-methods, invalid-name
 class uscatter:
     """

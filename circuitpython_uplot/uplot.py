@@ -68,8 +68,8 @@ class Uplot(displayio.Group):
 
         self.padding = padding
         self._newxmin = padding
-        self._newxmax = width - 1 * padding
-        self._newymin = height - 1 * padding
+        self._newxmax = width - padding
+        self._newymin = height - padding
         self._newymax = padding
 
         self._tickheight = 8
@@ -77,17 +77,28 @@ class Uplot(displayio.Group):
         self._showticks = False
         self._tickgrid = False
 
+        self._barcolor = 0xFFFFFF
+
+        self._piecolor = 0xFFFFFF
+
         self._width = width
         self._height = height
 
         self._axeslinethikness = 1
 
-        self._plotbitmap = displayio.Bitmap(width, height, 4)
+        self._plotbitmap = displayio.Bitmap(width, height, 10)
 
-        self._plot_palette = displayio.Palette(4)
+        self._plot_palette = displayio.Palette(10)
         self._plot_palette[0] = 0x000000
         self._plot_palette[1] = 0xFFFFFF
         self._plot_palette[2] = self._tickcolor
+        self._plot_palette[3] = self._barcolor
+        self._plot_palette[4] = 0xFFFF00
+        self._plot_palette[5] = 0xFF0000
+        self._plot_palette[6] = 0x7428EF
+        self._plot_palette[7] = 0x005E99
+        self._plot_palette[8] = 0x00A76D
+        self._plot_palette[9] = 0x2C4971
         self.append(
             displayio.TileGrid(
                 self._plotbitmap, pixel_shader=self._plot_palette, x=x, y=y

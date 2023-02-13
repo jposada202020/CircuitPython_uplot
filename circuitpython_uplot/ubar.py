@@ -17,6 +17,11 @@ from bitmaptools import draw_line
 
 # pylint: disable=too-many-arguments, invalid-name, protected-access
 # pylint: disable=too-few-public-methods, no-self-use
+
+__version__ = "0.0.0+auto.0"
+__repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
+
+
 class ubar:
     """
     Main class to display different graphics

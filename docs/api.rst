@@ -10,6 +10,8 @@
 .. automodule:: circuitpython_uplot.uscatter
     :members:
 
-
 .. automodule:: circuitpython_uplot.ubar
+    :members:
+
+.. automodule:: circuitpython_uplot.upie
     :members:
