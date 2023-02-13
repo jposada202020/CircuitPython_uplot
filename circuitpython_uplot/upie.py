@@ -15,7 +15,7 @@ CircuitPython pie graph
 """
 
 import math
-import bitmaptools
+from vectorio import Polygon
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
@@ -26,7 +26,7 @@ class upie:
     Class to draw pie
     """
 
-    def __init__(self, plot, data: list, x: int = 130, y: int = 130, radius: int = 50):
+    def __init__(self, plot, data: list, x: int = 220, y: int = 160, radius: int = 100):
         """
 
         :param plot: Plot object for the upie to be drawn
@@ -39,22 +39,33 @@ class upie:
 
         plot._drawbox()
 
-        step = 2
+        step = 1
         total = sum(data)
         per = [int(i / total * 360) for i in data]
 
         start = 0
         end = 0
         index_color = 4
-
+        self.pointlist = [(x, y)]
         for pie in per:
             end = end + pie
             for i in range(start, end, step):
-                self.draw_lines(plot._plotbitmap, x, y, radius, i, index_color)
+                self.get_points(x, y, radius, i)
+            self.pointlist.append((x, y))
+            plot.append(
+                Polygon(
+                    pixel_shader=plot._plot_palette,
+                    points=self.pointlist,
+                    x=0,
+                    y=0,
+                    color_index=index_color,
+                )
+            )
             start = start + pie
             index_color = index_color + 1
+            self.pointlist = [(x, y)]
 
-    def draw_lines(self, bitmap, x, y, radius, angle, color):
+    def get_points(self, x, y, radius, angle):
         """
 
         :param bitmap: bitmap to be drawn in
@@ -66,11 +77,9 @@ class upie:
         :return: None
 
         """
-        return bitmaptools.draw_line(
-            bitmap,
-            x,
-            y,
-            x + int(radius * math.cos(angle * math.pi / 180)),
-            y + int(radius * math.sin(angle * math.pi / 180)),
-            color,
+        self.pointlist.append(
+            (
+                x + int(radius * math.cos(angle * math.pi / 180)),
+                y + int(radius * math.sin(angle * math.pi / 180)),
+            )
         )
