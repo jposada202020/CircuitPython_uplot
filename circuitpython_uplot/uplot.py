@@ -61,14 +61,33 @@ class Uplot(displayio.Group):
         height: int = 100,
         padding: int = 15,
     ) -> None:
+        if width not in range(50, 481):
+            print("Be sure to verify your values. Defaulting to width=100")
+            width = 100
+        if height not in range(50, 321):
+            print("Be sure to verify your values. Defaulting to height=100")
+            height = 100
+        if x + width > 481:
+            print(
+                "Modify this settings. Some of the graphics will not shown int the screen"
+            )
+            print("Defaulting to x=0")
+            x = 0
+        if y + height > 321:
+            print(
+                "Modify this settings. Some of the graphics will not shown int the screen"
+            )
+            print("Defaulting to y=0")
+            y = 0
+
         super().__init__(x=x, y=y, scale=1)
-        np.set_printoptions(threshold=200)
 
         self._axesparams = "box"
 
         self.padding = padding
         self._newxmin = padding
         self._newxmax = width - padding
+
         self._newymin = height - padding
         self._newymax = padding
 
@@ -83,8 +102,6 @@ class Uplot(displayio.Group):
 
         self._width = width
         self._height = height
-
-        self._axeslinethikness = 1
 
         self._plotbitmap = displayio.Bitmap(width, height, 10)
 
@@ -101,7 +118,7 @@ class Uplot(displayio.Group):
         self._plot_palette[9] = 0x2C4971
         self.append(
             displayio.TileGrid(
-                self._plotbitmap, pixel_shader=self._plot_palette, x=x, y=y
+                self._plotbitmap, pixel_shader=self._plot_palette, x=0, y=0
             )
         )
 
@@ -231,7 +248,6 @@ class Uplot(displayio.Group):
             dtype=np.uint16,
         )
 
-        # np.set_printoptions(threshold=200)
         for index, _ in enumerate(xnorm):
             if index + 1 >= len(xnorm):
                 break

@@ -49,7 +49,7 @@ class upie:
         self.pointlist = [(x, y)]
         for pie in per:
             end = end + pie
-            for i in range(start, end, step):
+            for i in range(start, end + 1, step):
                 self.get_points(x, y, radius, i)
             self.pointlist.append((x, y))
             plot.append(

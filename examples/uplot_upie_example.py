@@ -15,7 +15,7 @@ plot = Uplot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
 plot.axs_params(axstype="box")
-a = [5, 2, 7]
+a = [5, 2, 7, 3]
 
 upie(plot, a)
 
