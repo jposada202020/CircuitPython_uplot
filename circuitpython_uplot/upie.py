@@ -47,15 +47,15 @@ class upie:
         self.pointlist = [(x, y)]
         for pie in per:
             end = end + pie
-            for i in range(start, end+1, step):
+            for i in range(start, end + 1, step):
                 self.get_points(x, y, radius, i)
             self.pointlist.append((x, y))
             plot.append(
                 Polygon(
                     pixel_shader=plot._plot_palette,
                     points=self.pointlist,
-                    x=plot._width//2,
-                    y=plot._height//2,
+                    x=plot._width // 2,
+                    y=plot._height // 2,
                     color_index=index_color,
                 )
             )

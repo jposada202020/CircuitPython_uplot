@@ -21,7 +21,7 @@ from ulab import numpy as np
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
-# pylint: disable=too-many-arguments, invalid-name, no-self-use
+# pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
 class ucartesian:
     """
     Class to draw cartesian plane

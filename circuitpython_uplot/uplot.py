@@ -60,7 +60,7 @@ class Uplot(displayio.Group):
         width: int = 100,
         height: int = 100,
         padding: int = 15,
-        show_box: bool = True
+        show_box: bool = True,
     ) -> None:
         if width not in range(50, 481):
             print("Be sure to verify your values. Defaulting to width=100")
@@ -88,7 +88,6 @@ class Uplot(displayio.Group):
         self.padding = padding
         self._newxmin = padding
         self._newxmax = width - padding
-
 
         self._newymin = height - padding
         self._newymax = padding

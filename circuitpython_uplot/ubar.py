@@ -32,7 +32,7 @@ class ubar:
         self._new_min = int(plot.normalize(0, max(y), max(y), 0, 0))
         self._new_max = int(plot.normalize(0, max(y), max(y), 0, max(y)))
         xstart = self._graphx
-        bar_space = max(2, plot._width//30)
+        bar_space = max(2, plot._width // 30)
         plot._plot_palette[3] = color
 
         for i, _ in enumerate(x):
