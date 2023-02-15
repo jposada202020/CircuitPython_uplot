@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 import time
 from random import choice
@@ -13,6 +13,7 @@ from circuitpython_uplot.uscatter import uscatter
 # Setting up the display
 display = board.DISPLAY
 
+# Adding the plot area
 plot = Uplot(0, 0, display.width, display.height)
 
 # Setting up tick parameters

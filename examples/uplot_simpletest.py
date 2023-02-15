@@ -7,7 +7,10 @@ import board
 import displayio
 from circuitpython_uplot.uplot import Uplot
 
+# Setting up the display
 display = board.DISPLAY
+
+# Adding the plot area
 plot = Uplot(0, 0, display.width, display.height)
 
 group = displayio.Group()

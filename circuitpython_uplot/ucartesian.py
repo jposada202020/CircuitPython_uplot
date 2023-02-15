@@ -1,39 +1,38 @@
-# SPDX-FileCopyrightText: 2023 Jose D. Montoya
+# SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
 # SPDX-License-Identifier: MIT
 
-
 """
 
-`uscatter`
+`ucartesian`
 ================================================================================
 
-CircuitPython uscatter graph
+CircuitPython pie graph
 
 * Author(s): Jose D. Montoya
 
 
 """
+
+from bitmaptools import draw_line
 from ulab import numpy as np
-import displayio
-from vectorio import Circle
+
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
-# pylint: disable=too-few-public-methods, invalid-name
-class uscatter:
+# pylint: disable=too-many-arguments, invalid-name, no-self-use
+class ucartesian:
     """
-    Main class to display different graphics
+    Class to draw cartesian plane
     """
 
-    def __init__(self, plot, x: any, y: any, radius: int = 3) -> None:
+    def __init__(self, plot, x: any, y: any) -> None:
         """
 
-        :param plot: Plot object for the uscatter to be drawn
+        :param plot: Plot object for the scatter to be drawn
         :param x: x points coordinates
         :param y: y points coordinates
-        :param int radius: circle radius
 
         """
 
@@ -49,12 +48,16 @@ class uscatter:
             dtype=np.uint16,
         )
 
-        palette = displayio.Palette(1)
-        palette[0] = 0xFFFFFF
-        for i, _ in enumerate(x):
-            plot.append(
-                Circle(pixel_shader=palette, radius=radius, x=xnorm[i], y=ynorm[i])
+        for index, _ in enumerate(xnorm):
+            if index + 1 >= len(xnorm):
+                break
+            draw_line(
+                plot._plotbitmap,
+                xnorm[index],
+                ynorm[index],
+                xnorm[index + 1],
+                ynorm[index + 1],
+                1,
             )
-
         if plot._showticks:
             plot._draw_ticks(x, y)

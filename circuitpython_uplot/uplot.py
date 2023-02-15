@@ -60,6 +60,7 @@ class Uplot(displayio.Group):
         width: int = 100,
         height: int = 100,
         padding: int = 15,
+        show_box: bool = True
     ) -> None:
         if width not in range(50, 481):
             print("Be sure to verify your values. Defaulting to width=100")
@@ -88,6 +89,7 @@ class Uplot(displayio.Group):
         self._newxmin = padding
         self._newxmax = width - padding
 
+
         self._newymin = height - padding
         self._newymax = padding
 
@@ -104,6 +106,9 @@ class Uplot(displayio.Group):
         self._height = height
 
         self._plotbitmap = displayio.Bitmap(width, height, 10)
+
+        if show_box:
+            self._drawbox()
 
         self._plot_palette = displayio.Palette(10)
         self._plot_palette[0] = 0x000000
@@ -224,43 +229,6 @@ class Uplot(displayio.Group):
             ((value - oldrangemin) * (newrangemax - newrangemin))
             / (oldrangemax - oldrangemin)
         ) + newrangemin
-
-    def draw_plot(self, x: int, y: int) -> None:
-        """
-        Function to draw the plot
-
-        :param int x: data for x points
-        :param int y: data for y points
-        :return: None
-
-        """
-        self._drawbox()
-
-        x = np.array(x)
-        y = np.array(y)
-
-        xnorm = np.array(
-            self.normalize(np.min(x), np.max(x), self._newxmin, self._newxmax, x),
-            dtype=np.uint16,
-        )
-        ynorm = np.array(
-            self.normalize(np.min(y), np.max(y), self._newymin, self._newymax, y),
-            dtype=np.uint16,
-        )
-
-        for index, _ in enumerate(xnorm):
-            if index + 1 >= len(xnorm):
-                break
-            draw_line(
-                self._plotbitmap,
-                xnorm[index],
-                ynorm[index],
-                xnorm[index + 1],
-                ynorm[index + 1],
-                1,
-            )
-        if self._showticks:
-            self._draw_ticks(x, y)
 
     def _draw_ticks(self, x: int, y: int) -> None:
         """

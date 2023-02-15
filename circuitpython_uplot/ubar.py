@@ -7,7 +7,7 @@
 `ubar`
 ================================================================================
 
-CircuitPython uscatter graph
+CircuitPython ubar graph
 
 * Author(s): Jose D. Montoya
 
@@ -15,13 +15,11 @@ CircuitPython uscatter graph
 """
 from bitmaptools import draw_line
 
-# pylint: disable=too-many-arguments, invalid-name, protected-access
-# pylint: disable=too-few-public-methods, no-self-use
-
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
-
+# pylint: disable=too-many-arguments, invalid-name, protected-access
+# pylint: disable=too-few-public-methods, no-self-use
 class ubar:
     """
     Main class to display different graphics
@@ -29,14 +27,12 @@ class ubar:
 
     def __init__(self, plot, x: any, y: any, color=0xFFFFFF) -> None:
 
-        plot._drawbox()
-
         self._graphx = abs(plot._newxmax - plot._newxmin) // (len(x) + 2)
         self._graphy = abs(plot._newymax - plot._newymin) // (max(y) + 2)
         self._new_min = int(plot.normalize(0, max(y), max(y), 0, 0))
         self._new_max = int(plot.normalize(0, max(y), max(y), 0, max(y)))
         xstart = self._graphx
-        bar_space = 10
+        bar_space = max(2, plot._width//30)
         plot._plot_palette[3] = color
 
         for i, _ in enumerate(x):

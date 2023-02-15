@@ -1,11 +1,12 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 import board
 from ulab import numpy as np
 from uhistogram import Histogram
 from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.ucartesian import ucartesian
 
 # Setting Up the histogram
 data = [5, 4, 3, 2, 7, 5, 3, 3, 3, 3, 2, 9, 7, 6]
@@ -24,8 +25,7 @@ constant = 1.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
 
 # Plotting and showing the plot
-plot.draw_plot(x, y)
-plot.append(my_box)
+ucartesian(plot, x, y)
 
 # Adding a circle
 plot.draw_circle(radius=8, x=120, y=120)

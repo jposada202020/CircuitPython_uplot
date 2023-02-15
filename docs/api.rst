@@ -15,3 +15,6 @@
 
 .. automodule:: circuitpython_uplot.upie
     :members:
+
+.. automodule:: circuitpython_uplot.ucartesian
+    :members:

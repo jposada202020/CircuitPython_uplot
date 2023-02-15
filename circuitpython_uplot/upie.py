@@ -26,7 +26,7 @@ class upie:
     Class to draw pie
     """
 
-    def __init__(self, plot, data: list, x: int = 220, y: int = 160, radius: int = 100):
+    def __init__(self, plot, data: list, x: int = 0, y: int = 0, radius: int = 50):
         """
 
         :param plot: Plot object for the upie to be drawn
@@ -36,8 +36,6 @@ class upie:
         :param int radius: pie radius
 
         """
-
-        plot._drawbox()
 
         step = 1
         total = sum(data)
@@ -49,15 +47,15 @@ class upie:
         self.pointlist = [(x, y)]
         for pie in per:
             end = end + pie
-            for i in range(start, end + 1, step):
+            for i in range(start, end+1, step):
                 self.get_points(x, y, radius, i)
             self.pointlist.append((x, y))
             plot.append(
                 Polygon(
                     pixel_shader=plot._plot_palette,
                     points=self.pointlist,
-                    x=0,
-                    y=0,
+                    x=plot._width//2,
+                    y=plot._height//2,
                     color_index=index_color,
                 )
             )

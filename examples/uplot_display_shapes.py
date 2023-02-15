@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 import time
 import board
@@ -11,13 +11,14 @@ from circuitpython_uplot.uplot import Uplot
 # Setting up the display
 display = board.DISPLAY
 
+# Adding the plot area
 plot = Uplot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
 plot.tick_params(tickheight=12, tickcolor=0xFF0008, tickgrid=True)
 plot.axs_params(axstype="box")
-plot.update_plot()
 
+# Creating some shapes to show
 polygon = Polygon(
     [
         (255, 40),
@@ -36,6 +37,7 @@ polygon = Polygon(
 
 roundrect = RoundRect(30, 30, 61, 81, 10, fill=0x0, outline=0xFF00FF, stroke=6)
 
+# Adding shapes to the plot
 plot.append(polygon)
 plot.append(roundrect)
 
