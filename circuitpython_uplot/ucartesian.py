@@ -27,7 +27,15 @@ class ucartesian:
     Class to draw cartesian plane
     """
 
-    def __init__(self, plot, x: any, y: any) -> None:
+    def __init__(
+        self,
+        plot,
+        x: any,
+        y: any,
+        rangex: any = None,
+        rangey: any = None,
+        line_color: int = 0xFFFFFF,
+    ) -> None:
         """
 
         :param plot: Plot object for the scatter to be drawn
@@ -36,15 +44,31 @@ class ucartesian:
 
         """
 
+        plot._plot_palette[plot._index_colorused] = line_color
+
+        if rangex is None:
+            xmin = np.min(x)
+            xmax = np.max(x)
+        else:
+            xmin = min(rangex)
+            xmax = max(rangex)
+
+        if rangey is None:
+            ymin = np.min(y)
+            ymax = np.max(y)
+        else:
+            ymin = min(rangey)
+            ymax = max(rangey)
+
         x = np.array(x)
         y = np.array(y)
 
         xnorm = np.array(
-            plot.normalize(np.min(x), np.max(x), plot._newxmin, plot._newxmax, x),
+            plot.normalize(xmin, xmax, plot._newxmin, plot._newxmax, x),
             dtype=np.uint16,
         )
         ynorm = np.array(
-            plot.normalize(np.min(y), np.max(y), plot._newymin, plot._newymax, y),
+            plot.normalize(ymin, ymax, plot._newymin, plot._newymax, y),
             dtype=np.uint16,
         )
 
@@ -57,7 +81,9 @@ class ucartesian:
                 ynorm[index],
                 xnorm[index + 1],
                 ynorm[index + 1],
-                1,
+                plot._index_colorused,
             )
         if plot._showticks:
             plot._draw_ticks(x, y)
+
+        plot._index_colorused = plot._index_colorused + 1

@@ -12,7 +12,7 @@ Ensure your device works with this simple test.
 Plot Example
 -------------
 
-Pot some data for x and y
+Plot some data for x and y
 
 .. literalinclude:: ../examples/uplot_plot_example.py
     :caption: examples/uplot_plot_example.py
@@ -80,3 +80,13 @@ upie example
     :caption: examples/uplot_upie_example.py
     :linenos:
 .. image:: ../docs/uplot_ex9.jpg
+
+Cartesian Advanced Example
+---------------------------
+
+Showing the ability to display to graphs in the same plot with different colors
+
+.. literalinclude:: ../examples/uplot_ucartesian_advanced.py
+    :caption: examples/uplot_ucartesian_advanced.py
+    :linenos:
+.. image:: ../docs/uplot_ex11.jpg

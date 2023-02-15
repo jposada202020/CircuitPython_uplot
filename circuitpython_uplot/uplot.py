@@ -101,25 +101,31 @@ class Uplot(displayio.Group):
 
         self._piecolor = 0xFFFFFF
 
+        self._index_colorused = 4
+
         self._width = width
         self._height = height
 
-        self._plotbitmap = displayio.Bitmap(width, height, 10)
+        self._plotbitmap = displayio.Bitmap(width, height, 14)
 
         if show_box:
             self._drawbox()
 
-        self._plot_palette = displayio.Palette(10)
+        self._plot_palette = displayio.Palette(14)
         self._plot_palette[0] = 0x000000
         self._plot_palette[1] = 0xFFFFFF
         self._plot_palette[2] = self._tickcolor
         self._plot_palette[3] = self._barcolor
-        self._plot_palette[4] = 0xFFFF00
-        self._plot_palette[5] = 0xFF0000
-        self._plot_palette[6] = 0x7428EF
-        self._plot_palette[7] = 0x005E99
-        self._plot_palette[8] = 0x00A76D
-        self._plot_palette[9] = 0x2C4971
+        self._plot_palette[4] = 0xFFFF00  # Pie Chart color 1
+        self._plot_palette[5] = 0xFF0000  # Pie Chart color 2
+        self._plot_palette[6] = 0x7428EF  # Pie Chart color 3
+        self._plot_palette[7] = 0x005E99  # Pie Chart color 4
+        self._plot_palette[8] = 0x00A76D  # Pie Chart color 5
+        self._plot_palette[9] = 0x2C4971  # Pie Chart color 6
+        self._plot_palette[10] = 0x64A813
+        self._plot_palette[11] = 0x0F4E12
+        self._plot_palette[12] = 0xF0075E
+        self._plot_palette[13] = 0x1AF0FF
         self.append(
             displayio.TileGrid(
                 self._plotbitmap, pixel_shader=self._plot_palette, x=0, y=0
