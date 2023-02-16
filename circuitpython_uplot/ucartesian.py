@@ -16,12 +16,14 @@ CircuitPython pie graph
 
 from bitmaptools import draw_line
 from ulab import numpy as np
+from vectorio import Polygon
 
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 # pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
+# pylint: disable=too-many-locals
 class ucartesian:
     """
     Class to draw cartesian plane
@@ -35,6 +37,7 @@ class ucartesian:
         rangex: any = None,
         rangey: any = None,
         line_color: int = 0xFFFFFF,
+        fill: bool = False,
     ) -> None:
         """
 
@@ -43,7 +46,7 @@ class ucartesian:
         :param y: y points coordinates
 
         """
-
+        points = []
         plot._plot_palette[plot._index_colorused] = line_color
 
         if rangex is None:
@@ -72,17 +75,33 @@ class ucartesian:
             dtype=np.uint16,
         )
 
-        for index, _ in enumerate(xnorm):
-            if index + 1 >= len(xnorm):
-                break
-            draw_line(
-                plot._plotbitmap,
-                xnorm[index],
-                ynorm[index],
-                xnorm[index + 1],
-                ynorm[index + 1],
-                plot._index_colorused,
+        if fill:
+            points.append((xnorm[0], plot._newymin))
+            for index, item in enumerate(xnorm):
+                points.append((item, ynorm[index]))
+            points.append((xnorm[-1], plot._newymin))
+            points.append((xnorm[0], plot._newymin))
+            plot.append(
+                Polygon(
+                    pixel_shader=plot._plot_palette,
+                    points=points,
+                    x=0,
+                    y=0,
+                    color_index=plot._index_colorused,
+                )
             )
+        else:
+            for index, _ in enumerate(xnorm):
+                if index + 1 >= len(xnorm):
+                    break
+                draw_line(
+                    plot._plotbitmap,
+                    xnorm[index],
+                    ynorm[index],
+                    xnorm[index + 1],
+                    ynorm[index + 1],
+                    plot._index_colorused,
+                )
         if plot._showticks:
             plot._draw_ticks(x, y)
 

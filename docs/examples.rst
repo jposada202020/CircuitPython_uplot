@@ -90,3 +90,13 @@ Showing the ability to display to graphs in the same plot with different colors
     :caption: examples/uplot_ucartesian_advanced.py
     :linenos:
 .. image:: ../docs/uplot_ex11.jpg
+
+Stackplot Example
+---------------------------
+
+Stackplot simple example
+
+.. literalinclude:: ../examples/uplot_stackplot.py
+    :caption: examples/uplot_stackplot.py
+    :linenos:
+.. image:: ../docs/uplot_ex12.jpg
