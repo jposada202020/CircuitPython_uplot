@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 import time
 import board
@@ -17,7 +17,7 @@ plot = Uplot(0, 0, display.width, display.height)
 plot.axs_params(axstype="box")
 a = ["a", "b", "c", "d"]
 b = [3, 5, 1, 7]
-ubar(plot, a, b, 0xFF1000)
+ubar(plot, a, b, 0xFF1000, True)
 
 # Plotting and showing the plot
 display.show(plot)
