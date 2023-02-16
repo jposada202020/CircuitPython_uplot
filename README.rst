@@ -20,7 +20,7 @@ Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/late
 
 
 
-.. image:: ../main/docs/readme.png
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme.png
 
 
 Dependencies
