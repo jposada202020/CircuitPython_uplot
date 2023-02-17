@@ -37,7 +37,6 @@ We tell the microcontroller to display our plot:
 And that is it you know have a plot area to add amazing graphs!
 
 
-.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme.png
-
+.. image:: ../docs/readme.png
 
 Good Luck!

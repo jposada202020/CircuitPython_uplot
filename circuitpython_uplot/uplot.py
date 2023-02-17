@@ -100,8 +100,8 @@ class Uplot(displayio.Group):
         self._showticks = False
         self._tickgrid = False
 
-        self._grid_espace = self._width // 40
-        self._grid_lenght = self._width // 20
+        self._grid_espace = 2
+        self._grid_lenght = 2
 
         self._barcolor = 0x69FF8F
 
@@ -349,7 +349,7 @@ class Uplot(displayio.Group):
         """
         for tick in ticks_data:
             start = self._newymin
-            while start - self._grid_lenght >= self._newymax:
+            while start - self._grid_lenght - self._grid_espace >= self._newymax:
                 draw_line(
                     self._plotbitmap,
                     tick,
@@ -369,7 +369,7 @@ class Uplot(displayio.Group):
         """
         for tick in ticks_data:
             start = self._newxmin
-            while start <= self._newxmax:
+            while start + self._grid_lenght <= self._newxmax:
                 draw_line(
                     self._plotbitmap,
                     start,

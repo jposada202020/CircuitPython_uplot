@@ -37,6 +37,7 @@ class ufillbetween:
         rangex: any = None,
         rangey: any = None,
         fill_color: int = 0xF6FF41,
+        nudge: bool = True,
     ) -> None:
         """
         :param plot: Plot object for the scatter to be drawn
@@ -48,19 +49,29 @@ class ufillbetween:
         :param fill_color int: filling color. Defaults to 0xF6FF41
 
         """
+
+        if nudge:
+            nudge_factor = 1
+        else:
+            nudge_factor = 0
+
         points = []
         plot._plot_palette[plot._index_colorused] = fill_color
 
         if rangex is None:
-            xmin = np.min(x)
-            xmax = np.max(x)
+            xmin = np.min(x) - nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
+            xmax = np.max(x) + nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
         else:
             xmin = min(rangex)
             xmax = max(rangex)
 
         if rangey is None:
-            ymin = min(np.min(y1), np.min(y2))
-            ymax = max(np.max(y1), np.max(y2))
+            ymin = min(np.min(y1), np.min(y2)) - nudge_factor * (
+                abs(np.max(y1) - np.min(y1)) / 10
+            )
+            ymax = max(np.max(y1), np.max(y2)) + nudge_factor * (
+                abs(np.max(y1) - np.min(y1)) / 10
+            )
         else:
             ymin = min(rangey)
             ymax = max(rangey)
