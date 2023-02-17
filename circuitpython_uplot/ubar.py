@@ -30,8 +30,8 @@ class ubar:
 
         self._graphx = abs(plot._newxmax - plot._newxmin) // (len(x) + 2)
         self._graphy = abs(plot._newymax - plot._newymin) // (max(y) + 2)
-        self._new_min = int(plot.normalize(0, max(y), max(y), 0, 0))
-        self._new_max = int(plot.normalize(0, max(y), max(y), 0, max(y)))
+        self._new_min = int(plot.transform(0, max(y), max(y), 0, 0))
+        self._new_max = int(plot.transform(0, max(y), max(y), 0, max(y)))
 
         bar_space = max(2, plot._width // 30)
         xstart = self._graphx + bar_space

@@ -214,7 +214,7 @@ class Uplot(displayio.Group):
         self.append(Circle(pixel_shader=palette, radius=radius, x=x, y=y))
 
     @staticmethod
-    def normalize(
+    def transform(
         oldrangemin: Union[float, int],
         oldrangemax: Union[float, int],
         newrangemin: Union[float, int],
@@ -250,32 +250,32 @@ class Uplot(displayio.Group):
 
         ticks = np.array([10, 30, 50, 70, 90])
         subticks = np.array([20, 40, 60, 80])
-        ticksxnorm = np.array(self.normalize(0, 100, np.min(x), np.max(x), ticks))
-        ticksynorm = np.array(self.normalize(0, 100, np.min(y), np.max(y), ticks))
+        ticksxnorm = np.array(self.transform(0, 100, np.min(x), np.max(x), ticks))
+        ticksynorm = np.array(self.transform(0, 100, np.min(y), np.max(y), ticks))
 
-        subticksxnorm = np.array(self.normalize(0, 100, np.min(x), np.max(x), subticks))
-        subticksynorm = np.array(self.normalize(0, 100, np.min(y), np.max(y), subticks))
+        subticksxnorm = np.array(self.transform(0, 100, np.min(x), np.max(x), subticks))
+        subticksynorm = np.array(self.transform(0, 100, np.min(y), np.max(y), subticks))
 
         ticksxrenorm = np.array(
-            self.normalize(
+            self.transform(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, ticksxnorm
             ),
             dtype=np.uint16,
         )
         ticksyrenorm = np.array(
-            self.normalize(
+            self.transform(
                 np.min(y), np.max(y), self._newymin, self._newymax, ticksynorm
             ),
             dtype=np.uint16,
         )
         subticksxrenorm = np.array(
-            self.normalize(
+            self.transform(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, subticksxnorm
             ),
             dtype=np.uint16,
         )
         subticksyrenorm = np.array(
-            self.normalize(
+            self.transform(
                 np.min(y), np.max(y), self._newymin, self._newymax, subticksynorm
             ),
             dtype=np.uint16,

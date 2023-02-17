@@ -64,11 +64,11 @@ class uscatter:
         y = np.array(y)
 
         xnorm = np.array(
-            plot.normalize(xmin, xmax, plot._newxmin, plot._newxmax, x),
+            plot.transform(xmin, xmax, plot._newxmin, plot._newxmax, x),
             dtype=np.uint16,
         )
         ynorm = np.array(
-            plot.normalize(ymin, ymax, plot._newymin, plot._newymax, y),
+            plot.transform(ymin, ymax, plot._newymin, plot._newymax, y),
             dtype=np.uint16,
         )
 
