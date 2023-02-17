@@ -7,7 +7,7 @@
 `ucartesian`
 ================================================================================
 
-CircuitPython pie graph
+CircuitPython cartesian graph
 
 * Author(s): Jose D. Montoya
 

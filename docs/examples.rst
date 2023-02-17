@@ -100,3 +100,13 @@ Stackplot simple example
     :caption: examples/uplot_stackplot.py
     :linenos:
 .. image:: ../docs/uplot_ex12.jpg
+
+Advanced Example
+---------------------------
+
+plot different ulements in a single display
+
+.. literalinclude:: ../examples/uplot_readme_example.py
+    :caption: examples/uplot_readme_example.py
+    :linenos:
+.. image:: ../docs/readme.png

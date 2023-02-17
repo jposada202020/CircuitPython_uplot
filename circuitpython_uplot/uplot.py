@@ -38,8 +38,7 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
 # pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
-
-
+# pylint: disable=too-many-statements
 class Uplot(displayio.Group):
     """
     Canvas Class to add different elements to the screen.
@@ -50,6 +49,7 @@ class Uplot(displayio.Group):
     :param int width: plot box width in pixels
     :param int height: plot box height in pixels
     :param int padding: padding for the plot box in all directions
+    :param bool show_box: select if the plot box is displayed
 
     """
 
@@ -85,6 +85,9 @@ class Uplot(displayio.Group):
 
         self._axesparams = "box"
 
+        self._width = width
+        self._height = height
+
         self.padding = padding
         self._newxmin = padding
         self._newxmax = width - padding
@@ -97,14 +100,14 @@ class Uplot(displayio.Group):
         self._showticks = False
         self._tickgrid = False
 
-        self._barcolor = 0xFFFFFF
+        self._grid_espace = self._width // 40
+        self._grid_lenght = self._width // 20
 
-        self._piecolor = 0xFFFFFF
+        self._barcolor = 0x69FF8F
+
+        self._piecolor = 0x8B77FF
 
         self._index_colorused = 4
-
-        self._width = width
-        self._height = height
 
         self._plotbitmap = displayio.Bitmap(width, height, 14)
 
@@ -116,8 +119,8 @@ class Uplot(displayio.Group):
         self._plot_palette[1] = 0xFFFFFF
         self._plot_palette[2] = self._tickcolor
         self._plot_palette[3] = self._barcolor
-        self._plot_palette[4] = 0xFFFF00  # Pie Chart color 1
-        self._plot_palette[5] = 0xFF0000  # Pie Chart color 2
+        self._plot_palette[4] = 0x149F14  # Pie Chart color 1
+        self._plot_palette[5] = 0x647182  # Pie Chart color 2
         self._plot_palette[6] = 0x7428EF  # Pie Chart color 3
         self._plot_palette[7] = 0x005E99  # Pie Chart color 4
         self._plot_palette[8] = 0x00A76D  # Pie Chart color 5
@@ -344,20 +347,18 @@ class Uplot(displayio.Group):
         :return: None
 
         """
-        grid_espace = 10
-        line_lenght = 10
         for tick in ticks_data:
             start = self._newymin
-            while start >= self._newymax:
+            while start - self._grid_lenght >= self._newymax:
                 draw_line(
                     self._plotbitmap,
                     tick,
                     start,
                     tick,
-                    start - line_lenght,
+                    start - self._grid_lenght,
                     2,
                 )
-                start = start - grid_espace - line_lenght
+                start = start - self._grid_espace - self._grid_lenght
 
     def _draw_gridy(self, ticks_data: list[int]) -> None:
         """
@@ -366,8 +367,6 @@ class Uplot(displayio.Group):
         :return: None
 
         """
-        grid_espace = 10
-        line_lenght = 10
         for tick in ticks_data:
             start = self._newxmin
             while start <= self._newxmax:
@@ -375,11 +374,11 @@ class Uplot(displayio.Group):
                     self._plotbitmap,
                     start,
                     tick,
-                    start + line_lenght,
+                    start + self._grid_lenght,
                     tick,
                     2,
                 )
-                start = start + grid_espace + line_lenght
+                start = start + self._grid_espace + self._grid_lenght
 
     def update_plot(self) -> None:
         """
