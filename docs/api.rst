@@ -18,3 +18,6 @@
 
 .. automodule:: circuitpython_uplot.ucartesian
     :members:
+
+.. automodule:: circuitpython_uplot.ufillbetween
+    :members:

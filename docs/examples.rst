@@ -110,3 +110,13 @@ plot different ulements in a single display
     :caption: examples/uplot_readme_example.py
     :linenos:
 .. image:: ../docs/readme.png
+
+Ufillbetween Example
+---------------------------
+
+example of ufillbetween plot
+
+.. literalinclude:: ../examples/uplot_ufillbetween.py
+    :caption: examples/uplot_ufillbetween.py
+    :linenos:
+.. image:: ../docs/uplot_ex15.jpg
