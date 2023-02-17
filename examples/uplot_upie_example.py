@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
-# SPDX-License-Identifier: Unlicense
+# SPDX-License-Identifier: MIT
 
 import time
 import board
