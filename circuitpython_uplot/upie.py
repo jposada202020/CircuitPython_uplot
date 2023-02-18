@@ -33,7 +33,7 @@ class upie:
 
     def __init__(
         self, plot: Uplot, data: list, x: int = 0, y: int = 0, radius: int = 50
-    ):
+    ) -> None:
         """
 
         :param Uplot plot: Plot object for the upie to be drawn
@@ -70,7 +70,7 @@ class upie:
             index_color = index_color + 1
             self.pointlist = [(x, y)]
 
-    def get_points(self, x, y, radius, angle):
+    def get_points(self, x:int, y:int, radius:int, angle:float) -> None:
         """
 
         :param bitmap: bitmap to be drawn in

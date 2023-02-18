@@ -80,7 +80,9 @@ class ubar:
                 xstart = xstart + bar_space
                 plot._index_colorused = plot._index_colorused + 1
 
-    def _draw_rectangle(self, plot, x, y, width, height, color):
+    def _draw_rectangle(
+        self, plot: Uplot, x: int, y: int, width: int, height: int, color: int
+    ) -> None:
         """
         Helper function to draw bins rectangles
         """

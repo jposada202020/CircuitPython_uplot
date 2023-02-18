@@ -145,7 +145,7 @@ class Uplot(displayio.Group):
         """
         self._axesparams = axstype
 
-    def _drawbox(self):
+    def _drawbox(self) -> None:
         """
         Draw the plot box
 
