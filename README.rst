@@ -1,7 +1,3 @@
-Introduction
-============
-
-
 .. image:: https://readthedocs.org/projects/circuitpython-uplot/badge/?version=latest
     :target: https://circuitpython-uplot.readthedocs.io/
     :alt: Documentation Status
