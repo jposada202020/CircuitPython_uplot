@@ -1,5 +1,8 @@
 A small tour for uplot.
 
+
+Plot Usage
+=============
 We start importing some fundamental libraries for uplot to operate
 
 .. code-block:: python
@@ -40,3 +43,73 @@ And that is it you know have a plot area to add amazing graphs!
 .. image:: ../docs/readme.png
 
 Good Luck!
+
+Graphics
+===========
+
+At the moment the following objects can be added to the plot area:
+
+* Elements in the library
+    * Cartesian Plane
+    * Ufillbetween graph
+    * Stackplot
+    * Bar graph
+    * Pie Chart
+* Display_shapes library objects
+* Histograms from the uhistogram library
+* Boxplots from the uboxplot library
+* Individual Vectorio Objects
+
+In a more advanced method it is possible to add directly to the plot area using the plot bitmap object
+
+The following code shows an example adding a shape from the Adafruit_Display_shapes
+library
+
+.. code-block:: python
+
+    import board
+    from adafruit_display_shapes.polygon import Polygon
+    from adafruit_display_shapes.roundrect import RoundRect
+    from circuitpython_uplot.uplot import Uplot
+
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+    roundrect = RoundRect(30, 30, 61, 81, 10, fill=0x0, outline=0xFF00FF, stroke=6)
+    plot.append(roundrect)
+    display.show(plot)
+
+
+
+Ticks and Grid
+===============
+Plot axes are shown by default. To change this behaviour you would need
+to use the correct keyword in the axsparams function:
+
+Options available are:
+    * box : draws a box
+    * cartesian: draws the left and bottom axes
+    * line: draws the bottom axis
+
+The following snippet shows how to create a cartesian plot
+
+.. code-block:: python
+
+    plot = Uplot(0, 0, display.width, display.height)
+    plot.axs_params(axstype="cartesian")
+
+Tick spacing and numbers are selected by default. However it's possible to customize
+the following parameters:
+
+    * tickheight
+    * tickcolor
+
+.. code-block:: python
+
+    plot.tick_params(tickheight=12, tickcolor=0xFF0008)
+
+
+Gridlines are normally off. If you want visible gridlines then use:
+
+.. code-block:: python
+
+    plot.tick_params(tickgrid=True)
