@@ -29,15 +29,17 @@ This library depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
-This library is ressource cosumingg, may or may not with CircuitPython supported devices.
+This library is ressource cosuming, may or may not with some CircuitPython supported devices.
 Tinker it as you wish in order to work.
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
 or individual libraries can be installed using
-`circup <https://github.com/adafruit/circup>`_.Installing from PyPI
+`circup <https://github.com/adafruit/circup>`_.
 
+
+Installing from PyPI
 =====================
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
