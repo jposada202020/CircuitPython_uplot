@@ -18,14 +18,14 @@ Introduction
 Framework to display different plots in displayio. Similar to widget
 Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/latest/examples.html>`_ section in RTD to see the gallery
 
-
+For detailed view of the library please refer to the `Quick start guide <https://circuitpython-uplot.readthedocs.io/>`_
 
 .. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme.png
 
 
 Dependencies
 =============
-This driver depends on:
+This library depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
@@ -86,14 +86,13 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-To learn how to use the library please refer to the examples folder
+To learn how to use the library please refer to the examples folder or the
+`Quick start guide <https://circuitpython-uplot.readthedocs.io/>`_
 
 Documentation
 =============
 API documentation for this library can be found on `Read the Docs <https://circuitpython-uplot.readthedocs.io/>`_.
 
-For information on building library documentation, please check out
-`this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
 
 Contributing
 ============
