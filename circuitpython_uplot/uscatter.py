@@ -21,6 +21,7 @@ from vectorio import Circle
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
+
 # pylint: disable=too-few-public-methods, invalid-name, duplicate-code, too-many-locals, too-many-arguments
 class uscatter:
     """
@@ -34,7 +35,7 @@ class uscatter:
         y: any,
         rangex: any = None,
         rangey: any = None,
-        radius: int = 3,
+        radius: any = 3,
         circle_color=0xFF905D,
         nudge: bool = True,
     ) -> None:
@@ -43,7 +44,7 @@ class uscatter:
         :param plot: Plot object for the scatter to be drawn
         :param x: x points coordinates
         :param y: y points coordinates
-        :param int radius: circle radius
+        :param int|list radius: circle radius
 
         """
         if nudge:
@@ -79,10 +80,20 @@ class uscatter:
 
         palette = displayio.Palette(1)
         palette[0] = circle_color
-        for i, _ in enumerate(x):
-            plot.append(
-                Circle(pixel_shader=palette, radius=radius, x=xnorm[i], y=ynorm[i])
-            )
+
+        if isinstance(radius, list):
+            for i, _ in enumerate(x):
+                plot.append(
+                    Circle(
+                        pixel_shader=palette, radius=radius[i], x=xnorm[i], y=ynorm[i]
+                    )
+                )
+        else:
+
+            for i, _ in enumerate(x):
+                plot.append(
+                    Circle(pixel_shader=palette, radius=radius, x=xnorm[i], y=ynorm[i])
+                )
 
         if plot._showticks:
             plot._draw_ticks(x, y)
