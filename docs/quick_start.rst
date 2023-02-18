@@ -113,3 +113,64 @@ Gridlines are normally off. If you want visible gridlines then use:
 .. code-block:: python
 
     plot.tick_params(tickgrid=True)
+
+
+===============
+Cartesian
+===============
+With the cartesian class it's possible to add (x,y) plots. You can add different (x,y) plots to the
+same plot area. After you create your plot area you will need to define the xy plane
+for the plot. Secondly, you will need to give some ``x`` and ``y`` data.
+This data will be converted to a ulab.numpy.ndarray. For more information please refer
+to the ulab library
+
+.. code-block:: python
+
+    from ulab import numpy as np
+    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.ucartesian import ucartesian
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+
+    x = np.linspace(-4, 4, num=25)
+    constant = 1.0 / np.sqrt(2 * np.pi)
+    y = constant * np.exp((-(x**2)) / 2.0)
+
+After the initial setup we add our xy plane and show our plot
+
+.. code-block:: python
+
+    ucartesian(plot, x, y)
+    display.show(plot)
+
+
+There are some parameters that you coan customize:
+
+    * rangex and rangey: you could specify the ranges of your graph. Allowing you to move your graph according to your needs. This parameters only accept lists
+    * line color: you could specify the color in HEX
+    * fill: if you selected this as `True` the area under your graph will be filled
+    * nudge: this parameter allows yuo to move a little bit the graph. This is useful when the data start/end in the limits of your range
+
+With the following code, we are setting up the x axis to [-5, 5]
+the y axis to [0, 1], line color to Green (0x00FF00) and no filling
+
+
+.. code-block:: python
+
+    x = np.linspace(-3, 3, num=50)
+    constant = 2.0 / np.sqrt(2 * np.pi)
+    y = constant * np.exp((-(x**2)) / 2.0)
+    ucartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0x00FF00)
+
+
+if you want to add more than un line to your plot, you could do something like this:
+
+.. code-block:: python
+
+    plot = Uplot(0, 0, display.width, display.height)
+    x = np.linspace(-4, 4, num=25)
+    y1 = x**2 / 2
+    y2 = 2 + x**2 + 3 * x
+    ucartesian(plot, x, y1)
+    ucartesian(plot, x, y1)
+    display.show(plot)

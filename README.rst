@@ -29,6 +29,9 @@ This library depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
+This library is ressource cosumingg, may or may not with CircuitPython supported devices.
+Tinker it as you wish in order to work.
+
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
 `the Adafruit library and driver bundle <https://circuitpython.org/libraries>`_
