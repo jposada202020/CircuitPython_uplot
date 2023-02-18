@@ -70,7 +70,7 @@ class upie:
             index_color = index_color + 1
             self.pointlist = [(x, y)]
 
-    def get_points(self, x:int, y:int, radius:int, angle:float) -> None:
+    def get_points(self, x: int, y: int, radius: int, angle: float) -> None:
         """
 
         :param bitmap: bitmap to be drawn in
