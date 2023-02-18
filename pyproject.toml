@@ -23,15 +23,19 @@ keywords = [
     "adafruit",
     "blinka",
     "circuitpython",
-    "micropython",
     "uplot",
-    "widget",
+    "bar",
+    "stackplot",
+    "fillbetween",
+    "piechart",
+    "scatter",
     "displayio",
     "circuitpython",
     "graphics",
     "plot",
     "library",
     "plotting",
+    "ulab",
 ]
 license = {text = "MIT"}
 classifiers = [
