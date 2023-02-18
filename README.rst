@@ -25,7 +25,7 @@ This library depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
-This library is ressource cosuming, may or may not with some CircuitPython supported devices.
+This library is ressource consuming, may or may not with some CircuitPython supported devices.
 Tinker it as you wish in order to work.
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
