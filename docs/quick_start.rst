@@ -85,6 +85,10 @@ Ticks and Grid
 Plot axes are shown by default. To change this behaviour you would need
 to use the correct keyword in the axsparams function:
 
+.. py:function:: Uplot.axs_params(axstype: Literal["box", "cartesian", "line"] = "box")
+
+   :param tickheight: Option to display the axes
+
 Options available are:
     * box : draws a box
     * cartesian: draws the left and bottom axes
@@ -100,8 +104,11 @@ The following snippet shows how to create a cartesian plot
 Tick spacing and numbers are selected by default. However it's possible to customize
 the following parameters:
 
-    * tickheight
-    * tickcolor
+.. py:function:: Uplot.tick_params(tickheight, tickcolor, tickgrid)
+
+   :param int tickheight: tickheight in pixels
+   :param int tickcolor: tickcolor in Hex format
+   :param bool tickgrid: displays the tickgrid. Defaults to `False`
 
 .. code-block:: python
 
@@ -124,19 +131,6 @@ for the plot. Secondly, you will need to give some ``x`` and ``y`` data.
 This data will be converted to a ulab.numpy.ndarray. For more information please refer
 to the ulab library
 
-.. py:function:: ucartesian(plot, x, y, rangex, rangey, line_color, fill, nudge,)
-
-   :param ~uplot.Uplot plot: uplot.Uplot object
-   :param `~ulab.numpy.linspace` x: x data
-   :param ~ulab.numpy.linspace y: y data
-   :param rangex: x data range
-   :type rangex: list or None
-   :param rangey: y data range
-   :type rangey: list or None
-   :param int line_color: color line
-   :param int nudge:  graph displacement from the origin
-
-
 .. code-block:: python
 
     from ulab import numpy as np
@@ -157,10 +151,7 @@ After the initial setup we add our xy plane and show our plot
     display.show(plot)
 
 
-
-
-
-There are some parameters that you coan customize:
+There are some parameters that you can customize:
 
     * rangex and rangey: you could specify the ranges of your graph. Allowing you to move your graph according to your needs. This parameters only accept lists
     * line color: you could specify the color in HEX
