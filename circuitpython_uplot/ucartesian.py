@@ -13,14 +13,19 @@ CircuitPython cartesian graph
 
 
 """
+try:
+    from typing import Optional, Union
+    from circuitpython_uplot.uplot import Uplot
+except ImportError:
+    pass
 
 from bitmaptools import draw_line
 from ulab import numpy as np
 from vectorio import Polygon
 
-
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
+
 
 # pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
 # pylint: disable=too-many-locals
@@ -31,20 +36,25 @@ class ucartesian:
 
     def __init__(
         self,
-        plot,
-        x: any,
-        y: any,
-        rangex: list = None,
-        rangey: list = None,
+        plot: Uplot,
+        x: Union[list, np.linspace, np.ndarray],
+        y: Union[list, np.linspace, np.ndarray],
+        rangex: Optional[Union[list, None]] = None,
+        rangey: Optional[Union[list, None]] = None,
         line_color: int = 0xFFFFFF,
         fill: bool = False,
         nudge: bool = True,
     ) -> None:
         """
 
-        :param plot: Plot object for the scatter to be drawn
-        :param x: x points coordinates
-        :param y: y points coordinates
+        :param Uplot plot: Plot object for the scatter to be drawn
+        :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
+        :param list|ulab.numpy.linspace|ulab.numpy.ndarray y: y points coordinates
+        :param list|None rangex: x range limits
+        :param list|None rangey: y range limits
+        :param int line_color: line color
+        :param bool fill: Show the filling
+        :param bool nudge: moves the graph a little for better displaying
 
         """
         points = []

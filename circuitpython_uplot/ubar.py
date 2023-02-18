@@ -13,6 +13,10 @@ CircuitPython scatter graph
 
 
 """
+try:
+    from circuitpython_uplot.uplot import Uplot
+except ImportError:
+    pass
 from bitmaptools import draw_line
 from vectorio import Rectangle
 
@@ -26,7 +30,17 @@ class ubar:
     Main class to display different graphics
     """
 
-    def __init__(self, plot, x: any, y: any, color=0xFFFFFF, fill=False) -> None:
+    def __init__(
+        self, plot: Uplot, x: list, y: list, color: int = 0xFFFFFF, fill: bool = False
+    ) -> None:
+        """
+        :param Uplot plot: Plot object for the scatter to be drawn
+        :param list x: x data
+        :param list y: y data
+        :param int color: boxes color. Defaults to const:``0xFFFFFF``
+        :param bool fill: boxes fill attrribute. Defaults to `False`
+
+        """
 
         self._graphx = abs(plot._newxmax - plot._newxmin) // (len(x) + 2)
         self._graphy = abs(plot._newymax - plot._newymin) // (max(y) + 2)

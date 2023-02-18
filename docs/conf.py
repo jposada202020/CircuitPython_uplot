@@ -33,6 +33,7 @@ autodoc_preserve_defaults = True
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "CircuitPython": ("https://docs.circuitpython.org/en/latest/", None),
+    "ulab": ("https://micropython-ulab.readthedocs.io/en/latest/", None),
 }
 
 # Show the docstring from both the class and its __init__() method.

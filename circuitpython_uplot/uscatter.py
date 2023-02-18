@@ -14,6 +14,13 @@ CircuitPython scatter graph
 
 
 """
+try:
+    from typing import Optional, Union
+    from circuitpython_uplot.uplot import Uplot
+except ImportError:
+    pass
+
+
 from ulab import numpy as np
 import displayio
 from vectorio import Circle
@@ -30,13 +37,13 @@ class uscatter:
 
     def __init__(
         self,
-        plot,
-        x: any,
-        y: any,
-        rangex: any = None,
-        rangey: any = None,
-        radius: any = 3,
-        circle_color=0xFF905D,
+        plot: Uplot,
+        x: Union[list, np.linspace, np.ndarray],
+        y: Union[list, np.linspace, np.ndarray],
+        rangex: Optional[Union[list, None]] = None,
+        rangey: Optional[Union[list, None]] = None,
+        radius: Optional[Union[list, int]] = 3,
+        circle_color: int = 0xFF905D,
         nudge: bool = True,
     ) -> None:
         """
@@ -44,7 +51,10 @@ class uscatter:
         :param plot: Plot object for the scatter to be drawn
         :param x: x points coordinates
         :param y: y points coordinates
+        :param list|None rangex: x range limits
+        :param list|None rangey: y range limits
         :param int|list radius: circle radius
+        :param bool nudge: moves the graph a little for better displaying
 
         """
         if nudge:

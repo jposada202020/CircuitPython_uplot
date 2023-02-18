@@ -13,6 +13,11 @@ CircuitPython fillbetween graph
 
 
 """
+try:
+    from typing import Optional, Union
+    from circuitpython_uplot.uplot import Uplot
+except ImportError:
+    pass
 
 from ulab import numpy as np
 from vectorio import Polygon
@@ -30,23 +35,24 @@ class ufillbetween:
 
     def __init__(
         self,
-        plot,
-        x: any,
-        y1: any,
-        y2: any,
-        rangex: any = None,
-        rangey: any = None,
+        plot: Uplot,
+        x: Union[list, np.linspace, np.ndarray],
+        y1: Union[list, np.linspace, np.ndarray],
+        y2: Union[list, np.linspace, np.ndarray],
+        rangex: Optional[Union[list, None]] = None,
+        rangey: Optional[Union[list, None]] = None,
         fill_color: int = 0xF6FF41,
         nudge: bool = True,
     ) -> None:
         """
-        :param plot: Plot object for the scatter to be drawn
-        :param x: x points coordinates
-        :param y1: y1 points coordinates
-        :param y2: y2 points coordinates
-        :param rangex: range of the X axis
-        :param rangey: range of the Y axis
+        :param Uplot plot: Plot object for the scatter to be drawn
+        :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
+        :param list|ulab.numpy.linspace|ulab.numpy.ndarray y1: y1 points coordinates
+        :param list|ulab.numpy.linspace|ulab.numpy.ndarray y2: y2 points coordinates
+        :param list|None rangex: x range limits
+        :param list|None rangey: y range limits
         :param fill_color int: filling color. Defaults to 0xF6FF41
+        :param bool nudge: moves the graph a little for better displaying
 
         """
 

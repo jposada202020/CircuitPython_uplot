@@ -124,6 +124,19 @@ for the plot. Secondly, you will need to give some ``x`` and ``y`` data.
 This data will be converted to a ulab.numpy.ndarray. For more information please refer
 to the ulab library
 
+.. py:function:: ucartesian(plot, x, y, rangex, rangey, line_color, fill, nudge,)
+
+   :param ~uplot.Uplot plot: uplot.Uplot object
+   :param `~ulab.numpy.linspace` x: x data
+   :param ~ulab.numpy.linspace y: y data
+   :param rangex: x data range
+   :type rangex: list or None
+   :param rangey: y data range
+   :type rangey: list or None
+   :param int line_color: color line
+   :param int nudge:  graph displacement from the origin
+
+
 .. code-block:: python
 
     from ulab import numpy as np
@@ -142,6 +155,9 @@ After the initial setup we add our xy plane and show our plot
 
     ucartesian(plot, x, y)
     display.show(plot)
+
+
+
 
 
 There are some parameters that you coan customize:

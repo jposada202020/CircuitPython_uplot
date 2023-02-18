@@ -13,6 +13,11 @@ CircuitPython pie graph
 
 
 """
+try:
+    from circuitpython_uplot.uplot import Uplot
+except ImportError:
+    pass
+
 
 import math
 from vectorio import Polygon
@@ -26,10 +31,12 @@ class upie:
     Class to draw pie
     """
 
-    def __init__(self, plot, data: list, x: int = 0, y: int = 0, radius: int = 50):
+    def __init__(
+        self, plot: Uplot, data: list, x: int = 0, y: int = 0, radius: int = 50
+    ):
         """
 
-        :param plot: Plot object for the upie to be drawn
+        :param Uplot plot: Plot object for the upie to be drawn
         :param list data: data to make the pie
         :param x: pie center x coordinate
         :param y: pie center y coordinate
