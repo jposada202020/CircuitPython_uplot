@@ -59,7 +59,7 @@ class Uplot(displayio.Group):
         y: int = 0,
         width: int = 100,
         height: int = 100,
-        padding: int = 15,
+        padding: int = 25,
         show_box: bool = True,
     ) -> None:
         if width not in range(50, 481):
@@ -94,6 +94,8 @@ class Uplot(displayio.Group):
 
         self._newymin = height - padding
         self._newymax = padding
+
+        self._cartesianfirst = True
 
         self._tickheight = 8
         self._tickcolor = 0xFFFFFF
@@ -280,8 +282,7 @@ class Uplot(displayio.Group):
             ),
             dtype=np.int16,
         )
-
-        for tick in ticksxrenorm:
+        for i, tick in enumerate(ticksxrenorm):
             draw_line(
                 self._plotbitmap,
                 tick,
@@ -290,7 +291,8 @@ class Uplot(displayio.Group):
                 self._newymin - self._tickheight,
                 2,
             )
-        for tick in ticksyrenorm:
+            self.show_text("{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0))
+        for i, tick in enumerate(ticksyrenorm):
             draw_line(
                 self._plotbitmap,
                 self._newxmin,
@@ -299,6 +301,7 @@ class Uplot(displayio.Group):
                 tick,
                 2,
             )
+            self.show_text("{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5))
         for tick in subticksxrenorm:
             draw_line(
                 self._plotbitmap,

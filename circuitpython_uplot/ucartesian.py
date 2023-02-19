@@ -41,7 +41,7 @@ class ucartesian:
         y: Union[list, np.linspace, np.ndarray],
         rangex: Optional[Union[list, None]] = None,
         rangey: Optional[Union[list, None]] = None,
-        line_color: int = 0xFFFFFF,
+        line_color: Optional[Union[int, None]] = None,
         fill: bool = False,
         nudge: bool = True,
     ) -> None:
@@ -50,15 +50,16 @@ class ucartesian:
         :param Uplot plot: Plot object for the scatter to be drawn
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray y: y points coordinates
-        :param list|None rangex: x range limits
-        :param list|None rangey: y range limits
-        :param int line_color: line color
-        :param bool fill: Show the filling
-        :param bool nudge: moves the graph a little for better displaying
+        :param list|None rangex: x range limits. Defaults to None
+        :param list|None rangey: y range limits. Defaults to None
+        :param int|None line_color: line color. Defaults to None
+        :param bool fill: Show the filling. Defaults to `False`
+        :param bool nudge: moves the graph a little for better displaying. Defaults to `True`
 
         """
         points = []
-        plot._plot_palette[plot._index_colorused] = line_color
+        if line_color is not None:
+            plot._plot_palette[plot._index_colorused] = line_color
 
         if nudge:
             nudge_factor = 1
@@ -119,6 +120,9 @@ class ucartesian:
                     plot._index_colorused,
                 )
         if plot._showticks:
-            plot._draw_ticks(x, y)
+            if plot._cartesianfirst:
+                plot._draw_ticks(x, y)
+                plot._cartesianfirst = False
+                plot._showticks = False
 
         plot._index_colorused = plot._index_colorused + 1
