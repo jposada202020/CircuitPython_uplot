@@ -22,14 +22,16 @@ Implementation Notes
 """
 
 try:
-    from typing import Union
+    from typing import Union, Tuple
     from typing_extensions import Literal
 except ImportError:
     pass
 
 import displayio
+import terminalio
 from bitmaptools import draw_line
 from vectorio import Circle
+from adafruit_display_text import bitmap_label
 from ulab import numpy as np
 
 
@@ -142,6 +144,7 @@ class Uplot(displayio.Group):
         Setting up axs visibility
 
         :param axstype: argument with the kind of axs you selected
+
         :return: None
 
         """
@@ -231,6 +234,7 @@ class Uplot(displayio.Group):
         :param int|float newrangemin: minimum of the new range
         :param int|float newrangemax: maximum of the new range
         :param int|float value: value to be converted
+
         :return int|float: converted value
 
         """
@@ -246,6 +250,7 @@ class Uplot(displayio.Group):
 
         :param int x: x coord
         :param int y: y coord
+
         :return:None
 
         """
@@ -338,6 +343,7 @@ class Uplot(displayio.Group):
         :param int tickheight: tick height in pixels
         :param int tickcolor: tick color in hex
         :param bool tickgrid: defines if the grid is to be shown
+
         :return: None
 
         """
@@ -350,7 +356,9 @@ class Uplot(displayio.Group):
     def _draw_gridx(self, ticks_data: list[int]) -> None:
         """
         Draws the plot grid
+
         :param list[int] ticks_data: ticks data information
+
         :return: None
 
         """
@@ -370,7 +378,9 @@ class Uplot(displayio.Group):
     def _draw_gridy(self, ticks_data: list[int]) -> None:
         """
         Draws plot grid in the y axs
+
         :param list[int] ticks_data: ticks data information
+
         :return: None
 
         """
@@ -396,3 +406,21 @@ class Uplot(displayio.Group):
         """
 
         self._drawbox()
+
+    def show_text(
+        self, text: str, x: int, y: int, anchorpoint: Tuple = (0.5, 0.0)
+    ) -> None:
+        """
+
+        Show desired text in the scree
+        :param str text: text to be displayed
+        :param int x: x coordinate
+        :param int y: y coordinate
+        :param Tuple anchorpoint: Display_text anchor point. Defaults to (0.5, 0.0)
+        :return: None
+        """
+
+        text_toplot = bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
+        text_toplot.anchor_point = anchorpoint
+        text_toplot.anchored_position = (x, y)
+        self.append(text_toplot)

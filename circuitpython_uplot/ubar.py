@@ -64,6 +64,11 @@ class ubar:
                         color_index=plot._index_colorused,
                     )
                 )
+                plot.show_text(
+                    str(y[i]),
+                    xstart + (i * self._graphx) + self._graphx // 2,
+                    plot._newymin,
+                )
                 xstart = xstart + bar_space
                 plot._index_colorused = plot._index_colorused + 1
         else:
@@ -79,6 +84,11 @@ class ubar:
                 )
                 xstart = xstart + bar_space
                 plot._index_colorused = plot._index_colorused + 1
+                plot.show_text(
+                    str(y[i]),
+                    xstart + (i * self._graphx) - bar_space + self._graphx // 2,
+                    plot._newymin,
+                )
 
     def _draw_rectangle(
         self, plot: Uplot, x: int, y: int, width: int, height: int, color: int
