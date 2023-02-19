@@ -291,7 +291,9 @@ class Uplot(displayio.Group):
                 self._newymin - self._tickheight,
                 2,
             )
-            self.show_text("{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0))
+            self.show_text(
+                "{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0)
+            )
         for i, tick in enumerate(ticksyrenorm):
             draw_line(
                 self._plotbitmap,
@@ -301,7 +303,9 @@ class Uplot(displayio.Group):
                 tick,
                 2,
             )
-            self.show_text("{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5))
+            self.show_text(
+                "{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5)
+            )
         for tick in subticksxrenorm:
             draw_line(
                 self._plotbitmap,
