@@ -260,25 +260,25 @@ class Uplot(displayio.Group):
             self.transform(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, ticksxnorm
             ),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         ticksyrenorm = np.array(
             self.transform(
                 np.min(y), np.max(y), self._newymin, self._newymax, ticksynorm
             ),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         subticksxrenorm = np.array(
             self.transform(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, subticksxnorm
             ),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         subticksyrenorm = np.array(
             self.transform(
                 np.min(y), np.max(y), self._newymin, self._newymax, subticksynorm
             ),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
 
         for tick in ticksxrenorm:

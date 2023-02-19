@@ -84,11 +84,11 @@ class ucartesian:
 
         xnorm = np.array(
             plot.transform(xmin, xmax, plot._newxmin, plot._newxmax, x),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         ynorm = np.array(
             plot.transform(ymin, ymax, plot._newymin, plot._newymax, y),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
 
         if fill:

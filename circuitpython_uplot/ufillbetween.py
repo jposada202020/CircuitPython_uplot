@@ -88,15 +88,15 @@ class ufillbetween:
 
         xnorm = np.array(
             plot.transform(xmin, xmax, plot._newxmin, plot._newxmax, x),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         y1norm = np.array(
             plot.transform(ymin, ymax, plot._newymin, plot._newymax, y1),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         y2norm = np.array(
             plot.transform(ymin, ymax, plot._newymin, plot._newymax, y2),
-            dtype=np.uint16,
+            dtype=np.int16,
         )
         flip2y = np.flip(y2norm)
 
