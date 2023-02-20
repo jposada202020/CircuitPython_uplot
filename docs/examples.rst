@@ -120,3 +120,13 @@ example of ufillbetween plot
     :caption: examples/uplot_ufillbetween.py
     :linenos:
 .. image:: ../docs/uplot_ex15.jpg
+
+Uboxplot Example
+---------------------------
+
+example of uboxplot integration with uplot
+
+.. literalinclude:: ../examples/uplot_uboxplot.py
+    :caption: examples/uplot_uboxplot.py
+    :linenos:
+.. image:: ../docs/uplot_ex16.jpg
