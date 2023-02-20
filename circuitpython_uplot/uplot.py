@@ -31,7 +31,6 @@ import displayio
 import terminalio
 from bitmaptools import draw_line
 from vectorio import Circle
-from adafruit_display_text import bitmap_label
 from ulab import numpy as np
 
 
@@ -41,6 +40,9 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 # pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
 # pylint: disable=too-many-statements
+# pylint: disable=unused-import, import-outside-toplevel, undefined-variable
+
+
 class Uplot(displayio.Group):
     """
     Canvas Class to add different elements to the screen.
@@ -98,6 +100,8 @@ class Uplot(displayio.Group):
         self._newymax = padding
 
         self._cartesianfirst = True
+
+        self._showtext = False
 
         self._tickheight = 8
         self._tickcolor = 0xFFFFFF
@@ -296,9 +300,10 @@ class Uplot(displayio.Group):
                 self._newymin - self._tickheight,
                 2,
             )
-            self.show_text(
-                "{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0)
-            )
+            if self._showtext:
+                self.show_text(
+                    "{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0)
+                )
         for i, tick in enumerate(ticksyrenorm):
             draw_line(
                 self._plotbitmap,
@@ -308,9 +313,10 @@ class Uplot(displayio.Group):
                 tick,
                 2,
             )
-            self.show_text(
-                "{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5)
-            )
+            if self._showtext:
+                self.show_text(
+                    "{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5)
+                )
         for tick in subticksxrenorm:
             draw_line(
                 self._plotbitmap,
@@ -335,7 +341,11 @@ class Uplot(displayio.Group):
             self._draw_gridy(ticksyrenorm)
 
     def tick_params(
-        self, tickheight: int = 8, tickcolor: int = 0xFFFFFF, tickgrid: bool = False
+        self,
+        tickheight: int = 8,
+        tickcolor: int = 0xFFFFFF,
+        tickgrid: bool = False,
+        showtext: bool = False,
     ) -> None:
         """
         Function to set ticks parameters
@@ -352,6 +362,9 @@ class Uplot(displayio.Group):
         self._tickheight = tickheight
         self._plot_palette[2] = tickcolor
         self._tickgrid = tickgrid
+        self._showtext = showtext
+        if self._showtext:
+            from adafruit_display_text import bitmap_label
 
     def _draw_gridx(self, ticks_data: list[int]) -> None:
         """
@@ -419,8 +432,8 @@ class Uplot(displayio.Group):
         :param Tuple anchorpoint: Display_text anchor point. Defaults to (0.5, 0.0)
         :return: None
         """
-
-        text_toplot = bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
-        text_toplot.anchor_point = anchorpoint
-        text_toplot.anchored_position = (x, y)
-        self.append(text_toplot)
+        if self._showtext:
+            text_toplot = bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
+            text_toplot.anchor_point = anchorpoint
+            text_toplot.anchored_position = (x, y)
+            self.append(text_toplot)
