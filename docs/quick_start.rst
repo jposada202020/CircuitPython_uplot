@@ -31,6 +31,9 @@ The Uplot will be used to display our graphics. The position and the size of the
 could vary. This allows us to have more than 1 plot at the same time in the screen.
 Every one of them with different characteristics or graphs.
 
+Options available are:
+    * backround_color: Allows to change the background color. The default is black.
+
 We tell the microcontroller to display our plot:
 
 .. code-block:: python

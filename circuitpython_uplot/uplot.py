@@ -54,6 +54,7 @@ class Uplot(displayio.Group):
     :param int height: plot box height in pixels
     :param int padding: padding for the plot box in all directions
     :param bool show_box: select if the plot box is displayed
+    :param int background_color: background color in HEX. Defaults to black ``0x000000``
 
     """
 
@@ -65,6 +66,7 @@ class Uplot(displayio.Group):
         height: int = 100,
         padding: int = 25,
         show_box: bool = True,
+        background_color: int = 0x000000,
     ) -> None:
         if width not in range(50, 481):
             print("Be sure to verify your values. Defaulting to width=100")
@@ -123,7 +125,7 @@ class Uplot(displayio.Group):
             self._drawbox()
 
         self._plot_palette = displayio.Palette(14)
-        self._plot_palette[0] = 0x000000
+        self._plot_palette[0] = background_color
         self._plot_palette[1] = 0xFFFFFF
         self._plot_palette[2] = self._tickcolor
         self._plot_palette[3] = self._barcolor
