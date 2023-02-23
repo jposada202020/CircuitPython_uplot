@@ -48,7 +48,7 @@ class ubar:
         self._new_max = int(plot.transform(0, max(y), max(y), 0, max(y)))
 
         bar_space = max(2, plot._width // 30)
-        xstart = self._graphx + bar_space
+        xstart = self._graphx + plot._newxmin
 
         plot._plot_palette[plot._index_colorused] = color
 

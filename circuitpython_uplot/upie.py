@@ -32,7 +32,7 @@ class upie:
     """
 
     def __init__(
-        self, plot: Uplot, data: list, x: int = 0, y: int = 0, radius: int = 50
+        self, plot: Uplot, data: list, x: int = 0, y: int = 0, radius: int = 40
     ) -> None:
         """
 
