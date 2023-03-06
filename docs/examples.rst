@@ -130,3 +130,13 @@ example of uboxplot integration with uplot
     :caption: examples/uplot_uboxplot.py
     :linenos:
 .. image:: ../docs/uplot_ex16.jpg
+
+Umap Example
+---------------------------
+
+umap simple example
+
+.. literalinclude:: ../examples/uplot_umap.py
+    :caption: examples/uplot_umap.py
+    :linenos:
+.. image:: ../docs/uplot_ex17.jpg

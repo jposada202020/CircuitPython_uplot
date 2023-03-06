@@ -34,7 +34,7 @@ plot3 = Uplot(130, 0, 160, 160)
 # Setting up tick parameters
 plot3.tick_params(tickheight=12, tickcolor=0xFF00FF, tickgrid=True)
 
-# Seeting some date to plot
+# Seeting some data to plot
 x = np.linspace(-4, 4, num=50)
 constant = 1.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
@@ -53,12 +53,9 @@ ubar(plot4, a, b, 0xFF1000, fill=True)
 
 plot.append(plot4)
 
-# Setting up the display
-
 plot5 = Uplot(0, 180, 120, 120)
 
 # Setting up tick parameters
-
 plot5.axs_params(axstype="cartesian")
 a = np.linspace(3, 98)
 b = [choice(a) for _ in a]
@@ -93,5 +90,5 @@ ucartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fil
 
 plot.append(plot7)
 
-
+# Plotting and showing the plot
 display.show(plot)

@@ -301,3 +301,38 @@ it will fill the area between two curves:
     ufillbetween(plot, x, y1, y2)
 
     display.show(plot)
+
+===============
+Color Map
+===============
+
+Allows you to graph color maps. You just need to give the values in a ulab.numpy.array.
+You can choose the initial and final colors for the color map.
+
+.. code-block:: python
+
+    import board
+    from ulab import numpy as np
+    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.umap import umap
+
+
+    display = board.DISPLAY
+
+    plot = Uplot(0, 0, display.width, display.height, show_box=False)
+
+    x = np.array(
+        [
+            [1, 3, 9, 25],
+            [12, 8, 4, 2],
+            [18, 3, 7, 5],
+            [2, 10, 9, 22],
+            [8, 8, 14, 12],
+            [3, 13, 17, 15],
+        ],
+        dtype=np.int16,
+    )
+
+    umap(plot, x, 0xFF0000, 0x0000FF)
+
+    display.show(plot)
