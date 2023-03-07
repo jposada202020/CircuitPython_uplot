@@ -33,6 +33,7 @@ Every one of them with different characteristics or graphs.
 
 Options available are:
     * backround_color: Allows to change the background color. The default is black.
+    * box_color: Allows to change the box color. Default is white.
 
 We tell the microcontroller to display our plot:
 
@@ -58,6 +59,7 @@ At the moment the following objects can be added to the plot area:
     * Stackplot
     * Bar graph
     * Pie Chart
+    * Colormap
 * Display_shapes library objects
 * Histograms from the uhistogram library
 * Boxplots from the uboxplot library
@@ -123,6 +125,33 @@ Gridlines are normally off. If you want visible gridlines then use:
 .. code-block:: python
 
     plot.tick_params(tickgrid=True)
+
+
+Colors
+===============
+You can choose some colors directly from the library. This can be done by importing the color class:
+
+.. code-block:: python
+
+    from circuitpython_uplot.uplot import color
+
+This will allow you to use the colors in the list as color variable definitions
+
+    * WHITE
+    * BLACK
+    * RED
+    * GREEN
+    * BLUE
+    * PURPLE
+    * YELLOW
+    * ORANGE
+    * TEAL
+    * GRAY
+
+.. code-block:: python
+
+    plot = Uplot(0, 0, display.width, display.height, background_color=color.WHITE, box_color=color.BLACK)
+
 
 
 ===========

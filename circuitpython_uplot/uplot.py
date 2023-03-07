@@ -55,6 +55,7 @@ class Uplot(displayio.Group):
     :param int padding: padding for the plot box in all directions
     :param bool show_box: select if the plot box is displayed
     :param int background_color: background color in HEX. Defaults to black ``0x000000``
+    :param int box_color: allows to choose the box line color. Defaults to white ''0xFFFFFF``
 
     """
 
@@ -67,6 +68,7 @@ class Uplot(displayio.Group):
         padding: int = 25,
         show_box: bool = True,
         background_color: int = 0x000000,
+        box_color: int = 0xFFFFFF,
     ) -> None:
         if width not in range(50, 481):
             print("Be sure to verify your values. Defaulting to width=100")
@@ -126,7 +128,7 @@ class Uplot(displayio.Group):
 
         self._plot_palette = displayio.Palette(14)
         self._plot_palette[0] = background_color
-        self._plot_palette[1] = 0xFFFFFF
+        self._plot_palette[1] = box_color
         self._plot_palette[2] = self._tickcolor
         self._plot_palette[3] = self._barcolor
         self._plot_palette[4] = 0x149F14  # Pie Chart color 1
@@ -439,3 +441,17 @@ class Uplot(displayio.Group):
             text_toplot.anchor_point = anchorpoint
             text_toplot.anchored_position = (x, y)
             self.append(text_toplot)
+
+
+# pylint: disable=missing-class-docstring, too-few-public-methods, invalid-name
+class color:
+    WHITE = 0xFFFFFF
+    BLACK = 0x000000
+    RED = 0xFF0000
+    GREEN = 0x00FF00
+    BLUE = 0x0000FF
+    PURPLE = 0x440044
+    YELLOW = 0xFFFF00
+    ORANGE = 0xFF9933
+    TEAL = 0x158FAD
+    GRAY = 0x808080
