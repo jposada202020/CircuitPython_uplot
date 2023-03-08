@@ -140,3 +140,12 @@ umap simple example
     :caption: examples/uplot_umap.py
     :linenos:
 .. image:: ../docs/uplot_ex17.jpg
+
+Sparkline Animation Example
+---------------------------
+
+Sparkline animation example
+
+.. literalinclude:: ../examples/uplot_sparkline.py
+    :caption: examples/uplot_sparkline.py
+    :linenos:
