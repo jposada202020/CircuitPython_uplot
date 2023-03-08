@@ -92,7 +92,7 @@ to use the correct keyword in the `Uplot.axs_params` function:
 
 .. py:function:: Uplot.axs_params(axstype: Literal["box", "cartesian", "line"] = "box")
 
-   :param tickheight: Option to display the axes
+   :param axstype: Option to display the axes
 
 Options available are:
     * box : draws a box
@@ -111,16 +111,17 @@ the following parameters:
 
 .. py:function:: Uplot.tick_params(tickheight, tickcolor, tickgrid)
 
-   :param int tickheight: tickheight in pixels
+   :param int tickx_height: tickx_height in pixels
+   :param int ticky_height: ticky_height in pixels
    :param int tickcolor: tickcolor in Hex format
    :param bool tickgrid: displays the tickgrid. Defaults to `False`
 
 .. code-block:: python
 
-    plot.tick_params(tickheight=12, tickcolor=0xFF0008)
+    plot.tick_params(tickx_height=12, tickcolor=0xFF0008)
 
 
-Gridlines are normally off. If you want visible gridlines then use:
+Gridlines are normally ``OFF``. If you want visible gridlines then use:
 
 .. code-block:: python
 

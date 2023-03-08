@@ -56,6 +56,8 @@ class Uplot(displayio.Group):
     :param bool show_box: select if the plot box is displayed
     :param int background_color: background color in HEX. Defaults to black ``0x000000``
     :param int box_color: allows to choose the box line color. Defaults to white ''0xFFFFFF``
+    :param int tickx_height: x axes tick height in pixels. Defaults to 8.
+    :param int ticky_height: y axes tick height in pixels. Defaults to 8.
 
     """
 
@@ -69,6 +71,8 @@ class Uplot(displayio.Group):
         show_box: bool = True,
         background_color: int = 0x000000,
         box_color: int = 0xFFFFFF,
+        tickx_height: int = 8,
+        ticky_height: int = 8,
     ) -> None:
         if width not in range(50, 481):
             print("Be sure to verify your values. Defaulting to width=100")
@@ -107,7 +111,8 @@ class Uplot(displayio.Group):
 
         self._showtext = False
 
-        self._tickheight = 8
+        self._tickheightx = tickx_height
+        self._tickheighty = ticky_height
         self._tickcolor = 0xFFFFFF
         self._showticks = False
         self._tickgrid = False
@@ -301,7 +306,7 @@ class Uplot(displayio.Group):
                 tick,
                 self._newymin,
                 tick,
-                self._newymin - self._tickheight,
+                self._newymin - self._tickheightx,
                 2,
             )
             if self._showtext:
@@ -313,7 +318,7 @@ class Uplot(displayio.Group):
                 self._plotbitmap,
                 self._newxmin,
                 tick,
-                self._newxmin + self._tickheight,
+                self._newxmin + self._tickheighty,
                 tick,
                 2,
             )
@@ -327,7 +332,7 @@ class Uplot(displayio.Group):
                 tick,
                 self._newymin,
                 tick,
-                self._newymin - self._tickheight // 2,
+                self._newymin - self._tickheightx // 2,
                 2,
             )
         for tick in subticksyrenorm:
@@ -335,7 +340,7 @@ class Uplot(displayio.Group):
                 self._plotbitmap,
                 self._newxmin,
                 tick,
-                self._newxmin + self._tickheight // 2,
+                self._newxmin + self._tickheighty // 2,
                 tick,
                 2,
             )
@@ -346,7 +351,8 @@ class Uplot(displayio.Group):
 
     def tick_params(
         self,
-        tickheight: int = 8,
+        tickx_height: int = 8,
+        ticky_height: int = 8,
         tickcolor: int = 0xFFFFFF,
         tickgrid: bool = False,
         showtext: bool = False,
@@ -354,16 +360,19 @@ class Uplot(displayio.Group):
         """
         Function to set ticks parameters
 
-        :param int tickheight: tick height in pixels
-        :param int tickcolor: tick color in hex
-        :param bool tickgrid: defines if the grid is to be shown
+        :param int tickx_height: X axes tick height in pixels. Defaults to 8
+        :param int ticky_height: Y axes tick height in pixels. Defaults to 8
+        :param int tickcolor: tick color in hex. Defaults to white. ``0xFFFFFF``
+        :param bool tickgrid: defines if the grid is to be shown. Defaults to `False`
+        :param bool showtext: Show Axes text. Defaults to `False`
 
         :return: None
 
         """
 
         self._showticks = True
-        self._tickheight = tickheight
+        self._tickheightx = tickx_height
+        self._tickheighty = ticky_height
         self._plot_palette[2] = tickcolor
         self._tickgrid = tickgrid
         self._showtext = showtext

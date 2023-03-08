@@ -23,7 +23,7 @@ plot = Uplot(
 )
 
 # Setting up tick parameters
-plot.tick_params(tickheight=12, tickcolor=color.BLACK, tickgrid=True)
+plot.tick_params(tickx_height=12, ticky_height=6, tickcolor=color.BLACK, tickgrid=False)
 # Seeting some date to plot
 x = np.linspace(-4, 4, num=50)
 constant = 1.0 / np.sqrt(2 * np.pi)
