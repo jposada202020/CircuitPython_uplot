@@ -17,14 +17,10 @@ display = board.DISPLAY
 plot = Uplot(0, 0, display.width, display.height)
 g = displayio.Group()
 
-# Set a white background
-# Create the display object - the third color is red (0xff0000)
 DISPLAY_WIDTH = 200
 DISPLAY_HEIGHT = 200
-BLACK = 0x000000
-WHITE = 0xFFFFFF
-FOREGROUND_COLOR = BLACK
-BACKGROUND_COLOR = WHITE
+FOREGROUND_COLOR = color.BLACK
+BACKGROUND_COLOR = color.WHITE
 
 background_bitmap = displayio.Bitmap(DISPLAY_WIDTH, DISPLAY_HEIGHT, 1)
 # Map colors in a palette
@@ -46,11 +42,25 @@ g.append(text_humidity)
 
 
 plot_1 = Uplot(
-    0, 50, 200, 60, padding=1, show_box=True, box_color=BLACK, background_color=WHITE
+    0,
+    50,
+    200,
+    60,
+    padding=1,
+    show_box=True,
+    box_color=color.BLACK,
+    background_color=color.WHITE,
 )
 
 plot_2 = Uplot(
-    0, 180, 200, 60, padding=1, show_box=True, box_color=BLACK, background_color=WHITE
+    0,
+    180,
+    200,
+    60,
+    padding=1,
+    show_box=True,
+    box_color=color.BLACK,
+    background_color=color.WHITE,
 )
 plot_1.tick_params(
     tickx_height=4, ticky_height=4, show_ticks=True, tickcolor=color.BLACK
@@ -80,7 +90,7 @@ for i, element in enumerate(x):
         rangex=[0, 143],
         rangey=[0, 40],
         fill=False,
-        line_color=BLACK,
+        line_color=color.BLACK,
         logging=True,
     )
     ucartesian(
@@ -90,7 +100,7 @@ for i, element in enumerate(x):
         rangex=[0, 143],
         rangey=[0, 100],
         fill=False,
-        line_color=BLACK,
+        line_color=color.BLACK,
         logging=True,
     )
     text_temperature.text = f"{temp_y[i]}"
