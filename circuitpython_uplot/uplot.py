@@ -58,6 +58,7 @@ class Uplot(displayio.Group):
     :param int box_color: allows to choose the box line color. Defaults to white ''0xFFFFFF``
     :param int tickx_height: x axes tick height in pixels. Defaults to 8.
     :param int ticky_height: y axes tick height in pixels. Defaults to 8.
+    :param int scale: scale of the plot. Defaults to 1.
 
     """
 
@@ -73,11 +74,12 @@ class Uplot(displayio.Group):
         box_color: int = 0xFFFFFF,
         tickx_height: int = 8,
         ticky_height: int = 8,
+        scale: int = 1
     ) -> None:
-        if width not in range(50, 481):
+        if width not in range(50, 481) and scale == 1:
             print("Be sure to verify your values. Defaulting to width=100")
             width = 100
-        if height not in range(50, 321):
+        if height not in range(50, 321) and scale == 1:
             print("Be sure to verify your values. Defaulting to height=100")
             height = 100
         if x + width > 481:
