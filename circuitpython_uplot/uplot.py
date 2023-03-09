@@ -351,6 +351,7 @@ class Uplot(displayio.Group):
 
     def tick_params(
         self,
+        show_ticks=True,
         tickx_height: int = 8,
         ticky_height: int = 8,
         tickcolor: int = 0xFFFFFF,
@@ -370,7 +371,7 @@ class Uplot(displayio.Group):
 
         """
 
-        self._showticks = True
+        self._showticks = show_ticks
         self._tickheightx = tickx_height
         self._tickheighty = ticky_height
         self._plot_palette[2] = tickcolor

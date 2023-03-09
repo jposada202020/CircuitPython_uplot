@@ -18,8 +18,7 @@ try:
     from circuitpython_uplot.uplot import Uplot
 except ImportError:
     pass
-
-from bitmaptools import draw_line
+from bitmaptools import draw_line, fill_region
 from ulab import numpy as np
 from vectorio import Polygon
 
@@ -44,6 +43,7 @@ class ucartesian:
         line_color: Optional[Union[int, None]] = None,
         fill: bool = False,
         nudge: bool = True,
+        logging: bool = False,
     ) -> None:
         """
 
@@ -55,9 +55,11 @@ class ucartesian:
         :param int|None line_color: line color. Defaults to None
         :param bool fill: Show the filling. Defaults to `False`
         :param bool nudge: moves the graph a little for better displaying. Defaults to `True`
+        :param bool logging: used to change the logic of the cartesian to work as a logger
 
         """
-        points = []
+        self.points = []
+
         if line_color is not None:
             plot._plot_palette[plot._index_colorused] = line_color
 
@@ -93,21 +95,31 @@ class ucartesian:
         )
 
         if fill:
-            points.append((xnorm[0], plot._newymin))
+            self.points.append((xnorm[0], plot._newymin))
             for index, item in enumerate(xnorm):
-                points.append((item, ynorm[index]))
-            points.append((xnorm[-1], plot._newymin))
-            points.append((xnorm[0], plot._newymin))
+                self.points.append((item, ynorm[index]))
+            self.points.append((xnorm[-1], plot._newymin))
+            self.points.append((xnorm[0], plot._newymin))
             plot.append(
                 Polygon(
                     pixel_shader=plot._plot_palette,
-                    points=points,
+                    points=self.points,
                     x=0,
                     y=0,
                     color_index=plot._index_colorused,
                 )
             )
         else:
+            if logging:
+                fill_region(
+                    plot._plotbitmap,
+                    plot._newxmin + plot._tickheightx + 1,
+                    plot._newymax + 1,
+                    plot._newxmax - 1,
+                    plot._newymin - plot._tickheighty,
+                    0,
+                )
+
             for index, _ in enumerate(xnorm):
                 if index + 1 >= len(xnorm):
                     break
@@ -121,8 +133,14 @@ class ucartesian:
                 )
         if plot._showticks:
             if plot._cartesianfirst:
+                if logging:
+                    x = np.linspace(xmin, xmax, 100)
+                    y = np.linspace(ymin, ymax, 100)
                 plot._draw_ticks(x, y)
                 plot._cartesianfirst = False
                 plot._showticks = False
 
-        plot._index_colorused = plot._index_colorused + 1
+        if logging:
+            plot._index_colorused = plot._index_colorused
+        else:
+            plot._index_colorused = plot._index_colorused + 1

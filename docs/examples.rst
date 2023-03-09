@@ -149,3 +149,13 @@ Sparkline animation example
 .. literalinclude:: ../examples/uplot_sparkline.py
     :caption: examples/uplot_sparkline.py
     :linenos:
+
+Cartesian Animation Example
+---------------------------
+
+Casrtesian animation example
+
+.. literalinclude:: ../examples/uplot_ucartesian_loggin_data.py
+    :caption: examples/uplot_ucartesian_loggin_data.py
+    :linenos:
+.. image:: ../docs/uplot_ex17.jpg
