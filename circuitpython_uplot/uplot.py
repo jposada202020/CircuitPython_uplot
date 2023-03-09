@@ -108,6 +108,7 @@ class Uplot(displayio.Group):
         self._newymax = padding
 
         self._cartesianfirst = True
+        self._loggingfirst = True
 
         self._showtext = False
 

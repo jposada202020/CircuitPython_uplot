@@ -21,3 +21,6 @@
 
 .. automodule:: circuitpython_uplot.umap
     :members:
+
+.. automodule:: circuitpython_uplot.ulogging
+    :members:
