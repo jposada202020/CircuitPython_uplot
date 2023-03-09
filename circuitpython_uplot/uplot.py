@@ -74,7 +74,7 @@ class Uplot(displayio.Group):
         box_color: int = 0xFFFFFF,
         tickx_height: int = 8,
         ticky_height: int = 8,
-        scale: int = 1
+        scale: int = 1,
     ) -> None:
         if width not in range(50, 481) and scale == 1:
             print("Be sure to verify your values. Defaulting to width=100")
