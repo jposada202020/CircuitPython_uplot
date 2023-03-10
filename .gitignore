@@ -46,3 +46,4 @@ _build
 .idea
 .vscode
 *~
+/circuitpython_uplot/mpy-cross
