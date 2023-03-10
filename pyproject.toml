@@ -49,7 +49,7 @@ classifiers = [
 dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools]
-py-modules = ["circuitpython_uplot"]
+packages = ["circuitpython_uplot"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
