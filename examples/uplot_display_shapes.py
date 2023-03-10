@@ -15,7 +15,7 @@ display = board.DISPLAY
 plot = Uplot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
-plot.tick_params(tickheight=12, tickcolor=0xFF0008, tickgrid=True)
+plot.tick_params(tickx_height=12, ticky_height=12, tickcolor=0xFF0008, tickgrid=True)
 plot.axs_params(axstype="box")
 
 # Creating some shapes to show

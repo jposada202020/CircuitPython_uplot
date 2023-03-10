@@ -109,7 +109,7 @@ The following snippet shows how to create a cartesian plot
 Tick spacing and numbers are selected by default. However it's possible to customize
 the following parameters:
 
-.. py:function:: Uplot.tick_params(tickheight, tickcolor, tickgrid)
+.. py:function:: Uplot.tick_params(tickx_height, ticky_height, tickcolor, tickgrid)
 
    :param int tickx_height: tickx_height in pixels
    :param int ticky_height: ticky_height in pixels
@@ -366,3 +366,17 @@ You can choose the initial and final colors for the color map.
     umap(plot, x, 0xFF0000, 0x0000FF)
 
     display.show(plot)
+
+
+===============
+Logging
+===============
+
+This is a similar to Cartesian but designed to allow the user to use it as a data logger.
+The user needs to setup manually the range and tick values in order for this graph to work proeprly
+
+.. code-block:: python
+
+    plot = Uplot(0, 0, display.width, display.height)
+
+    ulogging(plot, x, y, rangex=[0, 200], rangey=[0, 100], ticksx=[10, 50, 80, 100], ticksy=[15, 30, 45, 60],)

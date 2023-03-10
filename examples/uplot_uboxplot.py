@@ -14,7 +14,7 @@ display = board.DISPLAY
 
 plot = Uplot(0, 0, display.width, display.height)
 
-plot.tick_params(tickheight=10, tickcolor=0x440008, tickgrid=True)
+plot.tick_params(tickx_height=10, ticky_height=10, tickcolor=0x440008, tickgrid=True)
 
 a = [1, 1, 4, 5, 6, 7, 7, 7, 8, 9, 10, 15, 16, 17, 24, 56, 76, 87, 87]
 my_box = Boxplot(a, x=50, y=50, height=100, line_color=0xFF00FF)

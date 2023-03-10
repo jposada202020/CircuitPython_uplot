@@ -32,7 +32,7 @@ plot.append(plot2)
 plot3 = Uplot(130, 0, 160, 160)
 
 # Setting up tick parameters
-plot3.tick_params(tickheight=12, tickcolor=0xFF00FF, tickgrid=True)
+plot3.tick_params(tickx_height=12, ticky_height=12, tickcolor=0xFF00FF, tickgrid=True)
 
 # Seeting some data to plot
 x = np.linspace(-4, 4, num=50)
