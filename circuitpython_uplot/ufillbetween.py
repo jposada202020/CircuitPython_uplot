@@ -18,7 +18,6 @@ try:
     from circuitpython_uplot.uplot import Uplot
 except ImportError:
     pass
-
 from ulab import numpy as np
 from vectorio import Polygon
 
@@ -39,8 +38,8 @@ class ufillbetween:
         x: Union[list, np.linspace, np.ndarray],
         y1: Union[list, np.linspace, np.ndarray],
         y2: Union[list, np.linspace, np.ndarray],
-        rangex: Optional[Union[list, None]] = None,
-        rangey: Optional[Union[list, None]] = None,
+        rangex: Optional[list] = None,
+        rangey: Optional[list] = None,
         fill_color: int = 0xF6FF41,
         nudge: bool = True,
     ) -> None:
@@ -51,7 +50,7 @@ class ufillbetween:
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray y2: y2 points coordinates
         :param list|None rangex: x range limits
         :param list|None rangey: y range limits
-        :param fill_color int: filling color. Defaults to 0xF6FF41
+        :param int fill_color: filling color. Defaults to 0xF6FF41
         :param bool nudge: moves the graph a little for better displaying
 
         """

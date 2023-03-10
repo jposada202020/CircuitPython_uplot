@@ -40,8 +40,8 @@ class ulogging:
         rangex: list,
         rangey: list,
         line_color: int = 0xFFFFFF,
-        ticksx: np.array = np.array([0, 10, 30, 50, 70, 90]),
-        ticksy: np.array = np.array([0, 10, 30, 50, 70, 90]),
+        ticksx: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
+        ticksy: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
     ) -> None:
         """
 
@@ -51,6 +51,8 @@ class ulogging:
         :param list|None rangex: x range limits. Defaults to None
         :param list|None rangey: y range limits. Defaults to None
         :param int|None line_color: line color. Defaults to None
+        :param np.array|list ticksx: X axis ticks values
+        :param np.array|list ticksy: Y axis ticks values
 
         """
         self.points = []

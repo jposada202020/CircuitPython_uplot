@@ -11,7 +11,7 @@
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-Framework to display different plots in displayio. Similar to widget
+Framework to display different plots in displayio. Similar to widget.
 Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/latest/examples.html>`_ section in RTD to see the gallery
 
 For detailed view of the library please refer to the `Quick start guide <https://circuitpython-uplot.readthedocs.io/>`_

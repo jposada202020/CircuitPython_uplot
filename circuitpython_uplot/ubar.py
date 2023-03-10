@@ -38,7 +38,7 @@ class ubar:
         :param list x: x data
         :param list y: y data
         :param int color: boxes color. Defaults to const:``0xFFFFFF``
-        :param bool fill: boxes fill attrribute. Defaults to `False`
+        :param bool fill: boxes fill attribute. Defaults to `False`
 
         """
 

@@ -44,10 +44,10 @@ class umap:
 
         """
 
-        :param plot: Plot object for the scatter to be drawn
-        :param data_points: data points to create the color map
-        :param initial_color: initial color to create the color map
-        :param final_color: final color to create the color map
+        :param Uplot plot: Plot object for the scatter to be drawn
+        :param np.array data_points: data points to create the color map
+        :param int initial_color: initial color to create the color map
+        :param int final_color: final color to create the color map
 
         """
 
@@ -95,9 +95,11 @@ class umap:
             deltay = deltay + ydist
 
 
-def color_to_tuple(value):
+def color_to_tuple(value: int):
     """Converts a color from a 24-bit integer to a tuple.
-    :param value: RGB LED desired value - can be a RGB tuple or a 24-bit integer.
+
+    :param value: RGB desired value - can be a RGB tuple or a 24-bit integer.
+
     """
     if isinstance(value, tuple):
         return value
@@ -114,10 +116,12 @@ def color_to_tuple(value):
 
 def color_fade(start_color: int, end_color: int, fraction: float):
     """Linear extrapolation of a color between two RGB colors (tuple or 24-bit integer).
+
     :param start_color: starting color
     :param end_color: ending color
     :param fraction: Floating point number  ranging from 0 to 1 indicating what
-    fraction of interpolation between start_color and end_color.
+     fraction of interpolation between start_color and end_color.
+
     """
 
     start_color = color_to_tuple(start_color)

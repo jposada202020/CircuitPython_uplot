@@ -26,7 +26,6 @@ try:
     from typing_extensions import Literal
 except ImportError:
     pass
-
 import displayio
 import terminalio
 from bitmaptools import draw_line

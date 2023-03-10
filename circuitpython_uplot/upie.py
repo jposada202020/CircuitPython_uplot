@@ -73,12 +73,10 @@ class upie:
     def get_points(self, x: int, y: int, radius: int, angle: float) -> None:
         """
 
-        :param bitmap: bitmap to be drawn in
         :param x: center x coordinate
         :param y: center y coordinate
         :param radius: pie radius in pixels
         :param angle: line angle
-        :param color: color index
         :return: None
 
         """
