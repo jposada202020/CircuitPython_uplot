@@ -1,3 +1,1 @@
-# SPDX-FileCopyrightText: 2023 Jose D. Montoya
-#
-# SPDX-License-Identifier: MIT
+
