@@ -32,8 +32,12 @@ could vary. This allows us to have more than 1 plot at the same time in the scre
 Every one of them with different characteristics or graphs.
 
 Options available are:
+    * width: width of the plot area
+    * height: height of the plot area
     * backround_color: Allows to change the background color. The default is black.
     * box_color: Allows to change the box color. Default is white.
+    * padding: allows the user to give the plot area a pad. This is helpful if you are planning to include text and legends in the axes.
+    * scale: scale of the plot.
 
 We tell the microcontroller to display our plot:
 
@@ -374,6 +378,15 @@ Logging
 
 This is a similar to Cartesian but designed to allow the user to use it as a data logger.
 The user needs to setup manually the range and tick values in order for this graph to work proeprly
+
+There are some parameters that you can customize:
+
+    * rangex and rangey: you need specify the ranges of your graph. This allows you to move your graph according to your needs. This parameters only accept lists
+    * ticksx and ticksy: Specific ticks for the X and Y axes
+    * line_color: you can specify the color in HEX
+    * tick_pos: Allows to show the ticks below the axes.
+    * fill: genrates lines under each point, to fill the area under the points
+
 
 .. code-block:: python
 

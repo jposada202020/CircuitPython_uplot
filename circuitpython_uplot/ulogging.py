@@ -55,7 +55,8 @@ class ulogging:
         :param int|None line_color: line color. Defaults to None
         :param np.array|list ticksx: X axis ticks values
         :param np.array|list ticksy: Y axis ticks values
-        :param bool tick_pos: indicates ticks position. True for below the axes. Defaults to ``False``
+        :param bool tick_pos: indicates ticks position. True for below the axes.
+         Defaults to ``False``
         :param bool fill: enable the filling of the plot. Defaults to ``False``
 
         """
