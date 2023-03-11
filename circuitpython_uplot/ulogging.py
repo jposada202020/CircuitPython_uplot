@@ -26,7 +26,7 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
 # pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
-# pylint: disable=too-many-locals, too-many-branches, protected-access
+# pylint: disable=too-many-locals, too-many-branches, protected-access, unnecessary-list-index-lookup
 class ulogging:
     """
     Class to log data
@@ -42,6 +42,7 @@ class ulogging:
         line_color: int = 0xFFFFFF,
         ticksx: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
         ticksy: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
+        fill: bool = False,
     ) -> None:
         """
 
@@ -53,6 +54,7 @@ class ulogging:
         :param int|None line_color: line color. Defaults to None
         :param np.array|list ticksx: X axis ticks values
         :param np.array|list ticksy: Y axis ticks values
+        :param bool fill: enable the filling of the plot. Defaults to ``False``
 
         """
         self.points = []
@@ -101,6 +103,17 @@ class ulogging:
                     ynorm[index + 1],
                     plot._index_colorused,
                 )
+            if fill:
+                for index, _ in enumerate(xnorm):
+                    draw_line(
+                        plot._plotbitmap,
+                        xnorm[index],
+                        ynorm[index],
+                        xnorm[index],
+                        plot._newymin,
+                        plot._index_colorused,
+                    )
+
         if plot._showticks:
             if plot._loggingfirst:
                 self._draw_ticks(plot)

@@ -168,3 +168,13 @@ Logging example
 .. literalinclude:: ../examples/uplot_ulogging.py
     :caption: examples/uplot_ulogging.py
     :linenos:
+
+Logging Fill Example
+---------------------------
+
+Logging fill example
+
+.. literalinclude:: ../examples/uplot_logging_fill.py
+    :caption: examples/uplot_logging_fill.py
+    :linenos:
+.. image:: ../docs/uplot_ex22.jpg
