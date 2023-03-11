@@ -11,12 +11,14 @@
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-Framework to display different plots in displayio. Similar to widget.
+Framework to display different graphical plots in displayio.
 Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/latest/examples.html>`_ section in RTD to see the gallery
 
 For detailed view of the library please refer to the `Quick start guide <https://circuitpython-uplot.readthedocs.io/>`_
 
 .. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme.png
+
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme2.png
 
 
 Dependencies
@@ -25,7 +27,7 @@ This library depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
 
-This library is ressource consuming, may or may not with some CircuitPython supported devices.
+This library is resource consuming, may or may not with some CircuitPython supported devices.
 Tinker it as you wish in order to work.
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
