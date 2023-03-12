@@ -377,7 +377,7 @@ Logging
 ===============
 
 This is a similar to Cartesian but designed to allow the user to use it as a data logger.
-The user needs to setup manually the range and tick values in order for this graph to work proeprly
+The user needs to manually set up the range and tick values in order for this graph to work properly
 
 There are some parameters that you can customize:
 
@@ -385,7 +385,7 @@ There are some parameters that you can customize:
     * ticksx and ticksy: Specific ticks for the X and Y axes
     * line_color: you can specify the color in HEX
     * tick_pos: Allows to show the ticks below the axes.
-    * fill: genrates lines under each point, to fill the area under the points
+    * fill: generates lines under each point, to fill the area under the points
 
 
 .. code-block:: python
@@ -393,3 +393,22 @@ There are some parameters that you can customize:
     plot = Uplot(0, 0, display.width, display.height)
 
     ulogging(plot, x, y, rangex=[0, 200], rangey=[0, 100], ticksx=[10, 50, 80, 100], ticksy=[15, 30, 45, 60],)
+
+===============
+SVG
+===============
+
+A small module to load, locate and scale svg path collection of points in the plot area. This will tend to be memory consuming as some SVG will have several path points.
+There are some pre-provided icons in the ``icons.py`` file, you could add more if needed.
+Specific icons are stored as a dictionary in the icons.py file. Every path is a entry in the dictionary.
+For example, if you want to load the Temperature icon with a scale of 2
+
+.. code-block:: python
+
+    from circuitpython_uplot.usvg import usvg
+    from circuitpython_uplot.icons import Temperature
+
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+    usvg(plot, Temperature, 250, 50, 2)
+    display.show(plot)
