@@ -178,3 +178,13 @@ Logging fill example
     :caption: examples/uplot_logging_fill.py
     :linenos:
 .. image:: ../docs/uplot_ex22.jpg
+
+SVG Images examples
+---------------------------
+
+SVG Images example
+
+.. literalinclude:: ../examples/uplot_usvg_example.py
+    :caption: examples/uplot_usvg_example.py
+    :linenos:
+.. image:: ../docs/uplot_ex23.jpg

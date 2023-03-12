@@ -24,3 +24,6 @@
 
 .. automodule:: circuitpython_uplot.ulogging
     :members:
+
+.. automodule:: circuitpython_uplot.usvg
+    :members:
