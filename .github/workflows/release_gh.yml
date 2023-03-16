@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run GitHub Release CI workflow
-      uses: adafruit/workflows-circuitpython-libs/release-gh@main
+      uses: tekktrik/workflows-circuitpython-libs/release-gh@test/mpy-bundle
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         upload-url: ${{ github.event.release.upload_url }}
+        package-prefix: circuitpython_uplot
