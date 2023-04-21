@@ -20,6 +20,9 @@ Implementation Notes
   https://github.com/adafruit/circuitpython/releases
 
 """
+# pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
+# pylint: disable=too-many-statements, unused-import, no-member
+# pylint: disable=unused-import, import-outside-toplevel, undefined-variable
 
 try:
     from typing import Union, Tuple
@@ -36,11 +39,6 @@ from ulab import numpy as np
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/jposada202020/CircuitPython_uplot.git"
-
-
-# pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=unused-import, import-outside-toplevel, undefined-variable
 
 
 class Uplot:
