@@ -134,7 +134,7 @@ html_theme_options = {
         },
     ],
     # Set the repo location to get a badge with stats
-    "repo_url": "https://github.com/2bndy5/CircuitPython_uplot/",
+    "repo_url": "https://github.com/jposada202020/CircuitPython_uplot/",
     "repo_name": "CircuitPython_uplot",
     "social": [
         {
