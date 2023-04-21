@@ -27,6 +27,7 @@ try:
 except ImportError:
     pass
 import displayio
+from displayio import Group
 import terminalio
 from bitmaptools import draw_line
 from vectorio import Circle
@@ -34,7 +35,7 @@ from ulab import numpy as np
 
 
 __version__ = "0.0.0+auto.0"
-__repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
+__repo__ = "https://github.com/jposada202020/CircuitPython_uplot.git"
 
 
 # pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
@@ -42,7 +43,7 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 # pylint: disable=unused-import, import-outside-toplevel, undefined-variable
 
 
-class Uplot(displayio.Group):
+class Uplot:
     """
     Canvas Class to add different elements to the screen.
     The origin point set by ``x`` and ``y`` properties
