@@ -127,12 +127,12 @@ class Uplot(displayio.Group):
 
         self._index_colorused = 4
 
-        self._plotbitmap = displayio.Bitmap(width, height, 14)
+        self._plotbitmap = displayio.Bitmap(width, height, 17)
 
         if show_box:
             self._drawbox()
 
-        self._plot_palette = displayio.Palette(14)
+        self._plot_palette = displayio.Palette(17)
         self._plot_palette[0] = background_color
         self._plot_palette[1] = box_color
         self._plot_palette[2] = self._tickcolor

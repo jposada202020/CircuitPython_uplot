@@ -41,6 +41,7 @@ class ubar:
         fill: bool = False,
         bar_space=16,
         xstart=50,
+        projection=False,
     ) -> None:
         """
         :param Uplot plot: Plot object for the scatter to be drawn
@@ -50,6 +51,7 @@ class ubar:
         :param bool fill: boxes fill attribute. Defaults to `False`
         :param int bar_space: space in pixels between the bars
         :param int xstart: start point in the x axis for the bar to start. Default to :const:`50`
+        :param bool projection: creates projection of the bars given them depth.
 
         """
         self._bar_space = bar_space
@@ -72,41 +74,43 @@ class ubar:
                         color_index=plot._index_colorused,
                     )
                 )
-
-                delta = 20
-                rx = int(delta * math.cos(-0.5))
-                ry = int(delta * math.sin(-0.5))
-                points = [
-                    (0, 0),
-                    (self._graphx, 0),
-                    (self._graphx - rx, 0 + ry),
-                    (0 - rx, 0 + ry),
-                ]
-
-                plot.append(
-                    Polygon(
-                        pixel_shader=plot._plot_palette,
-                        points=points,
-                        x=xstart + (i * self._graphx),
-                        y=plot._newymin - self._graphy * y[i],
-                        color_index=plot._index_colorused - 1,
+                if projection:
+                    delta = 20
+                    rx = int(delta * math.cos(-0.5))
+                    ry = int(delta * math.sin(-0.5))
+                    points = [
+                        (0, 0),
+                        (self._graphx, 0),
+                        (self._graphx - rx, 0 + ry),
+                        (0 - rx, 0 + ry),
+                    ]
+                    plot._plot_palette[plot._index_colorused + 6] = color_fader(
+                        plot._plot_palette[plot._index_colorused], 0.7, 1
                     )
-                )
-                points = [
-                    (0, 0),
-                    (0 - rx, 0 + ry),
-                    (0 - rx, self._graphy * y[i]),
-                    (0, self._graphy * y[i]),
-                ]
-                plot.append(
-                    Polygon(
-                        pixel_shader=plot._plot_palette,
-                        points=points,
-                        x=xstart + (i * self._graphx),
-                        y=plot._newymin - self._graphy * y[i],
-                        color_index=plot._index_colorused + 1,
+                    plot.append(
+                        Polygon(
+                            pixel_shader=plot._plot_palette,
+                            points=points,
+                            x=xstart + (i * self._graphx),
+                            y=plot._newymin - self._graphy * y[i],
+                            color_index=plot._index_colorused + 6,
+                        )
                     )
-                )
+                    points = [
+                        (0, 0),
+                        (0 - rx, 0 + ry),
+                        (0 - rx, self._graphy * y[i]),
+                        (0, self._graphy * y[i]),
+                    ]
+                    plot.append(
+                        Polygon(
+                            pixel_shader=plot._plot_palette,
+                            points=points,
+                            x=xstart + (i * self._graphx),
+                            y=plot._newymin - self._graphy * y[i],
+                            color_index=plot._index_colorused + 6,
+                        )
+                    )
 
                 plot.show_text(
                     str(y[i]),
@@ -174,3 +178,38 @@ class ubar:
         draw_line(plot._plotbitmap, x, y, x, y - height, color)
         draw_line(plot._plotbitmap, x + width, y, x + width, y - height, color)
         draw_line(plot._plotbitmap, x + width, y - height, x, y - height, color)
+
+
+def color_fader(source_color=None, brightness=1.0, gamma=1.0):
+    """
+    Function taken from https://github.com/CedarGroveStudios
+    Copyright (c) 2022 JG for Cedar Grove Maker Studios
+    License: MIT
+
+    Scale a 24-bit RGB source color value in proportion to the brightness
+    setting (0 to 1.0). Returns an adjusted 24-bit RGB color value or None if
+    the source color is None (transparent). The adjusted color's gamma value is
+    typically from 0.0 to 2.0 with a default of 1.0 for no gamma adjustment.
+
+    :param int source_color: The color value to be adjusted. Default is None.
+    :param float brightness: The brightness value for color value adjustment.
+      Value range is 0.0 to 1.0. Default is 1.0 (maximum brightness).
+    :param float gamma: The gamma value for color value adjustment. Value range
+      is 0.0 to 2.0. Default is 1.0 (no gamma adjustment).
+
+    :return int: The adjusted color value."""
+
+    if source_color is None:
+        return source_color
+
+    # Extract primary colors and scale to brightness
+    r = min(int(brightness * ((source_color & 0xFF0000) >> 16)), 0xFF)
+    g = min(int(brightness * ((source_color & 0x00FF00) >> 8)), 0xFF)
+    b = min(int(brightness * ((source_color & 0x0000FF) >> 0)), 0xFF)
+
+    # Adjust result for gamma
+    r = min(int(round((r**gamma), 0)), 0xFF)
+    g = min(int(round((g**gamma), 0)), 0xFF)
+    b = min(int(round((b**gamma), 0)), 0xFF)
+
+    return (r << 16) + (g << 8) + b

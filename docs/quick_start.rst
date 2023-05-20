@@ -141,7 +141,6 @@ You can choose some colors directly from the library. This can be done by import
     from circuitpython_uplot.uplot import color
 
 This will allow you to use the colors in the list as color variable definitions
-
     * WHITE
     * BLACK
     * RED
@@ -189,7 +188,6 @@ After the initial setup we add our xy plane and show our plot
 
 
 There are some parameters that you can customize:
-
     * rangex and rangey: you could specify the ranges of your graph. Allowing you to move your graph according to your needs. This parameters only accept lists
     * line color: you could specify the color in HEX
     * fill: if you selected this as `True` the area under your graph will be filled
@@ -264,7 +262,6 @@ Creates a scatter plot with x,y data. You can customize the circle diameter if y
 
 
 There are some parameters that you can customize:
-
     * rangex and rangey: you can specify the ranges of your graph. This allows you to move your graph according to your needs. This parameters only accept lists
     * radius: circles radius/radii
     * circle_color: you can specify the color in HEX
@@ -284,7 +281,7 @@ Bar Plot
 ===============
 
 Allows you to graph bar plots. You just need to give the values of the bar in a python list.
-You can choose to create shell or filled bars
+You can choose to create shell or filled bars.
 
 .. code-block:: python
 
@@ -306,6 +303,24 @@ You can select the color or and if the bars are filled
 .. code-block:: python
 
     ubar(plot, a, b, 0xFF1000, True)
+
+
+with the projection argument you can show the bars with projection. This will give them a 3D
+appearance
+
+.. code-block:: python
+
+    import board
+    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.ubar import ubar
+
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+
+
+    a = ["a", "b", "c", "d"]
+    b = [3, 5, 1, 7]
+    ubar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
 
 
 ===============
@@ -380,7 +395,6 @@ This is a similar to Cartesian but designed to allow the user to use it as a dat
 The user needs to manually set up the range and tick values in order for this graph to work properly
 
 There are some parameters that you can customize:
-
     * rangex and rangey: you need specify the ranges of your graph. This allows you to move your graph according to your needs. This parameters only accept lists
     * ticksx and ticksy: Specific ticks for the X and Y axes
     * line_color: you can specify the color in HEX

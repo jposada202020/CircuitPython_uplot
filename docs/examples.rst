@@ -71,6 +71,16 @@ ubar example
     :linenos:
 .. image:: ../docs/uplot_ex8.jpg
 
+Ubar 3D Example
+----------------
+
+ubar 3D example
+
+.. literalinclude:: ../examples/uplot_ubar_3Dbars.py
+    :caption: examples/uplot_ubar_3Dbars.py
+    :linenos:
+.. image:: ../docs/uplot_3DBars.jpg
+
 Upie Example
 ----------------
 
