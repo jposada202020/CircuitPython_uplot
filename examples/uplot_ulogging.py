@@ -73,3 +73,5 @@ ulogging(
     ticksx=[10, 50, 80, 100],
     ticksy=[15, 30, 45, 60],
 )
+
+text_temperature.text = "{}C".format(temp_y[dist])
