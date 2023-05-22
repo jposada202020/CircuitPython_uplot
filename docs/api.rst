@@ -1,5 +1,5 @@
-
-.. If you created a package, create one automodule per module in the package.
+Uplot Library
+==============
 
 .. automodule:: circuitpython_uplot.uplot
     :members:
