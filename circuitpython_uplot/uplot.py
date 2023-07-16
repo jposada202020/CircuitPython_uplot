@@ -93,7 +93,7 @@ class Uplot(displayio.Group):
             print("Defaulting to y=0")
             y = 0
 
-        super().__init__(x=x, y=y, scale=1)
+        super().__init__(x=x, y=y, scale=scale)
 
         self._axesparams = "box"
 

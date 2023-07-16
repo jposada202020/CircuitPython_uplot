@@ -37,7 +37,8 @@ Options available are:
     * backround_color: Allows to change the background color. The default is black.
     * box_color: Allows to change the box color. Default is white.
     * padding: allows the user to give the plot area a pad. This is helpful if you are planning to include text and legends in the axes.
-    * scale: scale of the plot.
+    * scale: scale of the plot. This will allow a plot to be scaled up at a user defined rate. This is currently only available for logging and bar plots.
+
 
 We tell the microcontroller to display our plot:
 

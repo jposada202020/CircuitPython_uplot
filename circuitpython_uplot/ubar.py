@@ -25,6 +25,7 @@ from vectorio import Rectangle, Polygon
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
+
 # pylint: disable=too-many-arguments, invalid-name, protected-access
 # pylint: disable=too-few-public-methods, no-self-use, too-many-locals
 class ubar:
@@ -54,9 +55,14 @@ class ubar:
         :param bool projection: creates projection of the bars given them depth.
 
         """
-        self._bar_space = bar_space
-        self._graphx = abs(plot._newxmax - plot._newxmin) // (len(x) + 4)
-        self._graphy = abs(plot._newymax - plot._newymin) // (max(y) + 2)
+        y = [i * plot.scale for i in y]
+        self._bar_space = int(bar_space / plot.scale)
+        self._graphx = plot.scale * int(
+            abs(plot._newxmax - plot._newxmin) / (len(x) + 4)
+        )
+        self._graphy = plot.scale * int(
+            abs(plot._newymax - plot._newymin) / (max(y) + 2)
+        )
         self._new_min = int(plot.transform(0, max(y), max(y), 0, 0))
         self._new_max = int(plot.transform(0, max(y), max(y), 0, max(y)))
 
@@ -70,7 +76,7 @@ class ubar:
                         width=self._graphx,
                         height=self._graphy * y[i],
                         x=xstart + (i * self._graphx),
-                        y=plot._newymin - self._graphy * y[i],
+                        y=int(plot._newymin - self._graphy * y[i] / plot.scale),
                         color_index=plot._index_colorused,
                     )
                 )

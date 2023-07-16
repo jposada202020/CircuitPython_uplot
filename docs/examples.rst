@@ -71,6 +71,17 @@ ubar example
     :lines: 5-
 .. image:: ../docs/uplot_ex8.jpg
 
+Ubar Scale Example
+---------------------
+
+Bar plot example showing how to use the scale
+
+.. literalinclude:: ../examples/uplot_ubar_scale_example.py
+    :caption: examples/uplot_ubar_scale_example.py
+    :lines: 5-
+.. image:: ../docs/bar_scale.jpg
+
+
 Ubar 3D Example
 ----------------
 
