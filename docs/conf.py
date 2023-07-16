@@ -25,7 +25,16 @@ intersphinx_mapping = {
     "ulab": ("https://micropython-ulab.readthedocs.io/en/latest/", None),
 }
 
-autodoc_mock_imports = ["digitalio", "busio", "bitmaptools", "vectorio", "ulab"]
+autodoc_mock_imports = [
+    "digitalio",
+    "busio",
+    "bitmaptools",
+    "vectorio",
+    "ulab",
+    "displayio",
+    "terminalio",
+]
+
 # Show the docstring from both the class and its __init__() method.
 autoclass_content = "both"
 # Add any paths that contain templates here, relative to this directory.

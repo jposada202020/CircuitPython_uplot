@@ -30,7 +30,6 @@ try:
 except ImportError:
     pass
 import displayio
-from displayio import Group
 import terminalio
 from bitmaptools import draw_line
 from vectorio import Circle
