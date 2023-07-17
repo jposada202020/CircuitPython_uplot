@@ -19,6 +19,7 @@ try:
 except ImportError:
     pass
 import math
+from displayio import Palette
 from bitmaptools import draw_line
 from vectorio import Rectangle, Polygon
 
@@ -43,6 +44,7 @@ class ubar:
         bar_space=16,
         xstart=50,
         projection=False,
+        color_palette=None,
     ) -> None:
         """
         :param Uplot plot: Plot object for the scatter to be drawn
@@ -51,8 +53,11 @@ class ubar:
         :param int color: boxes color. Defaults to const:``0xFFFFFF``
         :param bool fill: boxes fill attribute. Defaults to `False`
         :param int bar_space: space in pixels between the bars
-        :param int xstart: start point in the x axis for the bar to start. Default to :const:`50`
+        :param int xstart: start point in the x axis for the bar to start. Defaults to :const:`50`
         :param bool projection: creates projection of the bars given them depth.
+        :param list color_palette: list of colors to be used for the bars. Defaults to None.
+         Be aware that you need to include the same number if colors as your data.
+         This functionality will only work with filled bars.
 
         """
         y = [i * plot.scale for i in y]
@@ -66,7 +71,19 @@ class ubar:
         self._new_min = int(plot.transform(0, max(y), max(y), 0, 0))
         self._new_max = int(plot.transform(0, max(y), max(y), 0, max(y)))
 
-        plot._plot_palette[plot._index_colorused] = color
+        if color_palette is not None:
+            if projection:
+                color_count = 2
+            else:
+                color_count = 1
+            self._color_palette = Palette(len(color_palette) * color_count)
+            for i, selected_color in enumerate(color_palette):
+                self._color_palette[i] = selected_color
+            self._color_index = 0
+        else:
+            self._color_palette = plot._plot_palette
+            self._color_index = plot._index_colorused
+            self._color_palette[self._color_index] = color
 
         if plot._index_colorused >= 14:
             plot._index_colorused = 0
@@ -75,12 +92,12 @@ class ubar:
             for i, _ in enumerate(x):
                 plot.append(
                     Rectangle(
-                        pixel_shader=plot._plot_palette,
+                        pixel_shader=self._color_palette,
                         width=self._graphx,
                         height=self._graphy * y[i],
                         x=xstart + (i * self._graphx),
                         y=int(plot._newymin - self._graphy * y[i] / plot.scale),
-                        color_index=plot._index_colorused,
+                        color_index=self._color_index,
                     )
                 )
                 if projection:
@@ -93,16 +110,16 @@ class ubar:
                         (self._graphx - rx, 0 + ry),
                         (0 - rx, 0 + ry),
                     ]
-                    plot._plot_palette[plot._index_colorused + 6] = color_fader(
-                        plot._plot_palette[plot._index_colorused], 0.7, 1
-                    )
+                    self._color_palette[
+                        self._color_index + len(color_palette)
+                    ] = color_fader(self._color_palette[self._color_index], 0.7, 1)
                     plot.append(
                         Polygon(
-                            pixel_shader=plot._plot_palette,
+                            pixel_shader=self._color_palette,
                             points=points,
                             x=xstart + (i * self._graphx),
                             y=plot._newymin - self._graphy * y[i],
-                            color_index=plot._index_colorused + 6,
+                            color_index=self._color_index + len(color_palette),
                         )
                     )
                     points = [
@@ -113,11 +130,11 @@ class ubar:
                     ]
                     plot.append(
                         Polygon(
-                            pixel_shader=plot._plot_palette,
+                            pixel_shader=self._color_palette,
                             points=points,
                             x=xstart + (i * self._graphx),
                             y=plot._newymin - self._graphy * y[i],
-                            color_index=plot._index_colorused + 6,
+                            color_index=self._color_index + len(color_palette),
                         )
                     )
 
@@ -128,6 +145,7 @@ class ubar:
                 )
                 xstart = xstart + self._bar_space
                 plot._index_colorused = plot._index_colorused + 1
+                self._color_index = self._color_index + 1
         else:
             for i, _ in enumerate(x):
                 self._draw_rectangle(

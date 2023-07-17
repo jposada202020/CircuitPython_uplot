@@ -82,6 +82,17 @@ Bar plot example showing how to use the scale
 .. image:: ../docs/bar_scale.jpg
 
 
+Ubar Color Palette Example
+----------------------------
+
+Bar plot example showing how to pass a user color Palette
+
+.. literalinclude:: ../examples/uplot_ubar_colorpalette.py
+    :caption: examples/uplot_ubar_colorpalette.py
+    :lines: 5-
+.. image:: ../docs/bar_palette.jpg
+
+
 Ubar 3D Example
 ----------------
 

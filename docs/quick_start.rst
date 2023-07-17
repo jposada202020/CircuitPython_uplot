@@ -306,6 +306,26 @@ You can select the color or and if the bars are filled
     ubar(plot, a, b, 0xFF1000, True)
 
 
+You can also select the bar spacing and the xstart position:
+
+.. code-block:: python
+
+    ubar(plot, a, b, 0xFF1000, fill=True, bar_space=30, xstart=70)
+
+For bar filled graphs you can pass a color_palette list. This will allow you to select the color of each bar
+This will not work for shell bars sadly.
+
+.. code-block:: python
+
+    import board
+    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.ubar import ubar
+
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+    ubar(plot, a, b, fill=True, bar_space=30, xstart=70, color_palette=[0xFF1000, 0x00FF00, 0x0000FF, 0x00FFFF])
+
+
 with the projection argument you can show the bars with projection. This will give them a 3D
 appearance
 
