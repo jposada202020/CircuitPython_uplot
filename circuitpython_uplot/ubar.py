@@ -68,6 +68,9 @@ class ubar:
 
         plot._plot_palette[plot._index_colorused] = color
 
+        if plot._index_colorused >= 14:
+            plot._index_colorused = 0
+
         if fill:
             for i, _ in enumerate(x):
                 plot.append(
