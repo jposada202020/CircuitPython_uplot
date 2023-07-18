@@ -41,7 +41,6 @@ class umap:
         initial_color: int,
         final_color: int,
     ) -> None:
-
         """
 
         :param Uplot plot: Plot object for the scatter to be drawn

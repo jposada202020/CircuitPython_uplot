@@ -26,9 +26,10 @@ from vectorio import Rectangle, Polygon
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
+# pylint: disable=protected-access
+# pylint: disable=no-self-use
 
-# pylint: disable=too-many-arguments, invalid-name, protected-access
-# pylint: disable=too-few-public-methods, no-self-use, too-many-locals
+
 class ubar:
     """
     Main class to display different graphics
@@ -74,7 +75,7 @@ class ubar:
         else:
             y_max = max_value
 
-        y = [i * plot.scale for i in y]
+        self._y = [i * plot.scale for i in y]
         self._bar_space = int(bar_space / plot.scale)
         self._graphx = plot.scale * int(
             abs(plot._newxmax - plot._newxmin) / (len(x) + 4)
@@ -108,55 +109,10 @@ class ubar:
 
         if fill:
             for i, _ in enumerate(x):
-                self._bars.append(
-                    Rectangle(
-                        pixel_shader=self._color_palette,
-                        width=self._graphx,
-                        height=self._graphy * y[i],
-                        x=xstart + (i * self._graphx),
-                        y=int(plot._newymin - self._graphy * y[i] / plot.scale),
-                        color_index=self._color_index,
-                    )
-                )
-                plot.append(self._bars[i])
+                self._create_bars(xstart, i)
 
                 if projection:
-                    delta = 20
-                    rx = int(delta * math.cos(-0.5))
-                    ry = int(delta * math.sin(-0.5))
-                    points = [
-                        (0, 0),
-                        (self._graphx, 0),
-                        (self._graphx - rx, 0 + ry),
-                        (0 - rx, 0 + ry),
-                    ]
-                    self._color_palette[
-                        self._color_index + len(color_palette)
-                    ] = color_fader(self._color_palette[self._color_index], 0.7, 1)
-                    plot.append(
-                        Polygon(
-                            pixel_shader=self._color_palette,
-                            points=points,
-                            x=xstart + (i * self._graphx),
-                            y=plot._newymin - self._graphy * y[i],
-                            color_index=self._color_index + len(color_palette),
-                        )
-                    )
-                    points = [
-                        (0, 0),
-                        (0 - rx, 0 + ry),
-                        (0 - rx, self._graphy * y[i]),
-                        (0, self._graphy * y[i]),
-                    ]
-                    plot.append(
-                        Polygon(
-                            pixel_shader=self._color_palette,
-                            points=points,
-                            x=xstart + (i * self._graphx),
-                            y=plot._newymin - self._graphy * y[i],
-                            color_index=self._color_index + len(color_palette),
-                        )
-                    )
+                    self._create_projections(xstart, i, len(color_palette))
 
                 plot.show_text(
                     str(y[i]),
@@ -214,6 +170,66 @@ class ubar:
                     xstart + (i * self._graphx) - bar_space + self._graphx // 2,
                     plot._newymin,
                 )
+
+    def _create_bars(self, xstart: int, indice: int):
+        """
+        create plot bars
+        """
+
+        self._bars.append(
+            Rectangle(
+                pixel_shader=self._color_palette,
+                width=self._graphx,
+                height=self._graphy * self._y[indice],
+                x=xstart + (indice * self._graphx),
+                y=int(
+                    self._plot_obj._newymin
+                    - self._graphy * self._y[indice] / self._plot_obj.scale
+                ),
+                color_index=self._color_index,
+            )
+        )
+        self._plot_obj.append(self._bars[indice])
+
+    def _create_projections(self, xstart: int, indice: int, color_lenght: int):
+        delta = 20
+        rx = int(delta * math.cos(-0.5))
+        ry = int(delta * math.sin(-0.5))
+        points = [
+            (0, 0),
+            (self._graphx, 0),
+            (self._graphx - rx, 0 + ry),
+            (0 - rx, 0 + ry),
+        ]
+
+        self._color_palette[self._color_index + color_lenght] = color_fader(
+            self._color_palette[self._color_index], 0.7, 1
+        )
+
+        self._plot_obj.append(
+            Polygon(
+                pixel_shader=self._color_palette,
+                points=points,
+                x=xstart + (indice * self._graphx),
+                y=self._plot_obj._newymin - self._graphy * self._y[indice],
+                color_index=self._color_index + color_lenght,
+            )
+        )
+        points = [
+            (0, 0),
+            (0 - rx, 0 + ry),
+            (0 - rx, self._graphy * self._y[indice]),
+            (0, self._graphy * self._y[indice]),
+        ]
+        self._plot_obj.append(
+            Polygon(
+                pixel_shader=self._color_palette,
+                points=points,
+                x=xstart + (indice * self._graphx),
+                y=self._plot_obj._newymin - self._graphy * self._y[indice],
+                color_index=self._color_index + color_lenght,
+            )
+        )
 
     def _draw_rectangle(
         self, plot: Uplot, x: int, y: int, width: int, height: int, color: int

@@ -99,7 +99,6 @@ class uscatter:
                     )
                 )
         else:
-
             for i, _ in enumerate(x):
                 plot.append(
                     Circle(pixel_shader=palette, radius=radius, x=xnorm[i], y=ynorm[i])

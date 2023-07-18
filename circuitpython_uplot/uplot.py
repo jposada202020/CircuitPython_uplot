@@ -20,9 +20,10 @@ Implementation Notes
   https://github.com/adafruit/circuitpython/releases
 
 """
-# pylint: disable=too-many-arguments, too-many-instance-attributes, too-many-locals
+
 # pylint: disable=too-many-statements, unused-import, no-member
 # pylint: disable=unused-import, import-outside-toplevel, undefined-variable
+# pylint: disable=attribute-defined-outside-init
 
 try:
     from typing import Union, Tuple
@@ -387,6 +388,8 @@ class Uplot(displayio.Group):
         if self._showtext:
             from adafruit_display_text import bitmap_label
 
+            self.bitmap_label = bitmap_label
+
     def _draw_gridx(self, ticks_data: list[int]) -> None:
         """
         Draws the plot grid
@@ -446,7 +449,7 @@ class Uplot(displayio.Group):
     ) -> None:
         """
 
-        Show desired text in the scree
+        Show desired text in the screen
         :param str text: text to be displayed
         :param int x: x coordinate
         :param int y: y coordinate
@@ -454,7 +457,7 @@ class Uplot(displayio.Group):
         :return: None
         """
         if self._showtext:
-            text_toplot = bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
+            text_toplot = self.bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
             text_toplot.anchor_point = anchorpoint
             text_toplot.anchored_position = (x, y)
             self.append(text_toplot)
