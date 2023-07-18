@@ -2,10 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
+import time
 import board
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.ubar import ubar
-import time
 
 # Setting up the display
 display = board.DISPLAY
