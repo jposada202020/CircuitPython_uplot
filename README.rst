@@ -112,6 +112,4 @@ API documentation for this library can be found on `Read the Docs <https://circu
 Contributing
 ============
 
-Contributions are welcome! Please read our `Code of Conduct
-<https://github.com/jposada202020/CircuitPython_uplot/blob/HEAD/CODE_OF_CONDUCT.md>`_
-before contributing to help this project stay welcoming.
+Contributions are welcome!
