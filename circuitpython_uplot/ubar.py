@@ -45,6 +45,7 @@ class ubar:
         xstart=50,
         projection=False,
         color_palette=None,
+        max_value=None,
     ) -> None:
         """
         :param Uplot plot: Plot object for the scatter to be drawn
@@ -58,18 +59,32 @@ class ubar:
         :param list color_palette: list of colors to be used for the bars. Defaults to None.
          Be aware that you need to include the same number if colors as your data.
          This functionality will only work with filled bars.
+        :param int max_value: for filled unprojected bars will setup the maxium value for the bars.
+         This allows the user to update the bars in real-time. There is an example in the examples
+         folder showing this functionality
 
         """
+        self._bars = []
+        self._plot_obj = plot
+        self._projection = projection
+        self._filled = fill
+
+        if max_value is None:
+            y_max = max(y)
+        else:
+            y_max = max_value
+
         y = [i * plot.scale for i in y]
         self._bar_space = int(bar_space / plot.scale)
         self._graphx = plot.scale * int(
             abs(plot._newxmax - plot._newxmin) / (len(x) + 4)
         )
         self._graphy = plot.scale * int(
-            abs(plot._newymax - plot._newymin) / (max(y) + 2)
+            abs(plot._newymax - plot._newymin) / (y_max + 2)
         )
-        self._new_min = int(plot.transform(0, max(y), max(y), 0, 0))
-        self._new_max = int(plot.transform(0, max(y), max(y), 0, max(y)))
+
+        self._new_min = int(plot.transform(0, y_max, y_max, 0, 0))
+        self._new_max = int(plot.transform(0, y_max, y_max, 0, y_max))
 
         if color_palette is not None:
             if projection:
@@ -86,11 +101,14 @@ class ubar:
             self._color_palette[self._color_index] = color
 
         if plot._index_colorused >= 14:
-            plot._index_colorused = 0
+            plot._index_colorused = 2
+            self._color_index = 2
+            if color_palette:
+                self._color_index = 0
 
         if fill:
             for i, _ in enumerate(x):
-                plot.append(
+                self._bars.append(
                     Rectangle(
                         pixel_shader=self._color_palette,
                         width=self._graphx,
@@ -100,6 +118,8 @@ class ubar:
                         color_index=self._color_index,
                     )
                 )
+                plot.append(self._bars[i])
+
                 if projection:
                     delta = 20
                     rx = int(delta * math.cos(-0.5))
@@ -205,6 +225,25 @@ class ubar:
         draw_line(plot._plotbitmap, x, y, x, y - height, color)
         draw_line(plot._plotbitmap, x + width, y, x + width, y - height, color)
         draw_line(plot._plotbitmap, x + width, y - height, x, y - height, color)
+
+    def update_values(self, values: list = None):
+        """
+        Update Values of the bars
+        """
+        if self._projection:
+            raise AttributeError("Library is not designed to update projected Bars")
+        if not self._filled:
+            raise AttributeError("Library is not designed to update shell Bars")
+        if values is None:
+            raise ValueError("You must provide a list of values")
+        for i, element in enumerate(self._bars):
+            height = self._graphy * values[i]
+            y = int(
+                self._plot_obj._newymin
+                - self._graphy * values[i] / self._plot_obj.scale
+            )
+            element.height = height
+            element.y = y
 
 
 def color_fader(source_color=None, brightness=1.0, gamma=1.0):

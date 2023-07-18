@@ -131,7 +131,7 @@ class Uplot(displayio.Group):
         if show_box:
             self._drawbox()
 
-        self._plot_palette = displayio.Palette(17)
+        self._plot_palette = displayio.Palette(20)
         self._plot_palette[0] = background_color
         self._plot_palette[1] = box_color
         self._plot_palette[2] = self._tickcolor
@@ -145,7 +145,14 @@ class Uplot(displayio.Group):
         self._plot_palette[10] = 0x64A813
         self._plot_palette[11] = 0x0F4E12
         self._plot_palette[12] = 0xF0075E
-        self._plot_palette[13] = 0x1AF0FF
+        self._plot_palette[13] = 0x123456
+        self._plot_palette[14] = 0xFF00FF
+        self._plot_palette[15] = 0xFF0000
+        self._plot_palette[16] = 0x440044
+        self._plot_palette[17] = 0x2222FF
+        self._plot_palette[18] = 0x1A50FF
+        self._plot_palette[19] = 0xF0FF32
+
         self.append(
             displayio.TileGrid(
                 self._plotbitmap, pixel_shader=self._plot_palette, x=0, y=0

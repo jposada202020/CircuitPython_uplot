@@ -344,6 +344,31 @@ appearance
     ubar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
 
 
+For filled unprojected bar you can update their values. This is useful for data logging.
+the max_value argument will allow you to set the maximum value of the graph. The plot will scale
+according to this max value, and bar plot will update their values accordingly
+
+.. code-block:: python
+
+    import board
+    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.ubar import ubar
+
+    display = board.DISPLAY
+    plot = Uplot(0, 0, display.width, display.height)
+
+
+    a = ["a", "b", "c", "d"]
+    b = [3, 5, 1, 7]
+    my_ubar = ubar(plot, a, b, color=0xFF1000, fill=True, color_palette=[0xFF1000, 0x00FF00, 0xFFFF00, 0x123456], max_value=10)
+
+
+Then you can update the values of the bar plot:
+
+.. code-block:: python
+
+    my_ubar.update_values([1, 2, 3, 4])
+
 ===============
 Fillbetween
 ===============
