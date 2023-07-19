@@ -88,6 +88,7 @@ class ubar:
         self._new_max = int(plot.transform(0, y_max, y_max, 0, y_max))
 
         if color_palette is not None:
+            self._palette_defined = True
             if projection:
                 color_count = 2
             else:
@@ -97,6 +98,7 @@ class ubar:
                 self._color_palette[i] = selected_color
             self._color_index = 0
         else:
+            self._palette_defined = False
             self._color_palette = plot._plot_palette
             self._color_index = plot._index_colorused
             self._color_palette[self._color_index] = color
@@ -260,6 +262,40 @@ class ubar:
             )
             element.height = height
             element.y = y
+
+    def update_colors(self, colors: list = None):
+        """
+        Update Colors of the bars
+
+        :param list colors: list of colors to be asigned. list lenght must coincide with
+         the numbers of bars in your plot
+
+        """
+        if colors is None:
+            raise ValueError("You must provide a list of colors")
+        if len(colors) != len(self._bars):
+            raise ValueError("You must provide the same number of colors as bars")
+        if self._palette_defined:
+            for i in range(len(self._bars)):
+                self._color_palette[i] = colors[i]
+        else:
+            for i in range(len(self._bars)):
+                self._color_palette[i + 4] = colors[i]
+
+    def update_bar_color(self, bar_number: int, color: int = 0xFFFFFF):
+        """
+        Update the color of a single bar
+
+        :param int bar_number: bar index. Bar number starts with :const`0`
+        :param int color: new bar color. Defaults to :const:`0xFFFFFF`. White
+
+        """
+        if bar_number > len(self._bars):
+            raise ValueError("Bar number must be a valid bar index")
+        if self._palette_defined:
+            self._color_palette[bar_number] = color
+        else:
+            self._color_palette[bar_number + 4] = color
 
 
 def color_fader(source_color=None, brightness=1.0, gamma=1.0):

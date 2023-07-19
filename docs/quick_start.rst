@@ -344,8 +344,8 @@ appearance
     ubar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
 
 
-For filled unprojected bar you can update their values. This is useful for data logging.
-the max_value argument will allow you to set the maximum value of the graph. The plot will scale
+For filled unprojected bars you can update their values. This is useful for data logging.
+The max_value argument will allow you to set the maximum value of the graph. The plot will scale
 according to this max value, and bar plot will update their values accordingly
 
 .. code-block:: python
@@ -362,12 +362,29 @@ according to this max value, and bar plot will update their values accordingly
     b = [3, 5, 1, 7]
     my_ubar = ubar(plot, a, b, color=0xFF1000, fill=True, color_palette=[0xFF1000, 0x00FF00, 0xFFFF00, 0x123456], max_value=10)
 
-
 Then you can update the values of the bar plot:
 
 .. code-block:: python
 
     my_ubar.update_values([1, 2, 3, 4])
+
+
+Also for Filled unprojected bars you can change all bars color at once. The following
+code will change all the bar's color to red
+
+.. code-block:: python
+
+    my_ubar.update_colors(0xFF0000, 0xFF0000, 0xFF0000, 0xFF0000)
+
+If you prefer, you can change the color of a single bar using the following code:
+
+.. code-block:: python
+
+    my_ubar.update_bar_color(0, 0x0000FF)
+
+This will change the first bar to Blue.
+
+
 
 ===============
 Fillbetween

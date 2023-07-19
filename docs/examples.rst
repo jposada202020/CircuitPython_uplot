@@ -102,6 +102,15 @@ Bar Plot example showing how to update values for a filled bars bar plot
     :caption: examples/uplot_ubar_updating_values.py
     :lines: 5-
 
+Bar plot updating bar colors Example
+-------------------------------------
+
+Bar Plot example showing how to update colors for a filled bars bar plot
+
+.. literalinclude:: ../examples/uplot_ubar_color_changing.py
+    :caption: examples/uplot_ubar_color_changing.py
+    :lines: 5-
+
 
 Ubar 3D Example
 ----------------
