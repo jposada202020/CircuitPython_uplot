@@ -18,7 +18,7 @@ try:
     from circuitpython_uplot.uplot import Uplot
 except ImportError:
     pass
-import math
+from math import sin, cos, ceil
 from displayio import Palette
 from bitmaptools import draw_line
 from vectorio import Rectangle, Polygon
@@ -76,13 +76,12 @@ class ubar:
             y_max = max_value
 
         self._y = [i * plot.scale for i in y]
+
         self._bar_space = int(bar_space / plot.scale)
-        self._graphx = plot.scale * int(
+        self._graphx = plot.scale * ceil(
             abs(plot._newxmax - plot._newxmin) / (len(x) + 4)
         )
-        self._graphy = plot.scale * int(
-            abs(plot._newymax - plot._newymin) / (y_max + 2)
-        )
+        self._graphy = plot.scale * (abs(plot._newymax - plot._newymin) / (y_max + 2))
 
         self._new_min = int(plot.transform(0, y_max, y_max, 0, 0))
         self._new_max = int(plot.transform(0, y_max, y_max, 0, y_max))
@@ -131,16 +130,16 @@ class ubar:
                     xstart + (i * self._graphx),
                     plot._newymin,
                     self._graphx,
-                    self._graphy * y[i],
+                    ceil(self._graphy * y[i]),
                     plot._index_colorused,
                 )
                 delta = 20
-                rx = int(delta * math.cos(-0.5))
-                ry = int(delta * math.sin(-0.5))
+                rx = int(delta * cos(-0.5))
+                ry = int(delta * sin(-0.5))
                 x0 = xstart + (i * self._graphx)
-                y0 = plot._newymin - self._graphy * y[i]
+                y0 = ceil(plot._newymin - self._graphy * y[i])
                 x1 = xstart + (i * self._graphx) + self._graphx
-                y1 = plot._newymin - self._graphy * y[i]
+                y1 = ceil(plot._newymin - self._graphy * y[i])
 
                 draw_line(
                     plot._plotbitmap, x0, y0, x0 - rx, y0 + ry, plot._index_colorused
@@ -182,7 +181,7 @@ class ubar:
             Rectangle(
                 pixel_shader=self._color_palette,
                 width=self._graphx,
-                height=self._graphy * self._y[indice],
+                height=ceil(self._graphy * self._y[indice]),
                 x=xstart + (indice * self._graphx),
                 y=int(
                     self._plot_obj._newymin
@@ -195,8 +194,8 @@ class ubar:
 
     def _create_projections(self, xstart: int, indice: int, color_lenght: int):
         delta = 20
-        rx = int(delta * math.cos(-0.5))
-        ry = int(delta * math.sin(-0.5))
+        rx = int(delta * cos(-0.5))
+        ry = int(delta * sin(-0.5))
         points = [
             (0, 0),
             (self._graphx, 0),
@@ -213,22 +212,22 @@ class ubar:
                 pixel_shader=self._color_palette,
                 points=points,
                 x=xstart + (indice * self._graphx),
-                y=self._plot_obj._newymin - self._graphy * self._y[indice],
+                y=ceil(self._plot_obj._newymin - self._graphy * self._y[indice]),
                 color_index=self._color_index + color_lenght,
             )
         )
         points = [
             (0, 0),
             (0 - rx, 0 + ry),
-            (0 - rx, self._graphy * self._y[indice]),
-            (0, self._graphy * self._y[indice]),
+            (0 - rx, ceil(self._graphy * self._y[indice])),
+            (0, ceil(self._graphy * self._y[indice])),
         ]
         self._plot_obj.append(
             Polygon(
                 pixel_shader=self._color_palette,
                 points=points,
                 x=xstart + (indice * self._graphx),
-                y=self._plot_obj._newymin - self._graphy * self._y[indice],
+                y=ceil(self._plot_obj._newymin - self._graphy * self._y[indice]),
                 color_index=self._color_index + color_lenght,
             )
         )
@@ -239,6 +238,7 @@ class ubar:
         """
         Helper function to draw bins rectangles
         """
+
         draw_line(plot._plotbitmap, x, y, x + width, y, color)
         draw_line(plot._plotbitmap, x, y, x, y - height, color)
         draw_line(plot._plotbitmap, x + width, y, x + width, y - height, color)
@@ -255,7 +255,7 @@ class ubar:
         if values is None:
             raise ValueError("You must provide a list of values")
         for i, element in enumerate(self._bars):
-            height = self._graphy * values[i]
+            height = ceil(self._graphy * values[i])
             y = int(
                 self._plot_obj._newymin
                 - self._graphy * values[i] / self._plot_obj.scale
