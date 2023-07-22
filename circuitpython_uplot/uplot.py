@@ -102,9 +102,9 @@ class Uplot(displayio.Group):
 
         self.padding = padding
         self._newxmin = padding
-        self._newxmax = width - padding
+        self._newxmax = width - padding - 1
 
-        self._newymin = height - padding
+        self._newymin = height - padding - 1
         self._newymax = padding
 
         self._cartesianfirst = True
@@ -127,7 +127,7 @@ class Uplot(displayio.Group):
 
         self._index_colorused = 4
 
-        self._plotbitmap = displayio.Bitmap(width, height, 17)
+        self._plotbitmap = displayio.Bitmap(width, height, 20)
 
         if show_box:
             self._drawbox()
@@ -186,6 +186,7 @@ class Uplot(displayio.Group):
         else:
             draw_box = [True, True, True, True]
 
+        # left y axes line
         if draw_box[0]:
             # y axes line
             draw_line(
@@ -193,33 +194,36 @@ class Uplot(displayio.Group):
                 self.padding,
                 self.padding,
                 self.padding,
-                self._height - self.padding,
+                self._height - self.padding - 1,
                 1,
             )
+        # bottom x axes line
         if draw_box[1]:
             draw_line(
                 self._plotbitmap,
                 self.padding,
-                self._height - self.padding,
-                self._width - self.padding,
-                self._height - self.padding,
+                self._height - self.padding - 1,
+                self._width - self.padding - 1,
+                self._height - self.padding - 1,
                 1,
             )
+        # right y axes line
         if draw_box[2]:
             draw_line(
                 self._plotbitmap,
-                self._width - self.padding,
+                self._width - self.padding - 1,
                 self.padding,
-                self._width - self.padding,
-                self._height - self.padding,
+                self._width - self.padding - 1,
+                self._height - self.padding - 1,
                 1,
             )
+        # top x axes line
         if draw_box[3]:
             draw_line(
                 self._plotbitmap,
                 self.padding,
                 self.padding,
-                self._width - self.padding,
+                self._width - self.padding - 1,
                 self.padding,
                 1,
             )
