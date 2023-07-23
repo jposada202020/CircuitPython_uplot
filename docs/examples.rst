@@ -230,6 +230,17 @@ Logging fill example
     :lines: 5-
 .. image:: ../docs/uplot_ex22.jpg
 
+
+Logging Changing Values Example
+---------------------------------------
+
+This example shows how to redraw new_values in the same plot
+
+.. literalinclude:: ../examples/uplot_logging_changing_values.py
+    :caption: examples/uplot_logging_changing_values.py
+    :lines: 5-
+
+
 SVG Images examples
 ---------------------------
 

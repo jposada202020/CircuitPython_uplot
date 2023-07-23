@@ -469,7 +469,22 @@ There are some parameters that you can customize:
 
     plot = Uplot(0, 0, display.width, display.height)
 
-    ulogging(plot, x, y, rangex=[0, 200], rangey=[0, 100], ticksx=[10, 50, 80, 100], ticksy=[15, 30, 45, 60],)
+    x = [10, 20, 30, 40, 50]
+    temp_y = [10, 15, 35, 10, 25]
+
+    my_log = ulogging(plot, x, y, rangex=[0, 200], rangey=[0, 100], ticksx=[10, 50, 80, 100], ticksy=[15, 30, 45, 60],)
+
+
+if you want to redraw new data in the same plot, you could do something like this:
+
+.. code-block:: python
+
+
+    x_new = [10, 20, 30, 40, 50]
+    y_new = [26, 50, 26, 50, 26]
+
+    my_log.draw_points(plot_1, x_new, y_new)
+
 
 ===============
 SVG

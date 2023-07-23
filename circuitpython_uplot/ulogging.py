@@ -25,8 +25,6 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
-# pylint: disable=too-many-locals, too-many-branches, protected-access, unnecessary-list-index-lookup
 class ulogging:
     """
     Class to log data
@@ -77,51 +75,7 @@ class ulogging:
         self.ymin = rangey[0]
         self.ymax = rangey[1]
 
-        x = np.array(x)
-        y = np.array(y)
-
-        xnorm = np.array(
-            plot.transform(self.xmin, self.xmax, plot._newxmin, plot._newxmax, x),
-            dtype=np.int16,
-        )
-        ynorm = np.array(
-            plot.transform(self.ymin, self.ymax, plot._newymin, plot._newymax, y),
-            dtype=np.int16,
-        )
-
-        fill_region(
-            plot._plotbitmap,
-            plot._newxmin + plot._tickheightx + 1,
-            plot._newymax + 1,
-            plot._newxmax - 1,
-            plot._newymin - plot._tickheighty,
-            0,
-        )
-
-        if len(x) == 1:
-            plot._plotbitmap[xnorm[0], ynorm[0]] = 1
-        else:
-            for index, _ in enumerate(xnorm):
-                if index + 1 >= len(xnorm):
-                    break
-                draw_line(
-                    plot._plotbitmap,
-                    xnorm[index],
-                    ynorm[index],
-                    xnorm[index + 1],
-                    ynorm[index + 1],
-                    plot._index_colorused,
-                )
-            if fill:
-                for index, _ in enumerate(xnorm):
-                    draw_line(
-                        plot._plotbitmap,
-                        xnorm[index],
-                        ynorm[index],
-                        xnorm[index],
-                        plot._newymin,
-                        plot._index_colorused,
-                    )
+        self.draw_points(plot, x, y, fill)
 
         if plot._showticks:
             if plot._loggingfirst:
@@ -174,3 +128,77 @@ class ulogging:
                 plot.show_text(
                     "{:.2f}".format(ticksynorm[i]), plot._newxmin, tick, (1.0, 0.5)
                 )
+
+    @staticmethod
+    def clear_plot(plot) -> None:
+        """
+        Clears the plot area
+        """
+
+        fill_region(
+            plot._plotbitmap,
+            plot._newxmin + plot._tickheightx + 1,
+            plot._newymax + 1,
+            plot._newxmax - 1,
+            plot._newymin - plot._tickheighty,
+            0,
+        )
+
+    def draw_points(self, plot: Uplot, x: list, y: list, fill: bool = False) -> None:
+        """
+        Draws points in the plot
+        :param Uplot plot: plot object provided
+        :param list x: list of x values
+        :param list y: list of y values
+        :param bool fill: parameter to fill the plot graphic. Defaults to False
+        :return: None
+        """
+        self.clear_plot(plot)
+
+        self.draw_new_lines(plot, x, y, fill)
+
+    def draw_new_lines(self, plot: Uplot, x: list, y: list, fill: bool = False) -> None:
+        """
+        Draw the plot lines
+        :param Uplot plot: plot object provided
+        :param list x: list of x values
+        :param list y: list of y values
+        :param bool fill: parameter to fill the plot graphic. Defaults to False
+        :return: None
+        """
+        x = np.array(x)
+        y = np.array(y)
+
+        xnorm = np.array(
+            plot.transform(self.xmin, self.xmax, plot._newxmin, plot._newxmax, x),
+            dtype=np.int16,
+        )
+        ynorm = np.array(
+            plot.transform(self.ymin, self.ymax, plot._newymin, plot._newymax, y),
+            dtype=np.int16,
+        )
+
+        if len(x) == 1:
+            plot._plotbitmap[xnorm[0], ynorm[0]] = 1
+        else:
+            for index, _ in enumerate(xnorm):
+                if index + 1 >= len(xnorm):
+                    break
+                draw_line(
+                    plot._plotbitmap,
+                    xnorm[index],
+                    ynorm[index],
+                    xnorm[index + 1],
+                    ynorm[index + 1],
+                    plot._index_colorused,
+                )
+            if fill:
+                for index, _ in enumerate(xnorm):
+                    draw_line(
+                        plot._plotbitmap,
+                        xnorm[index],
+                        ynorm[index],
+                        xnorm[index],
+                        plot._newymin,
+                        plot._index_colorused,
+                    )
