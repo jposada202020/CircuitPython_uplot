@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
+import time
 import displayio
 import board
-import time
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.ulogging import ulogging
 
