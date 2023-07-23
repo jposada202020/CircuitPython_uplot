@@ -73,8 +73,8 @@ class umap:
         deltax = plot._newxmin
         deltay = plot._newymax
         color = 0
-        for j in range(box_iny):
-            for i in range(box_inx):
+        for _ in range(box_iny):
+            for _ in range(box_inx):
                 plot.append(
                     Rectangle(
                         pixel_shader=palette,

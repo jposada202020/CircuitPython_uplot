@@ -7,12 +7,12 @@
 # - adafruit_bitmap_font
 # - CircuitPython_TABLE (from https://github.com/jposada202020/CircuitPython_TABLE)
 
+import time
 import displayio
 import board
-import time
+from table import Table
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.ulogging import ulogging
-from table import Table
 
 # Create a display object
 display = board.DISPLAY
