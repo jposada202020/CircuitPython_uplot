@@ -248,6 +248,7 @@ This example shows how to add a data table to the plot
 .. literalinclude:: ../examples/uplot_logging_table.py
     :caption: examples/uplot_logging_table.py
     :lines: 10-
+.. image:: ../docs/logging_table.jpg
 
 
 SVG Images examples
