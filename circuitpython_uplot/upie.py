@@ -26,7 +26,6 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-many-arguments, invalid-name, no-self-use
 class upie:
     """
     Class to draw pie
@@ -39,8 +38,8 @@ class upie:
 
         :param Uplot plot: Plot object for the upie to be drawn
         :param list data: data to make the pie
-        :param x: pie center x coordinate
-        :param y: pie center y coordinate
+        :param int x: pie center x coordinate
+        :param int y: pie center y coordinate
         :param int radius: pie radius
 
         """
@@ -74,10 +73,10 @@ class upie:
     def get_points(self, x: int, y: int, radius: int, angle: float) -> None:
         """
 
-        :param x: center x coordinate
-        :param y: center y coordinate
-        :param radius: pie radius in pixels
-        :param angle: line angle
+        :param int x: center x coordinate
+        :param int y: center y coordinate
+        :param int radius: pie radius in pixels
+        :param flaot angle: line angle
         :return: None
 
         """

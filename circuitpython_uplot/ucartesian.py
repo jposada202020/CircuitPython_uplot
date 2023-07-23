@@ -26,8 +26,6 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-many-arguments, invalid-name, no-self-use, too-few-public-methods
-# pylint: disable=too-many-locals, too-many-branches
 class ucartesian:
     """
     Class to draw cartesian plane

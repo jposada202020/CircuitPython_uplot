@@ -27,8 +27,6 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-few-public-methods, invalid-name, duplicate-code, too-many-locals, too-many-arguments
-# pylint: disable=unused-variable
 class umap:
     """
     Main class to display different graphics

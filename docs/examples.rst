@@ -240,6 +240,15 @@ This example shows how to redraw new_values in the same plot
     :caption: examples/uplot_logging_changing_values.py
     :lines: 5-
 
+Logging with Table Example
+---------------------------------------
+
+This example shows how to add a data table to the plot
+
+.. literalinclude:: ../examples/uplot_logging_table.py
+    :caption: examples/uplot_logging_table.py
+    :lines: 10-
+
 
 SVG Images examples
 ---------------------------
