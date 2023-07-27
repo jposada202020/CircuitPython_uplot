@@ -18,7 +18,6 @@ try:
     from circuitpython_uplot.uplot import Uplot
 except ImportError:
     pass
-import math
 from bitmaptools import draw_line, fill_region
 from ulab import numpy as np
 
