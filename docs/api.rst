@@ -27,3 +27,6 @@ Uplot Library
 
 .. automodule:: circuitpython_uplot.usvg
     :members:
+
+.. automodule:: circuitpython_uplot.shade
+    :members:

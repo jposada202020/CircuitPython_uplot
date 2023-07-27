@@ -121,6 +121,8 @@ class ucartesian:
             for index, _ in enumerate(xnorm):
                 if index + 1 >= len(xnorm):
                     break
+                if y[index] >= ymax:
+                    continue
                 draw_line(
                     plot._plotbitmap,
                     xnorm[index],

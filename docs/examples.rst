@@ -260,3 +260,13 @@ SVG Images example
     :caption: examples/uplot_usvg_example.py
     :lines: 5-
 .. image:: ../docs/uplot_ex23.jpg
+
+Shade examples
+---------------------------
+
+Shade example
+
+.. literalinclude:: ../examples/uplot_shade_example.py
+    :caption: examples/uplot_shade_example.py
+    :lines: 5-
+.. image:: ../docs/uplot_shade.jpg
