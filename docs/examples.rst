@@ -142,6 +142,16 @@ Showing the ability to display to graphs in the same plot with different colors
     :lines: 5-
 .. image:: ../docs/uplot_ex11.jpg
 
+Cartesian Table Example
+---------------------------
+
+Example showing how to add a data table to the plot
+
+.. literalinclude:: ../examples/uplot_ucartesian_table.py
+    :caption: examples/uplot_ucartesian_table.py
+    :lines: 5-
+
+
 Stackplot Example
 ---------------------------
 
