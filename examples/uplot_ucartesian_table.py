@@ -5,10 +5,11 @@
 import displayio
 import board
 from ulab import numpy as np
+from table import Table
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.ucartesian import ucartesian
 from circuitpython_uplot.shade import shade
-from table import Table
+
 
 # Heat Index Example
 # To use this example you need to install the Table library from

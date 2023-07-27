@@ -151,6 +151,16 @@ Example showing how to add a data table to the plot
     :caption: examples/uplot_ucartesian_table.py
     :lines: 5-
 
+Lissajous Curves Example
+---------------------------
+
+Example showing how to draw lissajous curves
+
+.. literalinclude:: ../examples/uplot_lissajous_curves.py
+    :caption: examples/uplot_lissajous_curves.py
+    :lines: 5-
+.. image:: ../docs/uplot_lissajous.jpg
+
 
 Stackplot Example
 ---------------------------
