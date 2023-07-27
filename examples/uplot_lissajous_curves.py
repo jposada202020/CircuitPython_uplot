@@ -8,12 +8,13 @@ import displayio
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.ucartesian import ucartesian
 
-# Inspired by Paul McWhorter Raspberry Pi Pico W LESSON 27: Creating Lissajous Patterns on an OLED Display
+# Inspired by Paul McWhorter Raspberry Pi Pico W LESSON 27: Creating Lissajous Patterns
+# on an OLED Display
 # And
 # https://storm-coder-dojo.github.io/activities/python/curves.html
 
 
-def create_curve(a=1, b=2, factor=10, delta=3.14 / 2):
+def create_curve(a=1, b=2, mul_factor=10, delta=3.14 / 2):
     """
     Creates a curve based on the formula
     adapted from https://github.com/JPBotelho/Lissajous-Curve
@@ -24,8 +25,8 @@ def create_curve(a=1, b=2, factor=10, delta=3.14 / 2):
     yvalues = []
     for i in range(0, 315):
         t = i * 0.02
-        x = factor * math.cos(t * a + delta)
-        y = factor * math.sin(t * b)
+        x = mul_factor * math.cos(t * a + delta)
+        y = mul_factor * math.sin(t * b)
         xvalues.append(x)
         yvalues.append(y)
         if abs(x - xvalues[0]) + abs(y - yvalues[0]) < 0.01 and i > 1:
