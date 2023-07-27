@@ -271,6 +271,15 @@ This example shows how to add a data table to the plot
 .. image:: ../docs/logging_table.jpg
 
 
+Logging Animation Example
+---------------------------------------
+
+This example shows how to animate a plot
+
+.. literalinclude:: ../examples/uplot_ulogging_animation.py
+    :caption: examples/uplot_ulogging_animation.py
+    :lines: 5-
+
 SVG Images examples
 ---------------------------
 

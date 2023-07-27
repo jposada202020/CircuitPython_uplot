@@ -18,6 +18,7 @@ try:
     from circuitpython_uplot.uplot import Uplot
 except ImportError:
     pass
+import math
 from bitmaptools import draw_line, fill_region
 from ulab import numpy as np
 
@@ -112,9 +113,7 @@ class ulogging:
                 2,
             )
             if plot._showtext:
-                plot.show_text(
-                    "{:.2f}".format(ticksxnorm[i]), tick, plot._newymin, (0.5, 0.0)
-                )
+                plot.show_text(f"{self.ticksx[i]:.0f}", tick, plot._newymin, (0.5, 0.0))
         for i, tick in enumerate(ticksynorm):
             draw_line(
                 plot._plotbitmap,
@@ -125,9 +124,7 @@ class ulogging:
                 2,
             )
             if plot._showtext:
-                plot.show_text(
-                    "{:.2f}".format(ticksynorm[i]), plot._newxmin, tick, (1.0, 0.5)
-                )
+                plot.show_text(f"{self.ticksy[i]:.0f}", plot._newxmin, tick, (1.0, 0.5))
 
     @staticmethod
     def clear_plot(plot) -> None:
