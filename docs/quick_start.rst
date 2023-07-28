@@ -252,14 +252,14 @@ Creates a scatter plot with x,y data. You can customize the circle diameter if y
     import board
     from ulab import numpy as np
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.uscatter import uscatter
+    from circuitpython_uplot.scatter import Scatter
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
 
     a = np.linspace(1, 100)
     b = [choice(a) for _ in a]
-    uscatter(plot, a, b)
+    Scatter(plot, a, b)
 
 
 There are some parameters that you can customize:
@@ -275,7 +275,7 @@ There are some parameters that you can customize:
     z = [4, 5, 6, 7, 8]
     radi = [choice(z) for _ in a]
     b = [choice(a) for _ in a]
-    uscatter(plot, a, b, rangex=[0,210], rangey=[0, 210], radius=radi, circle_color=0xF456F3)
+    Scatter(plot, a, b, rangex=[0,210], rangey=[0, 210], radius=radi, circle_color=0xF456F3)
 
 ===============
 Bar Plot

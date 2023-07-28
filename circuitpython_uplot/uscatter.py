@@ -5,7 +5,7 @@
 
 """
 
-`uscatter`
+`scatter`
 ================================================================================
 
 CircuitPython scatter graph
@@ -29,8 +29,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-# pylint: disable=too-few-public-methods, invalid-name, duplicate-code, too-many-locals, too-many-arguments
-class uscatter:
+class Scatter:
     """
     Main class to display different graphics
     """

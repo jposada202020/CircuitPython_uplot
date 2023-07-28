@@ -7,7 +7,7 @@ from random import choice
 import board
 from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.uscatter import uscatter
+from circuitpython_uplot.scatter import Scatter
 
 
 # Setting up the display
@@ -21,7 +21,7 @@ plot.tick_params(tickx_height=12, ticky_height=12, tickcolor=0xFF0008, tickgrid=
 plot.axs_params(axstype="cartesian")
 a = np.linspace(1, 100)
 b = [choice(a) for _ in a]
-uscatter(plot, a, b)
+Scatter(plot, a, b)
 
 # Plotting and showing the plot
 display.show(plot)

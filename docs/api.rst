@@ -4,7 +4,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.uplot
     :members:
 
-.. automodule:: circuitpython_uplot.uscatter
+.. automodule:: circuitpython_uplot.scatter
     :members:
 
 .. automodule:: circuitpython_uplot.ubar
@@ -29,4 +29,7 @@ Uplot Library
     :members:
 
 .. automodule:: circuitpython_uplot.shade
+    :members:
+
+.. automodule:: circuitpython_uplot.polar
     :members:

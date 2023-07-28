@@ -46,10 +46,10 @@ Scatter Example
 
 Scatter plot Example
 
-.. literalinclude:: ../examples/uplot_uscatter.py
-    :caption: examples/uplot_uscatter.py
+.. literalinclude:: ../examples/uplot_scatter.py
+    :caption: examples/uplot_scatter.py
     :lines: 5-
-.. image:: ../docs/uplot_ex7.jpg
+.. image:: ../docs/scatter.jpg
 
 Display_shapes Example
 -----------------------
@@ -150,6 +150,7 @@ Example showing how to add a data table to the plot
 .. literalinclude:: ../examples/uplot_ucartesian_table.py
     :caption: examples/uplot_ucartesian_table.py
     :lines: 5-
+    
 
 Lissajous Curves Example
 ---------------------------
@@ -161,6 +162,15 @@ Example showing how to draw lissajous curves
     :lines: 5-
 .. image:: ../docs/uplot_lissajous.jpg
 
+Cartesian Polar Plots Example
+--------------------------------
+
+Example showing how to draw polar plots using Cartesian
+
+.. literalinclude:: ../examples/uplot_polar_plots.py
+    :caption: examples/uplot_polar_plots.py
+    :lines: 5-
+.. image:: ../docs/polar_plots.jpg
 
 Stackplot Example
 ---------------------------
@@ -299,3 +309,13 @@ Shade example
     :caption: examples/uplot_shade_example.py
     :lines: 5-
 .. image:: ../docs/uplot_shade.jpg
+
+Polar example
+---------------------------
+
+Show how to use the Polar Plot
+
+.. literalinclude:: ../examples/uplot_polar_example.py
+    :caption: examples/uplot_polar_example.py
+    :lines: 5-
+.. image:: ../docs/polar_example.jpg
