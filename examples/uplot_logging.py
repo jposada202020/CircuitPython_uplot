@@ -7,7 +7,7 @@ import terminalio
 import board
 from adafruit_display_text import label
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ulogging import ulogging
+from circuitpython_uplot.logging import Logging
 
 # Setting up the display
 display = board.DISPLAY
@@ -63,7 +63,7 @@ display.refresh()
 
 dist = 3
 
-ulogging(
+Logging(
     plot_1,
     x[0:dist],
     temp_y[0:dist],

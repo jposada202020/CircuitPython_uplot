@@ -22,7 +22,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.map
     :members:
 
-.. automodule:: circuitpython_uplot.ulogging
+.. automodule:: circuitpython_uplot.logging
     :members:
 
 .. automodule:: circuitpython_uplot.usvg

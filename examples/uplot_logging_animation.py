@@ -7,7 +7,7 @@ import time
 import random
 import board
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ulogging import ulogging
+from circuitpython_uplot.logging import Logging
 
 # Setting up the display
 display = board.DISPLAY
@@ -67,7 +67,7 @@ display.refresh()
 dist = 1
 
 # Creating the loggraph
-my_loggraph = ulogging(
+my_loggraph = Logging(
     my_plot,
     x[0:dist],
     y[0:dist],

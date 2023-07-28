@@ -245,8 +245,8 @@ Logging Example
 
 Logging example
 
-.. literalinclude:: ../examples/uplot_ulogging.py
-    :caption: examples/uplot_ulogging.py
+.. literalinclude:: ../examples/uplot_logging.py
+    :caption: examples/uplot_logging.py
     :lines: 5-
 
 Logging Fill Example
@@ -257,7 +257,7 @@ Logging fill example
 .. literalinclude:: ../examples/uplot_logging_fill.py
     :caption: examples/uplot_logging_fill.py
     :lines: 5-
-.. image:: ../docs/uplot_ex22.jpg
+.. image:: ../docs/logging_fill.jpg
 
 
 Logging Changing Values Example
@@ -285,8 +285,8 @@ Logging Animation Example
 
 This example shows how to animate a plot
 
-.. literalinclude:: ../examples/uplot_ulogging_animation.py
-    :caption: examples/uplot_ulogging_animation.py
+.. literalinclude:: ../examples/uplot_logging_animation.py
+    :caption: examples/uplot_logging_animation.py
     :lines: 5-
 
 SVG Images examples

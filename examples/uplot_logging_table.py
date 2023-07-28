@@ -12,7 +12,7 @@ import displayio
 import board
 from table import Table
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ulogging import ulogging
+from circuitpython_uplot.logging import Logging
 
 # Create a display object
 display = board.DISPLAY
@@ -58,8 +58,8 @@ plot_1.tick_params(
 x = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 temp_y = [26, 25, 24, 23, 28, 24, 54, 76, 34, 23]
 
-# Create a ulogging object
-my_log = ulogging(
+# Create a logging object
+my_log = Logging(
     plot_1,
     x,
     temp_y,

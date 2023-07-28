@@ -6,7 +6,7 @@ import time
 import displayio
 import board
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ulogging import ulogging
+from circuitpython_uplot.logging import Logging
 
 # Setting up the display
 display = board.DISPLAY
@@ -51,7 +51,7 @@ g.append(plot_1)
 display.show(g)
 display.refresh()
 
-my_log = ulogging(
+my_log = Logging(
     plot_1,
     x,
     temp_y,

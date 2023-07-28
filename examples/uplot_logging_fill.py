@@ -5,7 +5,7 @@
 import displayio
 import board
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ulogging import ulogging
+from circuitpython_uplot.logging import Logging
 
 # Setting up the display
 display = board.DISPLAY
@@ -51,7 +51,7 @@ plot_2.tick_params(
 x = [10, 20, 30, 40, 50]
 temp_y = [26, 25, 24, 23, 28]
 
-ulogging(
+Logging(
     plot_1,
     x,
     temp_y,
@@ -62,7 +62,7 @@ ulogging(
     ticksy=[15, 30, 45, 60],
     fill=True,
 )
-ulogging(
+Logging(
     plot_2,
     x,
     temp_y,
