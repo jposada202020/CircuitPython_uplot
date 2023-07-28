@@ -426,7 +426,7 @@ You can choose the initial and final colors for the color map.
     import board
     from ulab import numpy as np
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.umap import umap
+    from circuitpython_uplot.map import Map
 
 
     display = board.DISPLAY
@@ -445,7 +445,7 @@ You can choose the initial and final colors for the color map.
         dtype=np.int16,
     )
 
-    umap(plot, x, 0xFF0000, 0x0000FF)
+    Map(plot, x, 0xFF0000, 0x0000FF)
 
     display.show(plot)
 

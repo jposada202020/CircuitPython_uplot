@@ -11,7 +11,7 @@ from circuitpython_uplot.ucartesian import ucartesian
 # Inspired by
 # https://github.com/CodeDrome/polar-plots-python
 
-
+# pylint: disable=dangerous-default-value
 # Setting up the display
 display = board.DISPLAY
 plot = Uplot(0, 0, display.width // 2, display.height // 2, padding=1)

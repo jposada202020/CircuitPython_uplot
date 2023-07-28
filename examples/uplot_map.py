@@ -7,7 +7,7 @@ from random import choice
 import board
 from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.umap import umap
+from circuitpython_uplot.map import Map
 
 
 # Setting up the display
@@ -23,7 +23,7 @@ b = [choice(y) for _ in y]
 y1 = np.array(b).reshape((10, 10))
 
 # Plotting and showing the plot
-umap(plot, y1, 0xFF0044, 0x4400FF)
+Map(plot, y1, 0xFF0044, 0x4400FF)
 # Plotting and showing the plot
 display.show(plot)
 

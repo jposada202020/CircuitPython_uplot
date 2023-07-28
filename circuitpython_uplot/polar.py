@@ -25,6 +25,7 @@ __version__ = "0.11.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
+# pylint: disable=dangerous-default-value
 class Polar:
     """
     Class to draw polar plots

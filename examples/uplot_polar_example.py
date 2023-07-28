@@ -6,7 +6,6 @@ import board
 import ulab.numpy as np
 from circuitpython_uplot.uplot import Uplot, color
 from circuitpython_uplot.polar import Polar
-import ulab.numpy as np
 
 # Setting up the display
 display = board.DISPLAY

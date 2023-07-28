@@ -8,7 +8,7 @@ import displayio
 from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
 from circuitpython_uplot.ubar import ubar
-from circuitpython_uplot.uscatter import uscatter
+from circuitpython_uplot.scatter import Scatter
 from circuitpython_uplot.upie import upie
 from circuitpython_uplot.ucartesian import ucartesian
 
@@ -59,7 +59,7 @@ plot5 = Uplot(0, 180, 120, 120)
 plot5.axs_params(axstype="cartesian")
 a = np.linspace(3, 98)
 b = [choice(a) for _ in a]
-uscatter(plot5, a, b, rangex=[0, 102], rangey=[0, 102], radius=2)
+Scatter(plot5, a, b, rangex=[0, 102], rangey=[0, 102], radius=2)
 
 plot.append(plot5)
 

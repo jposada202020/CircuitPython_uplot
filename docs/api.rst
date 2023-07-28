@@ -19,7 +19,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.ufillbetween
     :members:
 
-.. automodule:: circuitpython_uplot.umap
+.. automodule:: circuitpython_uplot.map
     :members:
 
 .. automodule:: circuitpython_uplot.ulogging

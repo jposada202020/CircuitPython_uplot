@@ -150,7 +150,6 @@ Example showing how to add a data table to the plot
 .. literalinclude:: ../examples/uplot_ucartesian_table.py
     :caption: examples/uplot_ucartesian_table.py
     :lines: 5-
-    
 
 Lissajous Curves Example
 ---------------------------
@@ -212,15 +211,15 @@ example of uboxplot integration with uplot
     :lines: 8-
 .. image:: ../docs/uplot_ex16.jpg
 
-Umap Example
+Map Example
 ---------------------------
 
-umap simple example
+map simple example
 
-.. literalinclude:: ../examples/uplot_umap.py
-    :caption: examples/uplot_umap.py
+.. literalinclude:: ../examples/uplot_map.py
+    :caption: examples/uplot_map.py
     :lines: 5-
-.. image:: ../docs/uplot_ex17.jpg
+.. image:: ../docs/map.jpg
 
 Sparkline Animation Example
 ---------------------------
