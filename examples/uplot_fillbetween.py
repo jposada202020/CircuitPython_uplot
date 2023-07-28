@@ -6,7 +6,7 @@ import time
 import board
 from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ufillbetween import ufillbetween
+from circuitpython_uplot.fillbetween import Fillbetween
 
 
 # Setting up the display
@@ -19,7 +19,7 @@ x = np.linspace(0, 8, num=25)
 y1 = x**2 / 2
 y2 = 2 + x**2 + 3 * x
 
-ufillbetween(plot, x, y1, y2)
+Fillbetween(plot, x, y1, y2)
 
 display.show(plot)
 

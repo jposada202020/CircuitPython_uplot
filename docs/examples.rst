@@ -191,15 +191,15 @@ plot different ulements in a single display
     :lines: 5-
 .. image:: ../docs/readme.png
 
-Ufillbetween Example
+Fillbetween Example
 ---------------------------
 
-example of ufillbetween plot
+Example of fillbetween plot
 
-.. literalinclude:: ../examples/uplot_ufillbetween.py
-    :caption: examples/uplot_ufillbetween.py
+.. literalinclude:: ../examples/uplot_fillbetween.py
+    :caption: examples/uplot_fillbetween.py
     :lines: 5-
-.. image:: ../docs/uplot_ex15.jpg
+.. image:: ../docs/fillbetween_example.jpg
 
 Uboxplot Example
 ---------------------------

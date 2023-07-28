@@ -16,7 +16,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.ucartesian
     :members:
 
-.. automodule:: circuitpython_uplot.ufillbetween
+.. automodule:: circuitpython_uplot.fillbetween
     :members:
 
 .. automodule:: circuitpython_uplot.map

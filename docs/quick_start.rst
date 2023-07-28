@@ -60,7 +60,7 @@ At the moment the following objects can be added to the plot area:
 
 * Elements in the library
     * Cartesian Plane
-    * Ufillbetween graph
+    * Fillbetween graph
     * Stackplot
     * Bar graph
     * Pie Chart
@@ -398,7 +398,7 @@ it will fill the area between two curves:
     import board
     from ulab import numpy as np
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ufillbetween import ufillbetween
+    from circuitpython_uplot.fillbetween import Fillbetween
 
 
     display = board.DISPLAY
@@ -410,7 +410,7 @@ it will fill the area between two curves:
     y1 = x**2 / 2
     y2 = 2 + x**2 + 3 * x
 
-    ufillbetween(plot, x, y1, y2)
+    Fillbetween(plot, x, y1, y2)
 
     display.show(plot)
 

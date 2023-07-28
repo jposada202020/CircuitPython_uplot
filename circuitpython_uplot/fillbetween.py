@@ -4,7 +4,7 @@
 
 """
 
-`ufillbetween`
+`fillbetween`
 ================================================================================
 
 CircuitPython fillbetween graph
@@ -26,7 +26,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-class ufillbetween:
+class Fillbetween:
     """
     Class to draw a fillbetween graph
     """
