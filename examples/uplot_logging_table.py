@@ -11,7 +11,7 @@ import time
 import displayio
 import board
 from table import Table
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 from circuitpython_uplot.logging import Logging
 
 # Create a display object

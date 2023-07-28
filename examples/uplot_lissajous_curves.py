@@ -5,8 +5,8 @@
 import math
 import board
 import displayio
-from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.cartesian import Cartesian
 
 # Inspired by Paul McWhorter Raspberry Pi Pico W LESSON 27: Creating Lissajous Patterns
 # on an OLED Display
@@ -57,7 +57,7 @@ separation = 2
 
 # Creating the Plots
 x_number_list, y_number_list = create_curve(1, 2, 10)
-ucartesian(
+Cartesian(
     plot,
     x_number_list,
     y_number_list,
@@ -67,7 +67,7 @@ ucartesian(
 )
 
 x_number_list, y_number_list = create_curve(3, 2, 10)
-ucartesian(
+Cartesian(
     plot2,
     x_number_list,
     y_number_list,
@@ -77,7 +77,7 @@ ucartesian(
 )
 
 x_number_list, y_number_list = create_curve(3, 4, 10)
-ucartesian(
+Cartesian(
     plot3,
     x_number_list,
     y_number_list,
@@ -87,7 +87,7 @@ ucartesian(
 )
 
 x_number_list, y_number_list = create_curve(5, 4, 10)
-ucartesian(
+Cartesian(
     plot4,
     x_number_list,
     y_number_list,

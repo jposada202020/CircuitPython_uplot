@@ -6,11 +6,11 @@ from random import choice
 import board
 import displayio
 from ulab import numpy as np
-from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.plot import Uplot
 from circuitpython_uplot.bar import Bar
 from circuitpython_uplot.scatter import Scatter
 from circuitpython_uplot.pie import Pie
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.cartesian import Cartesian
 
 
 display = board.DISPLAY
@@ -26,7 +26,7 @@ plot2 = Uplot(0, 0, 130, 130)
 x = np.linspace(-4, 4, num=25)
 constant = 2.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 4.0)
-ucartesian(plot2, x, y, rangex=[-5, 5], rangey=[0, 1])
+Cartesian(plot2, x, y, rangex=[-5, 5], rangey=[0, 1])
 plot.append(plot2)
 
 plot3 = Uplot(130, 0, 160, 160)
@@ -40,7 +40,7 @@ constant = 1.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
 
 # Plotting and showing the plot
-ucartesian(plot3, x, y, rangex=[-5, 5], rangey=[0, 0.5])
+Cartesian(plot3, x, y, rangex=[-5, 5], rangey=[0, 0.5])
 plot.append(plot3)
 
 plot4 = Uplot(290, 0, 150, 150)
@@ -80,13 +80,13 @@ plot7 = Uplot(290, 160, 150, 150)
 x = np.linspace(1, 10, num=10)
 
 y = [6, 7, 9, 6, 9, 7, 6, 6, 8, 9]
-ucartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0xFF0000, fill=True)
+Cartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0xFF0000, fill=True)
 
 y = [4, 3, 7, 8, 3, 9, 3, 2, 1, 2]
-ucartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0xFF00FF, fill=True)
+Cartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0xFF00FF, fill=True)
 
 y = [1, 4, 6, 3, 6, 6, 5, 0, 9, 2]
-ucartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fill=True)
+Cartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fill=True)
 
 plot.append(plot7)
 

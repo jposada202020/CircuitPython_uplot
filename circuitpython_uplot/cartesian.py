@@ -4,7 +4,7 @@
 
 """
 
-`ucartesian`
+`cartesian`
 ================================================================================
 
 CircuitPython cartesian graph
@@ -15,7 +15,7 @@ CircuitPython cartesian graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Uplot
 except ImportError:
     pass
 from bitmaptools import draw_line, fill_region
@@ -26,7 +26,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-class ucartesian:
+class Cartesian:
     """
     Class to draw cartesian plane
     """

@@ -5,8 +5,8 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.cartesian import Cartesian
 
 # Setting up the display
 display = board.DISPLAY
@@ -18,13 +18,13 @@ constant = 1.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
 
 # Drawing the graph
-ucartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0xFF0000)
+Cartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0xFF0000)
 
 # Creating some points to graph
 x = np.linspace(-3, 3, num=50)
 constant = 2.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
-ucartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0x00FF00)
+Cartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0x00FF00)
 
 # Plotting and showing the plot
 display.show(plot)

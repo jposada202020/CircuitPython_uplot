@@ -5,8 +5,8 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.cartesian import Cartesian
 
 # Setting up the display
 display = board.DISPLAY
@@ -20,7 +20,7 @@ constant = 1.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 2.0)
 
 # Drawing the graph
-ucartesian(plot, x, y)
+Cartesian(plot, x, y)
 
 display.show(plot)
 while True:

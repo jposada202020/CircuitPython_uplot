@@ -6,7 +6,7 @@ import time
 import board
 from ulab import numpy as np
 from adafruit_display_shapes.sparkline import Sparkline
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 
 
 # Setting up the display

@@ -4,7 +4,7 @@
 
 import time
 import board
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 from circuitpython_uplot.bar import Bar
 
 # Setting up the display

@@ -15,7 +15,7 @@ CircuitPython scatter graph
 """
 
 try:
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from math import sin, cos, ceil
@@ -37,7 +37,7 @@ class Bar:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         x: list,
         y: list,
         color: int = 0xFFFFFF,
@@ -49,7 +49,7 @@ class Bar:
         max_value=None,
     ) -> None:
         """
-        :param Uplot plot: Plot object for the scatter to be drawn
+        :param Plot plot: Plot object for the scatter to be drawn
         :param list x: x data
         :param list y: y data
         :param int color: boxes color. Defaults to const:``0xFFFFFF``
@@ -233,7 +233,7 @@ class Bar:
         )
 
     def _draw_rectangle(
-        self, plot: Uplot, x: int, y: int, width: int, height: int, color: int
+        self, plot: Plot, x: int, y: int, width: int, height: int, color: int
     ) -> None:
         """
         Helper function to draw bins rectangles

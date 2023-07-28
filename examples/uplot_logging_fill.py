@@ -4,7 +4,7 @@
 
 import displayio
 import board
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 from circuitpython_uplot.logging import Logging
 
 # Setting up the display

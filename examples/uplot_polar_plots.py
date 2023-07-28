@@ -5,8 +5,8 @@
 import board
 import displayio
 import ulab.numpy as np
-from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.cartesian import Cartesian
 
 # Inspired by
 # https://github.com/CodeDrome/polar-plots-python
@@ -86,13 +86,13 @@ def circle_function(angle_range=[0, 360], radius=35):
 
 
 x, y = rose_function(n=3, angle_range=[0, 360], radius=35)
-ucartesian(plot, x, y, rangex=[-40, 40], rangey=[-40, 40], line_color=0xE30B5D)
+Cartesian(plot, x, y, rangex=[-40, 40], rangey=[-40, 40], line_color=0xE30B5D)
 
 x, y = spiral_function(a=1, b=3, angle_range=[0, 900])
-ucartesian(plot2, x, y, rangex=[-50, 50], rangey=[-50, 50], line_color=color.YELLOW)
+Cartesian(plot2, x, y, rangex=[-50, 50], rangey=[-50, 50], line_color=color.YELLOW)
 
 x, y = cardioid_function(angle_range=[0, 360], radius=35)
-ucartesian(plot3, x, y, rangex=[-15, 75], rangey=[-50, 50], line_color=color.TEAL)
+Cartesian(plot3, x, y, rangex=[-15, 75], rangey=[-50, 50], line_color=color.TEAL)
 
 x, y = circle_function(angle_range=[0, 360], radius=35)
-ucartesian(plot4, x, y, rangex=[-40, 40], rangey=[-40, 40], line_color=color.ORANGE)
+Cartesian(plot4, x, y, rangex=[-40, 40], rangey=[-40, 40], line_color=color.ORANGE)

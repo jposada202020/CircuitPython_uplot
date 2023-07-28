@@ -137,18 +137,18 @@ Cartesian Advanced Example
 
 Showing the ability to display to graphs in the same plot with different colors
 
-.. literalinclude:: ../examples/uplot_ucartesian_advanced.py
-    :caption: examples/uplot_ucartesian_advanced.py
+.. literalinclude:: ../examples/uplot_cartesian_advanced.py
+    :caption: examples/uplot_cartesian_advanced.py
     :lines: 5-
-.. image:: ../docs/uplot_ex11.jpg
+.. image:: ../docs/uplot_cartesian_advance.jpg
 
 Cartesian Table Example
 ---------------------------
 
 Example showing how to add a data table to the plot
 
-.. literalinclude:: ../examples/uplot_ucartesian_table.py
-    :caption: examples/uplot_ucartesian_table.py
+.. literalinclude:: ../examples/uplot_cartesian_table.py
+    :caption: examples/uplot_cartesian_table.py
     :lines: 5-
 
 Lissajous Curves Example
@@ -235,8 +235,8 @@ Cartesian Animation Example
 
 Cartesian animation example
 
-.. literalinclude:: ../examples/uplot_ucartesian_loggin_data.py
-    :caption: examples/uplot_ucartesian_loggin_data.py
+.. literalinclude:: ../examples/uplot_cartesian_loggin_data.py
+    :caption: examples/uplot_cartesian_loggin_data.py
     :lines: 5-
 .. image:: ../docs/uplot_cartesian.gif
 

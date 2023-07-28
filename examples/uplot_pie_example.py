@@ -4,7 +4,7 @@
 
 import time
 import board
-from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.plot import Uplot
 from circuitpython_uplot.pie import upie
 
 

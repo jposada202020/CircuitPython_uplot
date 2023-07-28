@@ -15,7 +15,7 @@ CircuitPython Polar graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Uplot
 except ImportError:
     pass
 from bitmaptools import draw_line, draw_circle

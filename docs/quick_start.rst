@@ -172,7 +172,7 @@ to the `ulab` library
 
     from ulab import numpy as np
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ucartesian import ucartesian
+    from circuitpython_uplot.cartesian import Cartesian
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
 
@@ -184,7 +184,7 @@ After the initial setup we add our xy plane and show our plot
 
 .. code-block:: python
 
-    ucartesian(plot, x, y)
+    Cartesian(plot, x, y)
     display.show(plot)
 
 
@@ -203,7 +203,7 @@ the y axis to [0, 1], line color to Green :const:`0x00FF00` and no filling
     x = np.linspace(-3, 3, num=50)
     constant = 2.0 / np.sqrt(2 * np.pi)
     y = constant * np.exp((-(x**2)) / 2.0)
-    ucartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0x00FF00)
+    Cartesian(plot, x, y, rangex=[-5, 5], rangey=[0, 1], line_color=0x00FF00)
 
 
 if you want to add more than un line to your plot, you could do something like this:
@@ -214,8 +214,8 @@ if you want to add more than un line to your plot, you could do something like t
     x = np.linspace(-4, 4, num=25)
     y1 = x**2 / 2
     y2 = 2 + x**2 + 3 * x
-    ucartesian(plot, x, y1)
-    ucartesian(plot, x, y1)
+    Cartesian(plot, x, y1)
+    Cartesian(plot, x, y1)
     display.show(plot)
 
 

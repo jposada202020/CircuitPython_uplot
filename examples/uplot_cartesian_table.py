@@ -6,8 +6,8 @@ import displayio
 import board
 from ulab import numpy as np
 from table import Table
-from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.cartesian import Cartesian
 from circuitpython_uplot.shade import shade
 
 
@@ -101,7 +101,7 @@ x = np.linspace(25, 50, num=25)
 
 # Drawing the graphs
 for i in range(40, 110, 10):
-    ucartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
+    Cartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
 
 g.append(plot)
 

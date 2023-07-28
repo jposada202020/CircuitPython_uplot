@@ -7,7 +7,7 @@ Simple test to display boxplot using uplot
 
 import board
 from uboxplot import Boxplot
-from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.plot import Uplot
 
 
 display = board.DISPLAY

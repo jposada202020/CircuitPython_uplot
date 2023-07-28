@@ -6,7 +6,7 @@ import displayio
 import terminalio
 import board
 from adafruit_display_text import label
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 from circuitpython_uplot.logging import Logging
 
 # Setting up the display

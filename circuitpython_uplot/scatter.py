@@ -16,7 +16,7 @@ CircuitPython scatter graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Uplot
 except ImportError:
     pass
 

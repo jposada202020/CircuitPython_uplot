@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 import board
-from circuitpython_uplot.uplot import Uplot, color
+from circuitpython_uplot.plot import Uplot, color
 from circuitpython_uplot.svg import SVG
 from circuitpython_uplot.icons import FULL, Humidity, Temperature, Temperature2
 

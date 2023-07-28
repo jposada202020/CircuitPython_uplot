@@ -5,7 +5,7 @@
 import time
 import board
 import displayio
-from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.plot import Uplot
 from circuitpython_uplot.bar import Bar
 
 # from uplot_examples import u8

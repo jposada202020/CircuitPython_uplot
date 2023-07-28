@@ -8,8 +8,8 @@ import displayio
 import terminalio
 import board
 from adafruit_display_text import label
-from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.cartesian import Cartesian
 
 # Setting up the display
 display = board.DISPLAY
@@ -83,7 +83,7 @@ display.show(g)
 display.refresh()
 
 for i, element in enumerate(x):
-    ucartesian(
+    Cartesian(
         plot_1,
         x[0:i],
         temp_y[0:i],
@@ -93,7 +93,7 @@ for i, element in enumerate(x):
         line_color=color.BLACK,
         logging=True,
     )
-    ucartesian(
+    Cartesian(
         plot_2,
         x[0:i],
         humidity_y[0:i],

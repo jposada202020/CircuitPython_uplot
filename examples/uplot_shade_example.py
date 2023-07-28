@@ -5,8 +5,8 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ucartesian import ucartesian
+from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.cartesian import Cartesian
 from circuitpython_uplot.shade import shade
 
 # This example is based in the following Library
@@ -97,7 +97,7 @@ x = np.linspace(25, 50, num=25)
 
 # Drawing the graphs
 for i in range(40, 110, 10):
-    ucartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
+    Cartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
 
 display.show(plot)
 while True:

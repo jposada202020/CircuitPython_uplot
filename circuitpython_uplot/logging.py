@@ -15,7 +15,7 @@ CircuitPython logging data graph
 """
 try:
     from typing import Union
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Uplot
 except ImportError:
     pass
 from bitmaptools import draw_line, fill_region

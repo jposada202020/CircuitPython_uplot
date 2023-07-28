@@ -5,7 +5,7 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.uplot import Uplot
+from circuitpython_uplot.plot import Uplot
 from circuitpython_uplot.fillbetween import Fillbetween
 
 

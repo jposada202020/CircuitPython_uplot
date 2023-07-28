@@ -4,7 +4,7 @@
 
 """
 
-`uplot`
+`plot`
 ================================================================================
 
 CircuitPython Plot Class
@@ -41,7 +41,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/jposada202020/CircuitPython_uplot.git"
 
 
-class Uplot(displayio.Group):
+class Plot(displayio.Group):
     """
     Canvas Class to add different elements to the screen.
     The origin point set by ``x`` and ``y`` properties
