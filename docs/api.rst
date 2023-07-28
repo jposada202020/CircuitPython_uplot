@@ -10,7 +10,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.ubar
     :members:
 
-.. automodule:: circuitpython_uplot.upie
+.. automodule:: circuitpython_uplot.pie
     :members:
 
 .. automodule:: circuitpython_uplot.ucartesian

@@ -122,15 +122,15 @@ ubar 3D example
     :lines: 5-
 .. image:: ../docs/uplot_3DBars.jpg
 
-Upie Example
+Pie Example
 ----------------
 
-upie example
+Pie example
 
-.. literalinclude:: ../examples/uplot_upie_example.py
-    :caption: examples/uplot_upie_example.py
+.. literalinclude:: ../examples/uplot_pie_example.py
+    :caption: examples/uplot_pie_example.py
     :lines: 5-
-.. image:: ../docs/uplot_ex9.jpg
+.. image:: ../docs/uplot_pie.jpg
 
 Cartesian Advanced Example
 ---------------------------

@@ -5,7 +5,7 @@
 import time
 import board
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.upie import upie
+from circuitpython_uplot.pie import upie
 
 
 # Setting up the display

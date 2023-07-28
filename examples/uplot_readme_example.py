@@ -9,7 +9,7 @@ from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
 from circuitpython_uplot.ubar import ubar
 from circuitpython_uplot.scatter import Scatter
-from circuitpython_uplot.upie import upie
+from circuitpython_uplot.pie import Pie
 from circuitpython_uplot.ucartesian import ucartesian
 
 
@@ -69,7 +69,7 @@ plot6 = Uplot(130, 160, 150, 150)
 plot6.axs_params(axstype="box")
 a = [5, 2, 7, 3]
 
-upie(plot6, a, 0, 0)
+Pie(plot6, a, 0, 0)
 
 plot.append(plot6)
 

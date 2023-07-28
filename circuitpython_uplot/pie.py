@@ -4,7 +4,7 @@
 
 """
 
-`upie`
+`pie`
 ================================================================================
 
 CircuitPython pie graph
@@ -26,7 +26,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 
 
-class upie:
+class Pie:
     """
     Class to draw pie
     """
@@ -36,7 +36,7 @@ class upie:
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the upie to be drawn
+        :param Uplot plot: Plot object for the pie to be drawn
         :param list data: data to make the pie
         :param int x: pie center x coordinate
         :param int y: pie center y coordinate

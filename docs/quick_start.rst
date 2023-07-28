@@ -230,12 +230,12 @@ To make the Pie Chart the data needs to be in a python list form. The library wi
 
     import board
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.upie import upie
+    from circuitpython_uplot.pie import Pie
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
     a = [5, 2, 7, 3]
-    upie(plot, a)
+    Pie(plot, a)
     display.show(plot)
 
 There are no other special parameters to customize
