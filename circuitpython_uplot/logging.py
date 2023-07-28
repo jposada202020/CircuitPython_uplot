@@ -15,7 +15,7 @@ CircuitPython logging data graph
 """
 try:
     from typing import Union
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from bitmaptools import draw_line, fill_region
@@ -32,7 +32,7 @@ class Logging:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         x: Union[list, np.linspace, np.ndarray],
         y: Union[list, np.linspace, np.ndarray],
         rangex: list,
@@ -45,7 +45,7 @@ class Logging:
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the log to be drawn
+        :param Plot plot: Plot object for the log to be drawn
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray y: y points coordinates
         :param list|None rangex: x range limits. Defaults to None
@@ -140,10 +140,10 @@ class Logging:
             0,
         )
 
-    def draw_points(self, plot: Uplot, x: list, y: list, fill: bool = False) -> None:
+    def draw_points(self, plot: Plot, x: list, y: list, fill: bool = False) -> None:
         """
         Draws points in the plot
-        :param Uplot plot: plot object provided
+        :param Plot plot: plot object provided
         :param list x: list of x values
         :param list y: list of y values
         :param bool fill: parameter to fill the plot graphic. Defaults to False
@@ -153,10 +153,10 @@ class Logging:
 
         self.draw_new_lines(plot, x, y, fill)
 
-    def draw_new_lines(self, plot: Uplot, x: list, y: list, fill: bool = False) -> None:
+    def draw_new_lines(self, plot: Plot, x: list, y: list, fill: bool = False) -> None:
         """
         Draw the plot lines
-        :param Uplot plot: plot object provided
+        :param Plot plot: plot object provided
         :param list x: list of x values
         :param list y: list of y values
         :param bool fill: parameter to fill the plot graphic. Defaults to False

@@ -6,7 +6,7 @@ import time
 from random import choice
 import board
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.map import Map
 
 
@@ -14,7 +14,7 @@ from circuitpython_uplot.map import Map
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height, show_box=False)
+plot = Plot(0, 0, display.width, display.height, show_box=False)
 
 # Setting some date to plot
 x = np.linspace(-4, 4, num=100)

@@ -4,12 +4,12 @@
 
 import board
 import ulab.numpy as np
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.polar import Polar
 
 # Setting up the display
 display = board.DISPLAY
-plot = Uplot(10, 10, 250, 250, padding=0, show_box=False)
+plot = Plot(10, 10, 250, 250, padding=0, show_box=False)
 
 # Creating the data
 r = np.arange(0, 2, 0.01)

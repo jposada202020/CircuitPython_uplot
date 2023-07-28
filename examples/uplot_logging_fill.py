@@ -4,7 +4,7 @@
 
 import displayio
 import board
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
 
 # Setting up the display
@@ -16,7 +16,7 @@ group = displayio.Group()
 palette = displayio.Palette(1)
 palette[0] = 0x000000
 
-plot_1 = Uplot(
+plot_1 = Plot(
     0,
     0,
     150,
@@ -32,7 +32,7 @@ plot_1.tick_params(
     tickx_height=4, ticky_height=4, show_ticks=True, tickcolor=color.BLACK
 )
 
-plot_2 = Uplot(
+plot_2 = Plot(
     0,
     150,
     300,

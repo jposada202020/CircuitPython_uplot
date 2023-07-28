@@ -1,7 +1,7 @@
 Uplot Library
 ==============
 
-.. automodule:: circuitpython_uplot.uplot
+.. automodule:: circuitpython_uplot.plot
     :members:
 
 .. automodule:: circuitpython_uplot.scatter

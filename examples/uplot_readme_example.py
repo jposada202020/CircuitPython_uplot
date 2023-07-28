@@ -6,7 +6,7 @@ from random import choice
 import board
 import displayio
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.bar import Bar
 from circuitpython_uplot.scatter import Scatter
 from circuitpython_uplot.pie import Pie
@@ -14,7 +14,7 @@ from circuitpython_uplot.cartesian import Cartesian
 
 
 display = board.DISPLAY
-plot = Uplot(0, 0, display.width, display.height, show_box=False)
+plot = Plot(0, 0, display.width, display.height, show_box=False)
 
 group = displayio.Group()
 
@@ -22,14 +22,14 @@ palette = displayio.Palette(1)
 palette[0] = 0xFFFFFF
 
 
-plot2 = Uplot(0, 0, 130, 130)
+plot2 = Plot(0, 0, 130, 130)
 x = np.linspace(-4, 4, num=25)
 constant = 2.0 / np.sqrt(2 * np.pi)
 y = constant * np.exp((-(x**2)) / 4.0)
 Cartesian(plot2, x, y, rangex=[-5, 5], rangey=[0, 1])
 plot.append(plot2)
 
-plot3 = Uplot(130, 0, 160, 160)
+plot3 = Plot(130, 0, 160, 160)
 
 # Setting up tick parameters
 plot3.tick_params(tickx_height=12, ticky_height=12, tickcolor=0xFF00FF, tickgrid=True)
@@ -43,7 +43,7 @@ y = constant * np.exp((-(x**2)) / 2.0)
 Cartesian(plot3, x, y, rangex=[-5, 5], rangey=[0, 0.5])
 plot.append(plot3)
 
-plot4 = Uplot(290, 0, 150, 150)
+plot4 = Plot(290, 0, 150, 150)
 
 # Setting up tick parameters
 plot4.axs_params(axstype="box")
@@ -53,7 +53,7 @@ Bar(plot4, a, b, 0xFF1000, fill=True)
 
 plot.append(plot4)
 
-plot5 = Uplot(0, 180, 120, 120)
+plot5 = Plot(0, 180, 120, 120)
 
 # Setting up tick parameters
 plot5.axs_params(axstype="cartesian")
@@ -63,7 +63,7 @@ Scatter(plot5, a, b, rangex=[0, 102], rangey=[0, 102], radius=2)
 
 plot.append(plot5)
 
-plot6 = Uplot(130, 160, 150, 150)
+plot6 = Plot(130, 160, 150, 150)
 
 # Setting up tick parameters
 plot6.axs_params(axstype="box")
@@ -74,7 +74,7 @@ Pie(plot6, a, 0, 0)
 plot.append(plot6)
 
 
-plot7 = Uplot(290, 160, 150, 150)
+plot7 = Plot(290, 160, 150, 150)
 
 # Creating some points to graph
 x = np.linspace(1, 10, num=10)

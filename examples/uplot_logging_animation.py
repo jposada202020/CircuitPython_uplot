@@ -6,7 +6,7 @@
 import time
 import random
 import board
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
 
 # Setting up the display
@@ -14,7 +14,7 @@ display = board.DISPLAY
 display.auto_refresh = False
 
 # Drawing the graph
-my_plot = Uplot(
+my_plot = Plot(
     140,
     60,
     200,

@@ -5,7 +5,7 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.cartesian import Cartesian
 
 
@@ -13,7 +13,7 @@ from circuitpython_uplot.cartesian import Cartesian
 display = board.DISPLAY
 
 # Setting up the plot area
-plot = Uplot(
+plot = Plot(
     0,
     0,
     display.width,

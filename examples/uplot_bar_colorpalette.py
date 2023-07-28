@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 import board
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.bar import Bar
 
 # Setting up the display
@@ -14,7 +14,7 @@ DISPLAY_WIDTH = 480
 DISPLAY_HEIGHT = 320
 
 # Defining the plot
-plot = Uplot(
+plot = Plot(
     0,
     0,
     DISPLAY_WIDTH,

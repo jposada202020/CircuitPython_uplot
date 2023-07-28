@@ -5,7 +5,7 @@
 import math
 import board
 import displayio
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.cartesian import Cartesian
 
 # Inspired by Paul McWhorter Raspberry Pi Pico W LESSON 27: Creating Lissajous Patterns
@@ -37,10 +37,10 @@ def create_curve(a=1, b=2, mul_factor=10, delta=3.14 / 2):
 
 # Setting up the display
 display = board.DISPLAY
-plot = Uplot(0, 0, display.width // 2, display.height // 2, padding=1)
-plot2 = Uplot(240, 0, display.width // 2, display.height // 2, padding=1)
-plot3 = Uplot(0, 160, display.width // 2, display.height // 2, padding=1)
-plot4 = Uplot(240, 160, display.width // 2, display.height // 2, padding=1)
+plot = Plot(0, 0, display.width // 2, display.height // 2, padding=1)
+plot2 = Plot(240, 0, display.width // 2, display.height // 2, padding=1)
+plot3 = Plot(0, 160, display.width // 2, display.height // 2, padding=1)
+plot4 = Plot(240, 160, display.width // 2, display.height // 2, padding=1)
 g = displayio.Group()
 g.append(plot)
 g.append(plot2)

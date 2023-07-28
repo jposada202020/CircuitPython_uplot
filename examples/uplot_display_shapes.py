@@ -6,13 +6,13 @@ import time
 import board
 from adafruit_display_shapes.polygon import Polygon
 from adafruit_display_shapes.roundrect import RoundRect
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 
 # Setting up the display
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
 plot.tick_params(tickx_height=12, ticky_height=12, tickcolor=0xFF0008, tickgrid=True)

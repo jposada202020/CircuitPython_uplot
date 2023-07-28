@@ -6,14 +6,14 @@ import time
 import board
 from ulab import numpy as np
 from adafruit_display_shapes.sparkline import Sparkline
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 
 
 # Setting up the display
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 # 500 linearly spaced numbers
 x = np.linspace(-10 * np.pi, 10 * np.pi, 500)

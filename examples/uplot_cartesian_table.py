@@ -6,7 +6,7 @@ import displayio
 import board
 from ulab import numpy as np
 from table import Table
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.cartesian import Cartesian
 from circuitpython_uplot.shade import shade
 
@@ -42,7 +42,7 @@ def heat_index(temp, humidity):
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height, padding=5)
+plot = Plot(0, 0, display.width, display.height, padding=5)
 # Create a group to hold the objects
 g = displayio.Group()
 

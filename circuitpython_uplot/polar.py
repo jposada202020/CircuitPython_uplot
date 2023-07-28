@@ -15,7 +15,7 @@ CircuitPython Polar graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from bitmaptools import draw_line, draw_circle
@@ -33,7 +33,7 @@ class Polar:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         radius: Union[list, np.linspace, np.ndarray],
         theta: Union[list, np.linspace, np.ndarray],
         rangex: Optional[list] = None,
@@ -45,7 +45,7 @@ class Polar:
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the scatter to be drawn
+        :param Plot plot: Plot object for the scatter to be drawn
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray radius: radius points
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray theta: theta points
         :param list|None rangex: x range limits. Defaults to None

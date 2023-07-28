@@ -15,7 +15,7 @@ CircuitPython cartesian graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from bitmaptools import draw_line, fill_region
@@ -33,7 +33,7 @@ class Cartesian:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         x: Union[list, np.linspace, np.ndarray],
         y: Union[list, np.linspace, np.ndarray],
         rangex: Optional[list] = None,
@@ -45,7 +45,7 @@ class Cartesian:
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the scatter to be drawn
+        :param Plot plot: Plot object for the scatter to be drawn
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray y: y points coordinates
         :param list|None rangex: x range limits. Defaults to None

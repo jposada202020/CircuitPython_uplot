@@ -5,7 +5,7 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.cartesian import Cartesian
 from circuitpython_uplot.shade import shade
 
@@ -19,7 +19,7 @@ from circuitpython_uplot.shade import shade
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height, padding=5)
+plot = Plot(0, 0, display.width, display.height, padding=5)
 
 
 def heat_index(temp, humidity):

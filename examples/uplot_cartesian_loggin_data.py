@@ -8,13 +8,13 @@ import displayio
 import terminalio
 import board
 from adafruit_display_text import label
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.cartesian import Cartesian
 
 # Setting up the display
 display = board.DISPLAY
 
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 g = displayio.Group()
 
 DISPLAY_WIDTH = 200
@@ -41,7 +41,7 @@ text_humidity.anchored_position = 130, 0
 g.append(text_humidity)
 
 
-plot_1 = Uplot(
+plot_1 = Plot(
     0,
     50,
     200,
@@ -52,7 +52,7 @@ plot_1 = Uplot(
     background_color=color.WHITE,
 )
 
-plot_2 = Uplot(
+plot_2 = Plot(
     0,
     180,
     200,

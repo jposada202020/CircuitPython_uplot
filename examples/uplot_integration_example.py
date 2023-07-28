@@ -5,7 +5,7 @@
 import board
 from ulab import numpy as np
 from uhistogram import Histogram
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.cartesian import Cartesian
 
 # Setting Up the histogram
@@ -17,7 +17,7 @@ my_box.draw()
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 # Seeting some date to plot
 x = np.linspace(-4, 4, num=50)

@@ -14,7 +14,7 @@ CircuitPython svg icon utility for CircuitPython_uplot
 
 """
 try:
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from bitmaptools import draw_line
@@ -33,7 +33,7 @@ class SVG:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         icon: dict,
         x: int,
         y: int,
@@ -42,7 +42,7 @@ class SVG:
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the log to be drawn
+        :param Plot plot: Plot object for the log to be drawn
         :param dictionary icon: icon dictionary
         :param int x: x position for the svg image
         :param int y: y position for the svg image

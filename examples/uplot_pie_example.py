@@ -4,14 +4,14 @@
 
 import time
 import board
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.pie import upie
 
 
 # Setting up the display
 display = board.DISPLAY
 
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 # Setting up tick parameters
 plot.axs_params(axstype="box")

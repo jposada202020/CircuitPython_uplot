@@ -14,7 +14,7 @@ CircuitPython pie graph
 
 """
 try:
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 
@@ -32,11 +32,11 @@ class Pie:
     """
 
     def __init__(
-        self, plot: Uplot, data: list, x: int = 0, y: int = 0, radius: int = 40
+        self, plot: Plot, data: list, x: int = 0, y: int = 0, radius: int = 40
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the pie to be drawn
+        :param Plot plot: Plot object for the pie to be drawn
         :param list data: data to make the pie
         :param int x: pie center x coordinate
         :param int y: pie center y coordinate

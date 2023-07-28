@@ -4,13 +4,13 @@
 
 import time
 import board
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 
 # Setting up the display
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 plot.draw_circle(radius=8, x=120, y=120)
 

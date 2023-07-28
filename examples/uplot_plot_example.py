@@ -5,14 +5,14 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.cartesian import Cartesian
 
 # Setting up the display
 display = board.DISPLAY
 
 # Adding the plot area
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 # Creating some points to graph
 x = np.linspace(-4, 4, num=25)

@@ -5,10 +5,9 @@
 import time
 import board
 import displayio
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.bar import Bar
 
-# from uplot_examples import u8
 # Setting up the display
 display = board.DISPLAY
 
@@ -16,8 +15,8 @@ display = board.DISPLAY
 group = displayio.Group()
 
 # Creating the plot objects
-plot_scale1 = Uplot(0, 0, 100, 100, 1, scale=1)
-plot_scale2 = Uplot(125, 0, 100, 100, 1, scale=2)
+plot_scale1 = Plot(0, 0, 100, 100, 1, scale=1)
+plot_scale2 = Plot(125, 0, 100, 100, 1, scale=2)
 
 # Creating the data
 a = ["a", "b", "c", "d"]

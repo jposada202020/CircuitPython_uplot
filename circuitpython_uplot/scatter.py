@@ -16,7 +16,7 @@ CircuitPython scatter graph
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 
@@ -36,7 +36,7 @@ class Scatter:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         x: Union[list, np.linspace, np.ndarray],
         y: Union[list, np.linspace, np.ndarray],
         rangex: Optional[list] = None,

@@ -3,13 +3,13 @@ A small tour for uplot.
 
 Plot Usage
 =============
-We start importing some fundamental libraries for uplot to operate
+We start importing some fundamental libraries for plot to operate
 
 .. code-block:: python
 
     import board
     import displayio
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Plot
 
 For reference, screen in CircuitPython are defined from left to right and up to bottom. This means
 that our (x=0, y=0) will be in the left upper corner of the screen.
@@ -25,9 +25,9 @@ We add the plot area. in this case we are selecting the whole screen as our plot
 
 .. code-block:: python
 
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
-The Uplot will be used to display our graphics. The position and the size of the plot area
+The Plot will be used to display our graphics. The position and the size of the plot area
 could vary. This allows us to have more than 1 plot at the same time in the screen.
 Every one of them with different characteristics or graphs.
 
@@ -80,10 +80,10 @@ library
     import board
     from adafruit_display_shapes.polygon import Polygon
     from adafruit_display_shapes.roundrect import RoundRect
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     roundrect = RoundRect(30, 30, 61, 81, 10, fill=0x0, outline=0xFF00FF, stroke=6)
     plot.append(roundrect)
     display.show(plot)
@@ -93,9 +93,9 @@ library
 Ticks and Grid
 ===============
 Plot axes are shown by default. To change this behaviour you would need
-to use the correct keyword in the `Uplot.axs_params` function:
+to use the correct keyword in the `Plot.axs_params` function:
 
-.. py:function:: Uplot.axs_params(axstype: Literal["box", "cartesian", "line"] = "box")
+.. py:function:: Plot.axs_params(axstype: Literal["box", "cartesian", "line"] = "box")
 
    :param axstype: Option to display the axes
 
@@ -108,13 +108,13 @@ The following snippet shows how to create a cartesian plot
 
 .. code-block:: python
 
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     plot.axs_params(axstype="cartesian")
 
 Tick spacing and numbers are selected by default. However it's possible to customize
 the following parameters:
 
-.. py:function:: Uplot.tick_params(tickx_height, ticky_height, tickcolor, tickgrid)
+.. py:function:: Plot.tick_params(tickx_height, ticky_height, tickcolor, tickgrid)
 
    :param int tickx_height: tickx_height in pixels
    :param int ticky_height: ticky_height in pixels
@@ -139,7 +139,7 @@ You can choose some colors directly from the library. This can be done by import
 
 .. code-block:: python
 
-    from circuitpython_uplot.uplot import color
+    from circuitpython_uplot.plot import color
 
 This will allow you to use the colors in the list as color variable definitions
     * WHITE
@@ -155,7 +155,7 @@ This will allow you to use the colors in the list as color variable definitions
 
 .. code-block:: python
 
-    plot = Uplot(0, 0, display.width, display.height, background_color=color.WHITE, box_color=color.BLACK)
+    plot = Plot(0, 0, display.width, display.height, background_color=color.WHITE, box_color=color.BLACK)
 
 
 
@@ -171,10 +171,10 @@ to the `ulab` library
 .. code-block:: python
 
     from ulab import numpy as np
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Plot
     from circuitpython_uplot.cartesian import Cartesian
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
     x = np.linspace(-4, 4, num=25)
     constant = 1.0 / np.sqrt(2 * np.pi)
@@ -210,7 +210,7 @@ if you want to add more than un line to your plot, you could do something like t
 
 .. code-block:: python
 
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     x = np.linspace(-4, 4, num=25)
     y1 = x**2 / 2
     y2 = 2 + x**2 + 3 * x
@@ -223,17 +223,17 @@ if you want to add more than un line to your plot, you could do something like t
 Pie Chart
 ===============
 
-You can easily create Pie charts with uplot. Pie Charts are limited to 6 elements as per the automatic coloring.
+You can easily create Pie charts with plot. Pie Charts are limited to 6 elements as per the automatic coloring.
 To make the Pie Chart the data needs to be in a python list form. The library will take care of the rest
 
 .. code-block:: python
 
     import board
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.pie import Pie
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     a = [5, 2, 7, 3]
     Pie(plot, a)
     display.show(plot)
@@ -251,11 +251,11 @@ Creates a scatter plot with x,y data. You can customize the circle diameter if y
     from random import choice
     import board
     from ulab import numpy as np
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.scatter import Scatter
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
     a = np.linspace(1, 100)
     b = [choice(a) for _ in a]
@@ -287,11 +287,11 @@ You can choose to create shell or filled bars.
 .. code-block:: python
 
     import board
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
 
     a = ["a", "b", "c", "d"]
@@ -318,11 +318,11 @@ This will not work for shell bars sadly.
 .. code-block:: python
 
     import board
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     Bar(plot, a, b, fill=True, bar_space=30, xstart=70, color_palette=[0xFF1000, 0x00FF00, 0x0000FF, 0x00FFFF])
 
 
@@ -332,11 +332,11 @@ appearance
 .. code-block:: python
 
     import board
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.bar import bar
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
 
     a = ["a", "b", "c", "d"]
@@ -351,11 +351,11 @@ according to this max value, and bar plot will update their values accordingly
 .. code-block:: python
 
     import board
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
 
     a = ["a", "b", "c", "d"]
@@ -397,13 +397,13 @@ it will fill the area between two curves:
 
     import board
     from ulab import numpy as np
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.uplot import Plot
     from circuitpython_uplot.fillbetween import Fillbetween
 
 
     display = board.DISPLAY
 
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
     x = np.linspace(0, 8, num=25)
 
@@ -425,13 +425,13 @@ You can choose the initial and final colors for the color map.
 
     import board
     from ulab import numpy as np
-    from circuitpython_uplot.uplot import Uplot
+    from circuitpython_uplot.plot import Plot
     from circuitpython_uplot.map import Map
 
 
     display = board.DISPLAY
 
-    plot = Uplot(0, 0, display.width, display.height, show_box=False)
+    plot = Plot(0, 0, display.width, display.height, show_box=False)
 
     x = np.array(
         [
@@ -467,7 +467,7 @@ There are some parameters that you can customize:
 
 .. code-block:: python
 
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
 
     x = [10, 20, 30, 40, 50]
     temp_y = [10, 15, 35, 10, 25]
@@ -501,6 +501,6 @@ For example, if you want to load the Temperature icon with a scale of 2
     from circuitpython_uplot.icons import Temperature
 
     display = board.DISPLAY
-    plot = Uplot(0, 0, display.width, display.height)
+    plot = Plot(0, 0, display.width, display.height)
     SVG(plot, Temperature, 250, 50, 2)
     display.show(plot)

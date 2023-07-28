@@ -15,7 +15,7 @@ CircuitPython color map graph
 
 """
 try:
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 
@@ -34,14 +34,14 @@ class Map:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         data_points: np.ndarray,
         initial_color: int,
         final_color: int,
     ) -> None:
         """
 
-        :param Uplot plot: Plot object for the scatter to be drawn
+        :param Plot plot: Plot object for the scatter to be drawn
         :param np.array data_points: data points to create the color map
         :param int initial_color: initial color to create the color map
         :param int final_color: final color to create the color map

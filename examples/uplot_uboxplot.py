@@ -2,17 +2,17 @@
 #
 # SPDX-License-Identifier: MIT
 """
-Simple test to display boxplot using uplot
+Simple test to display boxplot using plot
 """
 
 import board
 from uboxplot import Boxplot
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 
 
 display = board.DISPLAY
 
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 plot.tick_params(tickx_height=10, ticky_height=10, tickcolor=0x440008, tickgrid=True)
 

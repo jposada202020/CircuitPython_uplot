@@ -15,7 +15,7 @@ CircuitPython shade utility for uPlot.
 """
 try:
     from typing import Optional, Union
-    from circuitpython_uplot.plot import Uplot
+    from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
 from ulab import numpy as np
@@ -33,7 +33,7 @@ class shade:
 
     def __init__(
         self,
-        plot: Uplot,
+        plot: Plot,
         x: Union[list, np.linspace, np.ndarray],
         y1: list,
         y2: list,
@@ -43,7 +43,7 @@ class shade:
         nudge: bool = True,
     ) -> None:
         """
-        :param Uplot plot: Plot object for the scatter to be drawn
+        :param Plot plot: Plot object for the scatter to be drawn
         :param list|ulab.numpy.linspace|ulab.numpy.ndarray x: x points coordinates
         :param list y1: y1 points coordinates
         :param list y2: y2 points coordinates

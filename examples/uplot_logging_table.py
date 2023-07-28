@@ -11,7 +11,7 @@ import time
 import displayio
 import board
 from table import Table
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
 
 # Create a display object
@@ -39,7 +39,7 @@ my_table = Table(
 g = displayio.Group()
 
 # Create a plot object
-plot_1 = Uplot(
+plot_1 = Plot(
     0,
     50,
     200,

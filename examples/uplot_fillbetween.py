@@ -5,14 +5,14 @@
 import time
 import board
 from ulab import numpy as np
-from circuitpython_uplot.plot import Uplot
+from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.fillbetween import Fillbetween
 
 
 # Setting up the display
 display = board.DISPLAY
 
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 
 x = np.linspace(0, 8, num=25)
 

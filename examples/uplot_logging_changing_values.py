@@ -5,13 +5,13 @@
 import time
 import displayio
 import board
-from circuitpython_uplot.plot import Uplot, color
+from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
 
 # Setting up the display
 display = board.DISPLAY
 
-plot = Uplot(0, 0, display.width, display.height)
+plot = Plot(0, 0, display.width, display.height)
 g = displayio.Group()
 
 DISPLAY_WIDTH = 200
@@ -28,7 +28,7 @@ t = displayio.TileGrid(background_bitmap, pixel_shader=palette)
 g.append(t)
 
 
-plot_1 = Uplot(
+plot_1 = Plot(
     0,
     50,
     200,
