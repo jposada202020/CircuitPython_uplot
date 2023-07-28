@@ -4,7 +4,7 @@
 
 """
 
-`ubar`
+`bar`
 ================================================================================
 
 CircuitPython scatter graph
@@ -30,7 +30,7 @@ __repo__ = "https://github.com/adafruit/CircuitPython_uplot.git"
 # pylint: disable=no-self-use
 
 
-class ubar:
+class Bar:
     """
     Main class to display different graphics
     """

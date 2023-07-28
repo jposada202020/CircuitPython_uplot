@@ -288,7 +288,7 @@ You can choose to create shell or filled bars.
 
     import board
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ubar import ubar
+    from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
@@ -296,21 +296,21 @@ You can choose to create shell or filled bars.
 
     a = ["a", "b", "c", "d"]
     b = [3, 5, 1, 7]
-    ubar(plot, a, b)
+    Bar(plot, a, b)
 
 
 You can select the color or and if the bars are filled
 
 .. code-block:: python
 
-    ubar(plot, a, b, 0xFF1000, True)
+    Bar(plot, a, b, 0xFF1000, True)
 
 
 You can also select the bar spacing and the xstart position:
 
 .. code-block:: python
 
-    ubar(plot, a, b, 0xFF1000, fill=True, bar_space=30, xstart=70)
+    Bar(plot, a, b, 0xFF1000, fill=True, bar_space=30, xstart=70)
 
 For bar filled graphs you can pass a color_palette list. This will allow you to select the color of each bar
 This will not work for shell bars sadly.
@@ -319,11 +319,11 @@ This will not work for shell bars sadly.
 
     import board
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ubar import ubar
+    from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
-    ubar(plot, a, b, fill=True, bar_space=30, xstart=70, color_palette=[0xFF1000, 0x00FF00, 0x0000FF, 0x00FFFF])
+    Bar(plot, a, b, fill=True, bar_space=30, xstart=70, color_palette=[0xFF1000, 0x00FF00, 0x0000FF, 0x00FFFF])
 
 
 with the projection argument you can show the bars with projection. This will give them a 3D
@@ -333,7 +333,7 @@ appearance
 
     import board
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ubar import ubar
+    from circuitpython_uplot.bar import bar
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
@@ -341,7 +341,7 @@ appearance
 
     a = ["a", "b", "c", "d"]
     b = [3, 5, 1, 7]
-    ubar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
+    Bar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
 
 
 For filled unprojected bars you can update their values. This is useful for data logging.
@@ -352,7 +352,7 @@ according to this max value, and bar plot will update their values accordingly
 
     import board
     from circuitpython_uplot.uplot import Uplot
-    from circuitpython_uplot.ubar import ubar
+    from circuitpython_uplot.bar import Bar
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
@@ -360,13 +360,13 @@ according to this max value, and bar plot will update their values accordingly
 
     a = ["a", "b", "c", "d"]
     b = [3, 5, 1, 7]
-    my_ubar = ubar(plot, a, b, color=0xFF1000, fill=True, color_palette=[0xFF1000, 0x00FF00, 0xFFFF00, 0x123456], max_value=10)
+    my_bar = Bar(plot, a, b, color=0xFF1000, fill=True, color_palette=[0xFF1000, 0x00FF00, 0xFFFF00, 0x123456], max_value=10)
 
 Then you can update the values of the bar plot:
 
 .. code-block:: python
 
-    my_ubar.update_values([1, 2, 3, 4])
+    my_bar.update_values([1, 2, 3, 4])
 
 
 Also for Filled unprojected bars you can change all bars color at once. The following
@@ -374,13 +374,13 @@ code will change all the bar's color to red
 
 .. code-block:: python
 
-    my_ubar.update_colors(0xFF0000, 0xFF0000, 0xFF0000, 0xFF0000)
+    my_bar.update_colors(0xFF0000, 0xFF0000, 0xFF0000, 0xFF0000)
 
 If you prefer, you can change the color of a single bar using the following code:
 
 .. code-block:: python
 
-    my_ubar.update_bar_color(0, 0x0000FF)
+    my_bar.update_bar_color(0, 0x0000FF)
 
 This will change the first bar to Blue.
 

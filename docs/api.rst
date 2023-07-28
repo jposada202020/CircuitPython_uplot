@@ -7,7 +7,7 @@ Uplot Library
 .. automodule:: circuitpython_uplot.scatter
     :members:
 
-.. automodule:: circuitpython_uplot.ubar
+.. automodule:: circuitpython_uplot.bar
     :members:
 
 .. automodule:: circuitpython_uplot.pie

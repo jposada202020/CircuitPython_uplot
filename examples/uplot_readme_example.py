@@ -7,7 +7,7 @@ import board
 import displayio
 from ulab import numpy as np
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ubar import ubar
+from circuitpython_uplot.bar import Bar
 from circuitpython_uplot.scatter import Scatter
 from circuitpython_uplot.pie import Pie
 from circuitpython_uplot.ucartesian import ucartesian
@@ -49,7 +49,7 @@ plot4 = Uplot(290, 0, 150, 150)
 plot4.axs_params(axstype="box")
 a = ["a", "b", "c", "d"]
 b = [3, 5, 1, 7]
-ubar(plot4, a, b, 0xFF1000, fill=True)
+Bar(plot4, a, b, 0xFF1000, fill=True)
 
 plot.append(plot4)
 

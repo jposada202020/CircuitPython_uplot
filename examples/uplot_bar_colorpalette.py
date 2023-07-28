@@ -4,7 +4,7 @@
 
 import board
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ubar import ubar
+from circuitpython_uplot.bar import Bar
 
 # Setting up the display
 display = board.DISPLAY
@@ -29,7 +29,7 @@ activities_latest_heart_value = [55, 20, 25, 30, 35, 10]
 a = ["a", "b", "c", "d", "e", "f"]
 
 # Creating the Bar Plot
-ubar(
+Bar(
     plot,
     a,
     activities_latest_heart_value,

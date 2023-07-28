@@ -5,7 +5,7 @@
 import time
 import board
 from circuitpython_uplot.uplot import Uplot
-from circuitpython_uplot.ubar import ubar
+from circuitpython_uplot.bar import Bar
 
 
 # Setting up the display
@@ -17,7 +17,7 @@ plot = Uplot(0, 0, display.width, display.height)
 plot.axs_params(axstype="box")
 a = ["a", "b", "c", "d"]
 b = [3, 5, 1, 7]
-ubar(plot, a, b, 0xFF1000, True)
+Bar(plot, a, b, 0xFF1000, True)
 
 # Plotting and showing the plot
 display.show(plot)

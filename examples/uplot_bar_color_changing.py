@@ -5,7 +5,7 @@
 import time
 import board
 from circuitpython_uplot.uplot import Uplot, color
-from circuitpython_uplot.ubar import ubar
+from circuitpython_uplot.bar import Bar
 
 # Setting up the display
 display = board.DISPLAY
@@ -22,43 +22,35 @@ plot = Uplot(
     DISPLAY_HEIGHT,
     background_color=color.BLACK,
     padding=10,
-    box_color=color.BLACK,
+    box_color=color.WHITE,
 )
+
+display.show(plot)
 
 # Dummy data to plot
 some_values = [55, 20, 25, 30, 35, 10]
 a = ["a", "b", "c", "d", "e", "f"]
 
-add = 1
 # Showing the plot
 display.show(plot)
 
 # Creating the bar
-my_ubar = ubar(
+my_bar = Bar(
     plot,
     a,
     some_values,
     0xFF1000,
     True,
-    color_palette=[
-        0xFF1000,
-        0x00FF00,
-        0x0000FF,
-        0xFFFF00,
-        0x00FFFF,
-        0x123456,
-    ],
-    max_value=100,
+    projection=False,
+    max_value=50,
+)
+time.sleep(2)
+# Changing all the bars to Yellow
+my_bar.update_colors(
+    [color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW]
 )
 
-for i in range(20):
-    values_changed = [j + add for j in some_values]
-    my_ubar.update_values(values_changed)
-    add += 1
-    time.sleep(0.1)
+time.sleep(2)
 
-for i in range(20):
-    values_changed = [j + add for j in some_values]
-    my_ubar.update_values(values_changed)
-    add -= 1
-    time.sleep(0.1)
+# Changing the 3 bar to Purple
+my_bar.update_bar_color(2, color.PURPLE)

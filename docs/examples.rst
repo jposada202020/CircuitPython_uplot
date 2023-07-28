@@ -61,34 +61,34 @@ Display Shapes integration example
     :lines: 5-
 .. image:: ../docs/uplot_ex6.jpg
 
-Ubar Example
+Bar Example
 ----------------
 
-ubar example
+Bar example
 
-.. literalinclude:: ../examples/uplot_ubar_example.py
-    :caption: examples/uplot_ubar_example.py
+.. literalinclude:: ../examples/uplot_bar_example.py
+    :caption: examples/uplot_bar_example.py
     :lines: 5-
-.. image:: ../docs/uplot_ex8.jpg
+.. image:: ../docs/bar_example.jpg
 
-Ubar Scale Example
+Bar Scale Example
 ---------------------
 
 Bar plot example showing how to use the scale
 
-.. literalinclude:: ../examples/uplot_ubar_scale_example.py
-    :caption: examples/uplot_ubar_scale_example.py
+.. literalinclude:: ../examples/uplot_bar_scale_example.py
+    :caption: examples/uplot_bar_scale_example.py
     :lines: 5-
 .. image:: ../docs/bar_scale.jpg
 
 
-Ubar Color Palette Example
+Bar Color Palette Example
 ----------------------------
 
 Bar plot example showing how to pass a user color Palette
 
-.. literalinclude:: ../examples/uplot_ubar_colorpalette.py
-    :caption: examples/uplot_ubar_colorpalette.py
+.. literalinclude:: ../examples/uplot_bar_colorpalette.py
+    :caption: examples/uplot_bar_colorpalette.py
     :lines: 5-
 .. image:: ../docs/bar_palette.jpg
 
@@ -98,8 +98,8 @@ Bar plot updating values Example
 
 Bar Plot example showing how to update values for a filled bars bar plot
 
-.. literalinclude:: ../examples/uplot_ubar_updating_values.py
-    :caption: examples/uplot_ubar_updating_values.py
+.. literalinclude:: ../examples/uplot_bar_updating_values.py
+    :caption: examples/uplot_bar_updating_values.py
     :lines: 5-
 
 Bar plot updating bar colors Example
@@ -107,18 +107,18 @@ Bar plot updating bar colors Example
 
 Bar Plot example showing how to update colors for a filled bars bar plot
 
-.. literalinclude:: ../examples/uplot_ubar_color_changing.py
-    :caption: examples/uplot_ubar_color_changing.py
+.. literalinclude:: ../examples/uplot_bar_color_changing.py
+    :caption: examples/uplot_bar_color_changing.py
     :lines: 5-
 
 
-Ubar 3D Example
+Bar 3D Example
 ----------------
 
-ubar 3D example
+Bar 3D example
 
-.. literalinclude:: ../examples/uplot_ubar_3Dbars.py
-    :caption: examples/uplot_ubar_3Dbars.py
+.. literalinclude:: ../examples/uplot_bar_3Dbars.py
+    :caption: examples/uplot_bar_3Dbars.py
     :lines: 5-
 .. image:: ../docs/uplot_3DBars.jpg
 
