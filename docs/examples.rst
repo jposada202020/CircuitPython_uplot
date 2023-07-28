@@ -318,3 +318,12 @@ Show how to use the Polar Plot
     :caption: examples/uplot_polar_example.py
     :lines: 5-
 .. image:: ../docs/polar_example.jpg
+
+Polar Advanced Example
+---------------------------
+
+Polar Advanced example
+
+.. literalinclude:: ../examples/examples/plot_polar_advanced_example.py
+    :caption: examples/examples/plot_polar_advanced_example.py
+    :lines: 5-

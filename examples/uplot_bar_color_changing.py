@@ -28,7 +28,7 @@ plot = Plot(
 display.show(plot)
 
 # Dummy data to plot
-some_values = [55, 20, 25, 30, 35, 10]
+some_values = [45, 20, 25, 30, 35, 10]
 a = ["a", "b", "c", "d", "e", "f"]
 
 # Showing the plot
