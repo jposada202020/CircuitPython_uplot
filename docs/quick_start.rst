@@ -497,10 +497,10 @@ For example, if you want to load the Temperature icon with a scale of 2
 
 .. code-block:: python
 
-    from circuitpython_uplot.usvg import usvg
+    from circuitpython_uplot.svg import SVG
     from circuitpython_uplot.icons import Temperature
 
     display = board.DISPLAY
     plot = Uplot(0, 0, display.width, display.height)
-    usvg(plot, Temperature, 250, 50, 2)
+    SVG(plot, Temperature, 250, 50, 2)
     display.show(plot)

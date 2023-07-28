@@ -294,10 +294,10 @@ SVG Images examples
 
 SVG Images example
 
-.. literalinclude:: ../examples/uplot_usvg_example.py
-    :caption: examples/uplot_usvg_example.py
+.. literalinclude:: ../examples/uplot_svg_example.py
+    :caption: examples/uplot_svg_example.py
     :lines: 5-
-.. image:: ../docs/uplot_ex23.jpg
+.. image:: ../docs/uplot_svg.jpg
 
 Shade examples
 ---------------------------
