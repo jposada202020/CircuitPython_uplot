@@ -324,6 +324,6 @@ Polar Advanced Example
 
 Polar Advanced example
 
-.. literalinclude:: ../examples/examples/plot_polar_advanced_example.py
-    :caption: examples/examples/plot_polar_advanced_example.py
+.. literalinclude:: ../examples/plot_polar_advanced_example.py
+    :caption: examples/plot_polar_advanced_example.py
     :lines: 5-
