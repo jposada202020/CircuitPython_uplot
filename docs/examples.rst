@@ -3,11 +3,11 @@ Simple test
 
 Ensure your device works with this simple test.
 
-.. literalinclude:: ../examples/uplot_simpletest.py
-    :caption: examples/uplot_simpletest.py
+.. literalinclude:: ../examples/plot_simpletest.py
+    :caption: examples/plot_simpletest.py
     :lines: 5-
 
-.. image:: ../docs/uplot_ex1.jpg
+.. image:: ../docs/plot_simple_test.jpg
 
 Plot Example
 -------------
@@ -156,10 +156,10 @@ Lissajous Curves Example
 
 Example showing how to draw lissajous curves
 
-.. literalinclude:: ../examples/uplot_lissajous_curves.py
-    :caption: examples/uplot_lissajous_curves.py
+.. literalinclude:: ../examples/lissajous_curves.py
+    :caption: examples/lissajous_curves.py
     :lines: 5-
-.. image:: ../docs/uplot_lissajous.jpg
+.. image:: ../docs/lissajous.jpg
 
 Cartesian Polar Plots Example
 --------------------------------
@@ -170,6 +170,16 @@ Example showing how to draw polar plots using Cartesian
     :caption: examples/uplot_polar_plots.py
     :lines: 5-
 .. image:: ../docs/polar_plots.jpg
+
+Cartesian Trigonometric Plots Example
+--------------------------------------
+
+Example showing how to draw Trigonometrics plots using Cartesian
+
+.. literalinclude:: ../examples/cartesian_trig_functions.py
+    :caption: examples/cartesian_trig_functions.py
+    :lines: 5-
+.. image:: ../docs/cartesian_trig_functions.jpg
 
 Stackplot Example
 ---------------------------
@@ -324,6 +334,7 @@ Polar Advanced Example
 
 Polar Advanced example
 
-.. literalinclude:: ../examples/plot_polar_advanced_example.py
-    :caption: examples/plot_polar_advanced_example.py
+.. literalinclude:: ../examples/polar_advanced.py
+    :caption: examples/polar_advanced.py
     :lines: 5-
+.. image:: ../docs/polar_advanced.jpg
