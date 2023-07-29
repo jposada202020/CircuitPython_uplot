@@ -1,10 +1,14 @@
-import ulab.numpy as np
-from circuitpython_uplot.plot import Plot
-from circuitpython_uplot.cartesian import Cartesian
+# SPDX-FileCopyrightText: Copyright (c) Jose D. Montoya
+#
+# SPDX-License-Identifier: MIT
+
 import board
 import displayio
+import ulab.numpy as np
 from adafruit_bitmap_font import bitmap_font
 from adafruit_display_text import bitmap_label
+from circuitpython_uplot.plot import Plot
+from circuitpython_uplot.cartesian import Cartesian
 
 font_file = "fonts/LeagueSpartan-Bold-16.bdf"
 font_to_use = bitmap_font.load_font(font_file)
