@@ -113,7 +113,7 @@ class Bar:
                 self._create_bars(xstart, i)
 
                 if projection:
-                    self._create_projections(xstart, i, len(color_palette))
+                    self._create_projections(xstart, i, len(self._bars))
 
                 plot.show_text(
                     str(y[i]),
