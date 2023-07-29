@@ -5,7 +5,7 @@
 import time
 import board
 from circuitpython_uplot.plot import Plot
-from circuitpython_uplot.pie import upie
+from circuitpython_uplot.pie import Pie
 
 
 # Setting up the display
@@ -17,7 +17,7 @@ plot = Plot(0, 0, display.width, display.height)
 plot.axs_params(axstype="box")
 a = [5, 2, 7, 3]
 
-upie(plot, a)
+Pie(plot, a)
 
 # Plotting and showing the plot
 display.show(plot)
