@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-
 import time
 import random
 import board
