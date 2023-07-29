@@ -70,14 +70,17 @@ class Bar:
         self._projection = projection
         self._filled = fill
 
+        self._y = [i * plot.scale for i in y]
+
         if max_value is None:
-            y_max = max(y)
+            y_max = max(self._y)
         else:
             y_max = max_value
 
-        self._y = [i * plot.scale for i in y]
-
         self._bar_space = int(bar_space / plot.scale)
+
+        xstart = int(xstart / plot.scale)
+
         self._graphx = plot.scale * ceil(
             abs(plot._newxmax - plot._newxmin) / (len(x) + 4)
         )
@@ -120,7 +123,7 @@ class Bar:
                     xstart + (i * self._graphx) + self._graphx // 2,
                     plot._newymin,
                 )
-                xstart = xstart + self._bar_space
+                xstart = xstart + self._bar_space // plot.scale
                 plot._index_colorused = plot._index_colorused + 1
                 self._color_index = self._color_index + 1
         else:
@@ -164,11 +167,11 @@ class Bar:
                     plot._index_colorused,
                 )
 
-                xstart = xstart + bar_space
+                xstart = xstart + self._bar_space
                 plot._index_colorused = plot._index_colorused + 1
                 plot.show_text(
                     str(y[i]),
-                    xstart + (i * self._graphx) - bar_space + self._graphx // 2,
+                    xstart + (i * self._graphx) - self._bar_space + self._graphx // 2,
                     plot._newymin,
                 )
 
