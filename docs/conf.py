@@ -42,7 +42,7 @@ templates_path = ["_templates"]
 source_suffix = ".rst"
 master_doc = "index"
 # General information about the project.
-project = "CircuitPython uplot Library"
+project = "CircuitPython microplot Library"
 creation_year = "2023"
 current_year = str(datetime.datetime.now().year)
 year_duration = (

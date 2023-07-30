@@ -1,4 +1,4 @@
-Uplot Library
+Microplot Library
 ==============
 
 .. automodule:: circuitpython_uplot.plot
