@@ -31,6 +31,16 @@ Setting up the ticks parameters
 
 .. image:: ../docs/tickparameters.jpg
 
+Plot Line Style Example
+---------------------------
+
+Plot some data for x and y with different line styles
+
+.. literalinclude:: ../examples/plot_line_styles.py
+    :caption: examples/plot_line_styles.py
+    :lines: 5-
+.. image:: ../docs/line_style.jpg
+
 Integration Example
 -------------------
 
