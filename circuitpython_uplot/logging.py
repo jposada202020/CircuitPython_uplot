@@ -14,7 +14,7 @@ CircuitPython logging data graph
 
 """
 try:
-    from typing import Union
+    from typing import Union, Optional
     from circuitpython_uplot.plot import Plot
 except ImportError:
     pass
@@ -42,6 +42,8 @@ class Logging:
         ticksy: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
         tick_pos: bool = False,
         fill: bool = False,
+        limits: Optional[list] = None,
+        limits_color: int = 0xFF0000,
     ) -> None:
         """
 
@@ -70,10 +72,21 @@ class Logging:
 
         plot._plot_palette[plot._index_colorused] = line_color
 
+        self._line_index = plot._index_colorused
+
         self.xmin = rangex[0]
         self.xmax = rangex[1]
         self.ymin = rangey[0]
         self.ymax = rangey[1]
+
+        if limits is not None:
+            self._limits = np.array(
+                plot.transform(
+                    self.ymin, self.ymax, plot._newymin, plot._newymax, np.array(limits)
+                ),
+                dtype=np.int16,
+            )
+            plot._plot_palette[9] = limits_color
 
         self.draw_points(plot, x, y, fill)
 
@@ -186,7 +199,7 @@ class Logging:
                     ynorm[index],
                     xnorm[index + 1],
                     ynorm[index + 1],
-                    plot._index_colorused,
+                    self._line_index,
                 )
             if fill:
                 for index, _ in enumerate(xnorm):
@@ -196,5 +209,23 @@ class Logging:
                         ynorm[index],
                         xnorm[index],
                         plot._newymin,
-                        plot._index_colorused,
+                        self._line_index,
                     )
+
+    def _draw_limit_lines(self, plot: Plot) -> None:
+        draw_line(
+            plot._plotbitmap,
+            plot._newxmin,
+            self._limits[0],
+            plot._newxmax,
+            self._limits[0],
+            9,
+        )
+        draw_line(
+            plot._plotbitmap,
+            plot._newxmin,
+            self._limits[1],
+            plot._newxmax,
+            self._limits[1],
+            9,
+        )

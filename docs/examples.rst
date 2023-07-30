@@ -309,6 +309,16 @@ This example shows how to animate a plot
     :caption: examples/logging_animation.py
     :lines: 5-
 
+Logging Animation Example
+---------------------------------------
+
+This example shows how to add limits to our plot
+
+.. literalinclude:: ../examples/logging_limits.py
+    :caption: examples/logging_limits.py
+    :lines: 5-
+.. image:: ../docs/logging_limits.jpg
+
 SVG Images examples
 ---------------------------
 
