@@ -6,7 +6,7 @@ Simple test to display boxplot using plot
 """
 
 import board
-from uboxplot import Boxplot
+from examples.uboxplot_example import Boxplot
 from circuitpython_uplot.plot import Plot
 
 

@@ -216,8 +216,8 @@ Uboxplot Example
 
 example of uboxplot integration in a plot
 
-.. literalinclude:: ../examples/uboxplot.py
-    :caption: examples/uboxplot.py
+.. literalinclude:: ../examples/uboxplot_example.py
+    :caption: examples/uboxplot_example.py
     :lines: 8-
 .. image:: ../docs/uboxplot_example.jpg
 

@@ -1,5 +1,5 @@
 Microplot Library
-==============
+======================
 
 .. automodule:: circuitpython_uplot.plot
     :members:
