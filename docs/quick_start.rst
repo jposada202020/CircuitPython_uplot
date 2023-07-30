@@ -1,4 +1,4 @@
-A small tour for uplot.
+A small tour for microplot.
 
 
 Plot Usage

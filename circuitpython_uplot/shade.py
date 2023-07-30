@@ -7,7 +7,7 @@
 `shade`
 ================================================================================
 
-CircuitPython shade utility for uPlot.
+CircuitPython shade utility for Plotting.
 
 * Author(s): Jose D. Montoya
 

@@ -39,6 +39,7 @@ class Cartesian:
         rangex: Optional[list] = None,
         rangey: Optional[list] = None,
         line_color: Optional[int] = None,
+        line_style: Optional[str] = None,
         fill: bool = False,
         nudge: bool = True,
         logging: bool = False,
@@ -51,6 +52,7 @@ class Cartesian:
         :param list|None rangex: x range limits. Defaults to None
         :param list|None rangey: y range limits. Defaults to None
         :param int|None line_color: line color. Defaults to None
+        :param str|None line_style: line style. Defaults to None
         :param bool fill: Show the filling. Defaults to `False`
         :param bool nudge: moves the graph a little for better displaying. Defaults to `True`
         :param bool logging: used to change the logic of the cartesian to work as a logger
@@ -60,6 +62,17 @@ class Cartesian:
 
         if line_color is not None:
             plot._plot_palette[plot._index_colorused] = line_color
+
+        if line_style is None:
+            self._line_type = "-"
+        else:
+            self._line_type = line_style
+
+        if self._line_type not in ["-", ".", "- -", "-.-"]:
+            raise ValueError("line_style must be a valid option")
+
+        if line_style is None:
+            self._line_type = "-"
 
         if nudge:
             nudge_factor = 1
@@ -123,14 +136,9 @@ class Cartesian:
                     break
                 if y[index] >= ymax:
                     continue
-                draw_line(
-                    plot._plotbitmap,
-                    xnorm[index],
-                    ynorm[index],
-                    xnorm[index + 1],
-                    ynorm[index + 1],
-                    plot._index_colorused,
-                )
+
+                self._draw_plotline(plot, index, xnorm, ynorm)
+
         if plot._showticks:
             if plot._cartesianfirst:
                 if logging:
@@ -144,3 +152,28 @@ class Cartesian:
             plot._index_colorused = plot._index_colorused
         else:
             plot._index_colorused = plot._index_colorused + 1
+
+    def _draw_plotline(self, plot, index, xnorm, ynorm):
+        if self._line_type == "-":
+            self._plot_line(plot, index, xnorm, ynorm)
+        elif self._line_type == "-.-":
+            if index % 3 == 0:
+                self._plot_line(plot, index, xnorm, ynorm)
+            else:
+                plot._plotbitmap[xnorm[index], ynorm[index]] = plot._index_colorused
+        elif self._line_type == ".":
+            plot._plotbitmap[xnorm[index], ynorm[index]] = plot._index_colorused
+        elif self._line_type == "- -":
+            if index % 2 == 0:
+                self._plot_line(plot, index, xnorm, ynorm)
+
+    @staticmethod
+    def _plot_line(plot, index, xnorm, ynorm):
+        draw_line(
+            plot._plotbitmap,
+            xnorm[index],
+            ynorm[index],
+            xnorm[index + 1],
+            ynorm[index + 1],
+            plot._index_colorused,
+        )

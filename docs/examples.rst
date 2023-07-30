@@ -14,40 +14,40 @@ Plot Example
 
 Plot some data for x and y
 
-.. literalinclude:: ../examples/uplot_plot_example.py
-    :caption: examples/uplot_plot_example.py
+.. literalinclude:: ../examples/plot_example.py
+    :caption: examples/plot_example.py
     :lines: 5-
 
-.. image:: ../docs/uplot_ex4.jpg
+.. image:: ../docs/plot_example.jpg
 
 Tick Parameters Settings Example
 ----------------------------------
 
 Setting up the ticks parameters
 
-.. literalinclude:: ../examples/uplot_tickparameters.py
-    :caption: examples/uplot_tickparameters.py
+.. literalinclude:: ../examples/tickparameters.py
+    :caption: examples/tickparameters.py
     :lines: 5-
 
-.. image:: ../docs/uplot_ex3.jpg
+.. image:: ../docs/tickparameters.jpg
 
 Integration Example
 -------------------
 
 Example showing different graphics elements integration
 
-.. literalinclude:: ../examples/uplot_integration_example.py
-    :caption: examples/uplot_integration_example.py
+.. literalinclude:: ../examples/integration_example.py
+    :caption: examples/integration_example.py
     :lines: 5-
-.. image:: ../docs/uplot_ex5.jpg
+.. image:: ../docs/integration_example.jpg
 
 Scatter Example
 -------------------
 
 Scatter plot Example
 
-.. literalinclude:: ../examples/uplot_scatter.py
-    :caption: examples/uplot_scatter.py
+.. literalinclude:: ../examples/scatter.py
+    :caption: examples/scatter.py
     :lines: 5-
 .. image:: ../docs/scatter.jpg
 
@@ -56,18 +56,18 @@ Display_shapes Example
 
 Display Shapes integration example
 
-.. literalinclude:: ../examples/uplot_display_shapes.py
-    :caption: examples/uplot_display_shapes.py
+.. literalinclude:: ../examples/display_shapes.py
+    :caption: examples/display_shapes.py
     :lines: 5-
-.. image:: ../docs/uplot_ex6.jpg
+.. image:: ../docs/display_shapes.jpg
 
 Bar Example
 ----------------
 
 Bar example
 
-.. literalinclude:: ../examples/uplot_bar_example.py
-    :caption: examples/uplot_bar_example.py
+.. literalinclude:: ../examples/bar_example.py
+    :caption: examples/bar_example.py
     :lines: 5-
 .. image:: ../docs/bar_example.jpg
 
@@ -76,8 +76,8 @@ Bar Scale Example
 
 Bar plot example showing how to use the scale
 
-.. literalinclude:: ../examples/uplot_bar_scale_example.py
-    :caption: examples/uplot_bar_scale_example.py
+.. literalinclude:: ../examples/bar_scale_example.py
+    :caption: examples/bar_scale_example.py
     :lines: 5-
 .. image:: ../docs/bar_scale.jpg
 
@@ -87,8 +87,8 @@ Bar Color Palette Example
 
 Bar plot example showing how to pass a user color Palette
 
-.. literalinclude:: ../examples/uplot_bar_colorpalette.py
-    :caption: examples/uplot_bar_colorpalette.py
+.. literalinclude:: ../examples/bar_colorpalette.py
+    :caption: examples/bar_colorpalette.py
     :lines: 5-
 .. image:: ../docs/bar_palette.jpg
 
@@ -98,8 +98,8 @@ Bar plot updating values Example
 
 Bar Plot example showing how to update values for a filled bars bar plot
 
-.. literalinclude:: ../examples/uplot_bar_updating_values.py
-    :caption: examples/uplot_bar_updating_values.py
+.. literalinclude:: ../examples/bar_updating_values.py
+    :caption: examples/bar_updating_values.py
     :lines: 5-
 
 Bar plot updating bar colors Example
@@ -107,8 +107,8 @@ Bar plot updating bar colors Example
 
 Bar Plot example showing how to update colors for a filled bars bar plot
 
-.. literalinclude:: ../examples/uplot_bar_color_changing.py
-    :caption: examples/uplot_bar_color_changing.py
+.. literalinclude:: ../examples/bar_color_changing.py
+    :caption: examples/bar_color_changing.py
     :lines: 5-
 
 
@@ -117,38 +117,38 @@ Bar 3D Example
 
 Bar 3D example
 
-.. literalinclude:: ../examples/uplot_bar_3Dbars.py
-    :caption: examples/uplot_bar_3Dbars.py
+.. literalinclude:: ../examples/bar_3Dbars.py
+    :caption: examples/bar_3Dbars.py
     :lines: 5-
-.. image:: ../docs/uplot_3DBars.jpg
+.. image:: ../docs/3DBars.jpg
 
 Pie Example
 ----------------
 
 Pie example
 
-.. literalinclude:: ../examples/uplot_pie_example.py
-    :caption: examples/uplot_pie_example.py
+.. literalinclude:: ../examples/pie_example.py
+    :caption: examples/pie_example.py
     :lines: 5-
-.. image:: ../docs/uplot_pie.jpg
+.. image:: ../docs/pie.jpg
 
 Cartesian Advanced Example
 ---------------------------
 
 Showing the ability to display to graphs in the same plot with different colors
 
-.. literalinclude:: ../examples/uplot_cartesian_advanced.py
-    :caption: examples/uplot_cartesian_advanced.py
+.. literalinclude:: ../examples/cartesian_advanced.py
+    :caption: examples/cartesian_advanced.py
     :lines: 5-
-.. image:: ../docs/uplot_cartesian_advance.jpg
+.. image:: ../docs/cartesian_advance.jpg
 
 Cartesian Table Example
 ---------------------------
 
 Example showing how to add a data table to the plot
 
-.. literalinclude:: ../examples/uplot_cartesian_table.py
-    :caption: examples/uplot_cartesian_table.py
+.. literalinclude:: ../examples/cartesian_table.py
+    :caption: examples/cartesian_table.py
     :lines: 5-
 
 Lissajous Curves Example
@@ -166,8 +166,8 @@ Cartesian Polar Plots Example
 
 Example showing how to draw polar plots using Cartesian
 
-.. literalinclude:: ../examples/uplot_polar_plots.py
-    :caption: examples/uplot_polar_plots.py
+.. literalinclude:: ../examples/polar_plots.py
+    :caption: examples/polar_plots.py
     :lines: 5-
 .. image:: ../docs/polar_plots.jpg
 
@@ -186,18 +186,18 @@ Stackplot Example
 
 Stackplot simple example
 
-.. literalinclude:: ../examples/uplot_stackplot.py
-    :caption: examples/uplot_stackplot.py
+.. literalinclude:: ../examples/stackplot.py
+    :caption: examples/stackplot.py
     :lines: 8-
-.. image:: ../docs/uplot_ex12.jpg
+.. image:: ../docs/stackplot_example.jpg
 
 Advanced Example
 ---------------------------
 
 plot different ulements in a single display
 
-.. literalinclude:: ../examples/uplot_readme_example.py
-    :caption: examples/uplot_readme_example.py
+.. literalinclude:: ../examples/readme_example.py
+    :caption: examples/readme_example.py
     :lines: 5-
 .. image:: ../docs/readme.png
 
@@ -206,28 +206,28 @@ Fillbetween Example
 
 Example of fillbetween plot
 
-.. literalinclude:: ../examples/uplot_fillbetween.py
-    :caption: examples/uplot_fillbetween.py
+.. literalinclude:: ../examples/fillbetween.py
+    :caption: examples/fillbetween.py
     :lines: 5-
 .. image:: ../docs/fillbetween_example.jpg
 
 Uboxplot Example
 ---------------------------
 
-example of uboxplot integration with uplot
+example of uboxplot integration in a plot
 
-.. literalinclude:: ../examples/uplot_uboxplot.py
-    :caption: examples/uplot_uboxplot.py
+.. literalinclude:: ../examples/uboxplot.py
+    :caption: examples/uboxplot.py
     :lines: 8-
-.. image:: ../docs/uplot_ex16.jpg
+.. image:: ../docs/uboxplot_example.jpg
 
 Map Example
 ---------------------------
 
 map simple example
 
-.. literalinclude:: ../examples/uplot_map.py
-    :caption: examples/uplot_map.py
+.. literalinclude:: ../examples/map.py
+    :caption: examples/map.py
     :lines: 5-
 .. image:: ../docs/map.jpg
 
@@ -236,8 +236,8 @@ Sparkline Animation Example
 
 Sparkline animation example
 
-.. literalinclude:: ../examples/uplot_sparkline.py
-    :caption: examples/uplot_sparkline.py
+.. literalinclude:: ../examples/sparkline.py
+    :caption: examples/sparkline.py
     :lines: 5-
 
 Cartesian Animation Example
@@ -245,18 +245,18 @@ Cartesian Animation Example
 
 Cartesian animation example
 
-.. literalinclude:: ../examples/uplot_cartesian_loggin_data.py
-    :caption: examples/uplot_cartesian_loggin_data.py
+.. literalinclude:: ../examples/cartesian_logging_data.py
+    :caption: examples/cartesian_logging_data.py
     :lines: 5-
-.. image:: ../docs/uplot_cartesian.gif
+.. image:: ../docs/cartesian_logging_data.gif
 
 Logging Example
 ---------------------------
 
 Logging example
 
-.. literalinclude:: ../examples/uplot_logging.py
-    :caption: examples/uplot_logging.py
+.. literalinclude:: ../examples/logging.py
+    :caption: examples/logging.py
     :lines: 5-
 
 Logging Fill Example
@@ -264,8 +264,8 @@ Logging Fill Example
 
 Logging fill example
 
-.. literalinclude:: ../examples/uplot_logging_fill.py
-    :caption: examples/uplot_logging_fill.py
+.. literalinclude:: ../examples/logging_fill.py
+    :caption: examples/logging_fill.py
     :lines: 5-
 .. image:: ../docs/logging_fill.jpg
 
@@ -275,8 +275,8 @@ Logging Changing Values Example
 
 This example shows how to redraw new_values in the same plot
 
-.. literalinclude:: ../examples/uplot_logging_changing_values.py
-    :caption: examples/uplot_logging_changing_values.py
+.. literalinclude:: ../examples/logging_changing_values.py
+    :caption: examples/logging_changing_values.py
     :lines: 5-
 
 Logging with Table Example
@@ -284,8 +284,8 @@ Logging with Table Example
 
 This example shows how to add a data table to the plot
 
-.. literalinclude:: ../examples/uplot_logging_table.py
-    :caption: examples/uplot_logging_table.py
+.. literalinclude:: ../examples/logging_table.py
+    :caption: examples/logging_table.py
     :lines: 10-
 .. image:: ../docs/logging_table.jpg
 
@@ -295,8 +295,8 @@ Logging Animation Example
 
 This example shows how to animate a plot
 
-.. literalinclude:: ../examples/uplot_logging_animation.py
-    :caption: examples/uplot_logging_animation.py
+.. literalinclude:: ../examples/logging_animation.py
+    :caption: examples/logging_animation.py
     :lines: 5-
 
 SVG Images examples
@@ -304,28 +304,28 @@ SVG Images examples
 
 SVG Images example
 
-.. literalinclude:: ../examples/uplot_svg_example.py
-    :caption: examples/uplot_svg_example.py
+.. literalinclude:: ../examples/svg_example.py
+    :caption: examples/svg_example.py
     :lines: 5-
-.. image:: ../docs/uplot_svg.jpg
+.. image:: ../docs/svg.jpg
 
 Shade examples
 ---------------------------
 
 Shade example
 
-.. literalinclude:: ../examples/uplot_shade_example.py
-    :caption: examples/uplot_shade_example.py
+.. literalinclude:: ../examples/shade_example.py
+    :caption: examples/shade_example.py
     :lines: 5-
-.. image:: ../docs/uplot_shade.jpg
+.. image:: ../docs/shade.jpg
 
 Polar example
 ---------------------------
 
 Show how to use the Polar Plot
 
-.. literalinclude:: ../examples/uplot_polar_example.py
-    :caption: examples/uplot_polar_example.py
+.. literalinclude:: ../examples/polar_example.py
+    :caption: examples/polar_example.py
     :lines: 5-
 .. image:: ../docs/polar_example.jpg
 

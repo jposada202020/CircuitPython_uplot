@@ -1,17 +1,17 @@
 :orphan:
 
-.. title:: uplot documentation
+.. title:: microplot documentation
 
 .. module:: uplot
 
-###################
-uplot documentation
-###################
+#########################
+Microplot documentation
+#########################
 
 Framework to display different plots in displayio. Similar to widget
 Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/latest/examples.html>`_ section in RTD to see the gallery
 
-uplot is to be used with CircuitPython as some of the behind the curtains methods are
+microplot is to be used with CircuitPython as some of the behind the curtains methods are
 in the CircuitPython core and could differ from MicroPython or Python
 
 
