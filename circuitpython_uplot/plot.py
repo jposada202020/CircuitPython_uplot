@@ -387,7 +387,7 @@ class Plot(displayio.Group):
         :param int tickcolor: tick color in hex. Defaults to white. ``0xFFFFFF``
         :param bool tickgrid: defines if the grid is to be shown. Defaults to `False`
         :param bool showtext: Show Axes text. Defaults to `False`
-        :param int decimal_points: Number of decimal points to show. Defaults to 0
+        :param int decimal_points: Number of decimal points to show. Defaults to :const:`0`
 
         :return: None
 
