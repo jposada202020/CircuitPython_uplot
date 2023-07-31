@@ -61,6 +61,26 @@ Scatter plot Example
     :lines: 5-
 .. image:: ../docs/scatter.jpg
 
+Scatter Circle Pointers with diferent Radius
+---------------------------------------------
+
+Example showing how to use different radius in the circle pointers
+
+.. literalinclude:: ../examples/scatter_circle_radius.py
+    :caption: examples/scatter_circle_radius.py
+    :lines: 5-
+.. image:: ../docs/scatter_circle_radius.jpg
+
+Scatter Pointers Example
+----------------------------
+
+Example showing how to use different pointers
+
+.. literalinclude:: ../examples/scatter.py
+    :caption: examples/scatter.py
+    :lines: 5-
+.. image:: ../docs/scatter_pointers.jpg
+
 Display_shapes Example
 -----------------------
 

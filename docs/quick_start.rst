@@ -65,6 +65,9 @@ At the moment the following objects can be added to the plot area:
     * Bar graph
     * Pie Chart
     * Colormap
+    * Polar graph
+    * SVG Rudimentary support
+    * Logging graph
 * Display_shapes library objects
 * Histograms from the uhistogram library
 * Boxplots from the uboxplot library
@@ -264,8 +267,8 @@ Creates a scatter plot with x,y data. You can customize the circle diameter if y
 
 There are some parameters that you can customize:
     * rangex and rangey: you can specify the ranges of your graph. This allows you to move your graph according to your needs. This parameters only accept lists
-    * radius: circles radius/radii
-    * circle_color: you can specify the color in HEX
+    * radius: circles radius/radii. If a different value is given for each point, the radius should be a list of values. If selected pointer is not a circle, this parameter will be ignored
+    * pointer_color: you can specify the color in HEX
     * nudge: this parameter allows you to move the graph slighty. This is useful when the data start/end in the limits of your range
 
 
@@ -275,7 +278,7 @@ There are some parameters that you can customize:
     z = [4, 5, 6, 7, 8]
     radi = [choice(z) for _ in a]
     b = [choice(a) for _ in a]
-    Scatter(plot, a, b, rangex=[0,210], rangey=[0, 210], radius=radi, circle_color=0xF456F3)
+    Scatter(plot, a, b, rangex=[0,210], rangey=[0, 210], radius=radi, pointer_color=0xF456F3)
 
 ===============
 Bar Plot
