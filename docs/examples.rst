@@ -81,6 +81,17 @@ Example showing how to use different pointers
     :lines: 5-
 .. image:: ../docs/scatter_pointers.jpg
 
+Scatter using different datasets
+----------------------------------
+
+Example showing how to use different datasets
+
+.. literalinclude:: ../examples/scatter.py
+    :caption: examples/scatter.py
+    :lines: 5-
+.. image:: ../docs/scatter_pointers.jpg
+
+
 Display_shapes Example
 -----------------------
 
