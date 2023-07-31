@@ -74,8 +74,12 @@ class Scatter:
         else:
             self._pointer = pointer
 
+
         self._radius = radius
         self._pointer_color = pointer_color
+
+        if isinstance(self._radius, list) and self._pointer != "circle":
+            raise ValueError(f"Pointer paramater is {self._pointer}. Variable Radius are not accepted")
 
         if rangex is None:
             xmin = np.min(x) - nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
@@ -105,8 +109,12 @@ class Scatter:
 
         self._draw_pointer(plot)
 
-        if plot._showticks:
-            plot._draw_ticks(x, y)
+        if plot._scatterfirst:
+            if plot._showticks:
+                plot._draw_ticks(x, y)
+
+                plot._scatterfirst = False
+                plot._showticks = False
 
     def _draw_pointer(self, plot: Plot) -> None:
         """

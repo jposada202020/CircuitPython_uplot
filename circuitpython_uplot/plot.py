@@ -109,6 +109,7 @@ class Plot(displayio.Group):
 
         self._cartesianfirst = True
         self._loggingfirst = True
+        self._scatterfirst = True
 
         self._showtext = False
 
@@ -127,7 +128,7 @@ class Plot(displayio.Group):
 
         self._index_colorused = 4
 
-        self._plotbitmap = displayio.Bitmap(width, height, 20)
+        self._plotbitmap = displayio.Bitmap(width, height, 10)
 
         if show_box:
             self._drawbox()
@@ -323,7 +324,10 @@ class Plot(displayio.Group):
             )
             if self._showtext:
                 self.show_text(
-                    "{:.2f}".format(ticksxnorm[i]), tick, self._newymin, (0.5, 0.0)
+                    "{:.{}f}".format(ticksxnorm[i], self._decimal_points),
+                    tick,
+                    self._newymin,
+                    (0.5, 0.0),
                 )
         for i, tick in enumerate(ticksyrenorm):
             draw_line(
@@ -336,7 +340,10 @@ class Plot(displayio.Group):
             )
             if self._showtext:
                 self.show_text(
-                    "{:.2f}".format(ticksynorm[i]), self._newxmin, tick, (1.0, 0.5)
+                    "{:.{}f}".format(ticksynorm[i], self._decimal_points),
+                    self._newxmin,
+                    tick,
+                    (1.0, 0.5),
                 )
         for tick in subticksxrenorm:
             draw_line(
@@ -369,19 +376,26 @@ class Plot(displayio.Group):
         tickcolor: int = 0xFFFFFF,
         tickgrid: bool = False,
         showtext: bool = False,
+        decimal_points: int = 0,
     ) -> None:
         """
         Function to set ticks parameters
 
+        :param bool show_ticks: Show ticks. Defaults to `True`
         :param int tickx_height: X axes tick height in pixels. Defaults to 8
         :param int ticky_height: Y axes tick height in pixels. Defaults to 8
         :param int tickcolor: tick color in hex. Defaults to white. ``0xFFFFFF``
         :param bool tickgrid: defines if the grid is to be shown. Defaults to `False`
         :param bool showtext: Show Axes text. Defaults to `False`
+        :param int decimal_points: Number of decimal points to show. Defaults to 0
 
         :return: None
 
         """
+        if showtext and self.padding < 20:
+            raise ValueError(
+                "Please select a padding that allows to show the tick text"
+            )
 
         self._showticks = show_ticks
         self._tickheightx = tickx_height
@@ -389,6 +403,7 @@ class Plot(displayio.Group):
         self._plot_palette[2] = tickcolor
         self._tickgrid = tickgrid
         self._showtext = showtext
+        self._decimal_points = decimal_points
         if self._showtext:
             from adafruit_display_text import bitmap_label
 
@@ -460,6 +475,7 @@ class Plot(displayio.Group):
         :param Tuple anchorpoint: Display_text anchor point. Defaults to (0.5, 0.0)
         :return: None
         """
+
         if self._showtext:
             text_toplot = self.bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
             text_toplot.anchor_point = anchorpoint

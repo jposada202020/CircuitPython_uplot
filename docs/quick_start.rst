@@ -123,6 +123,8 @@ the following parameters:
    :param int ticky_height: ticky_height in pixels
    :param int tickcolor: tickcolor in Hex format
    :param bool tickgrid: displays the tickgrid. Defaults to `False`
+   :param bool showtext: displays the tick text. Defaults to `False`
+   :param int decimal_points: number of decimal points to show. Defaults to `0` 
 
 .. code-block:: python
 
@@ -134,6 +136,20 @@ Gridlines are normally ``OFF``. If you want visible gridlines then use:
 .. code-block:: python
 
     plot.tick_params(tickgrid=True)
+
+
+If you want to show the axes text. You can use:
+
+.. code-block:: python
+
+    plot.tick_params(showtext=True)
+
+If you want to show some decimal places in the text. use:
+
+.. code-block:: python
+
+    plot.tick_params(decimal_points=2)
+
 
 
 Colors
