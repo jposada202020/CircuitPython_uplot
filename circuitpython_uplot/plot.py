@@ -464,7 +464,13 @@ class Plot(displayio.Group):
         self._drawbox()
 
     def show_text(
-        self, text: str, x: int, y: int, anchorpoint: Tuple = (0.5, 0.0)
+        self,
+        text: str,
+        x: int,
+        y: int,
+        anchorpoint: Tuple = (0.5, 0.0),
+        text_color: int = 0xFFFFFF,
+        free_text: bool = False,
     ) -> None:
         """
 
@@ -473,11 +479,20 @@ class Plot(displayio.Group):
         :param int x: x coordinate
         :param int y: y coordinate
         :param Tuple anchorpoint: Display_text anchor point. Defaults to (0.5, 0.0)
+        :param int color: text color. Defaults to :const:`0xFFFFFF`
+        :param bool free_text: Select to show free text
         :return: None
         """
+        try:
+            self.bitmap_label
+        except AttributeError:
+            from adafruit_display_text import bitmap_label
 
-        if self._showtext:
-            text_toplot = self.bitmap_label.Label(terminalio.FONT, text=text, x=x, y=y)
+            self.bitmap_label = bitmap_label
+        if self._showtext or free_text:
+            text_toplot = self.bitmap_label.Label(
+                terminalio.FONT, text=text, x=x, y=y, color=text_color
+            )
             text_toplot.anchor_point = anchorpoint
             text_toplot.anchored_position = (x, y)
             self.append(text_toplot)

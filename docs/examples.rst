@@ -92,6 +92,17 @@ Example showing how to use different datasets
 .. image:: ../docs/scatter_using_different_datasets.jpg
 
 
+Cartesian and Scatter Example
+------------------------------
+
+Example showing how to use cartesian and scatter in the same plot
+
+.. literalinclude:: ../examples/cartersian_and_scatter_polyfit_example.py
+    :caption: examples/cartersian_and_scatter_polyfit_example.py
+    :lines: 5-
+.. image:: ../docs/cartesian_logging_data.gif
+
+
 Display_shapes Example
 -----------------------
 
