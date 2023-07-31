@@ -89,7 +89,7 @@ Example showing how to use different datasets
 .. literalinclude:: ../examples/scatter.py
     :caption: examples/scatter.py
     :lines: 5-
-.. image:: ../docs/scatter_pointers.jpg
+.. image:: ../docs/scatter_using_different_datasets.jpg
 
 
 Display_shapes Example
