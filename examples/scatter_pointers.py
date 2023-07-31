@@ -2,8 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
-import displayio
+
 from random import choice
+import displayio
 import board
 from ulab import numpy as np
 from circuitpython_uplot.plot import Plot
