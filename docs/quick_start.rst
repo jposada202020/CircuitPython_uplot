@@ -5,6 +5,7 @@ Plot Usage
 =============
 We start importing some fundamental libraries for plot to operate
 
+
 .. code-block:: python
 
     import board
@@ -117,15 +118,16 @@ The following snippet shows how to create a cartesian plot
 Tick spacing and numbers are selected by default. However it's possible to customize
 the following parameters:
 
-.. py:function:: Plot.tick_params(tickx_height, ticky_height, tickcolor, tickgrid, showtext, decimal_points)
+.. py:function:: Plot.tick_params(showtick, tickx_height, ticky_height, tickcolor, tickgrid, showtext, decimal_points)
 
-   :parm bool showtick: displays the tick. Defaults to `True`
+   :param bool showtick: displays the tick. Defaults to `True`
    :param int tickx_height: tickx_height in pixels
    :param int ticky_height: ticky_height in pixels
    :param int tickcolor: tickcolor in Hex format
    :param bool tickgrid: displays the tickgrid. Defaults to `False`
    :param bool showtext: displays the tick text. Defaults to `False`
-..    :param int decimal_points: number of decimal points to show. Defaults to `0`
+   :param int decimal_points: number of decimal points to show. Defaults to :const:`0`
+
 
 .. code-block:: python
 
