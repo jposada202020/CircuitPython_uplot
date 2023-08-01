@@ -1,53 +1,53 @@
-A small tour for microplot.
+A small tour explaining microplot.
 
 
 Plot Usage
 =============
-We start importing some fundamental libraries for plot to operate
+We start by importing some fundamental libraries for the plot library to operate
 
 
 .. code-block:: python
 
     import board
-    import displayio
     from circuitpython_uplot.plot import Plot
 
-For reference, screen in CircuitPython are defined from left to right and up to bottom. This means
-that our (x=0, y=0) will be in the left upper corner of the screen.
-For boards or feather with a integrated screen the following statement will initiate the scree
+For reference, screens in CircuitPython are defined from left to right and top to bottom. This means
+that our (x=0, y=0) coordinates would be in the left upper corner of the screen.
+For boards or feathers with an integrated screen the following statement will initiate the screen
 
 .. code-block:: python
 
     display = board.DISPLAY
 
-For other displays please consult the right support library
+For other displays please consult their support library
 
-We add the plot area. in this case we are selecting the whole screen as our plot area
+After this, we are ready to add the plot area. The following code will create a plot area that will cover the whole screen.
+However you can select any area of the screen. 
 
 .. code-block:: python
 
     plot = Plot(0, 0, display.width, display.height)
 
-The Plot will be used to display our graphics. The position and the size of the plot area
+The plot object will be used to display our graphics. The position and the size of the plot area
 could vary. This allows us to have more than 1 plot at the same time in the screen.
-Every one of them with different characteristics or graphs.
+Each one of them can have different characteristics or graphs according to your needs.
 
-Options available are:
+Options available to customize the plot area are:
     * width: width of the plot area
     * height: height of the plot area
-    * backround_color: Allows to change the background color. The default is black.
-    * box_color: Allows to change the box color. Default is white.
+    * background_color: allows you to change the background color. The default is black.
+    * box_color: allows you to change the box color. This default is white.
     * padding: allows the user to give the plot area a pad. This is helpful if you are planning to include text and legends in the axes.
-    * scale: scale of the plot. This will allow a plot to be scaled up at a user defined rate. This is currently only available for logging and bar plots.
+    * scale: scale of the plot. This will allow a plot to be scaled up at a user defined rate. This is only available for logging and bar plots.
 
 
-We tell the microcontroller to display our plot:
+We then tell the microcontroller to display our plot:
 
 .. code-block:: python
 
     display.show(plot)
 
-And that is it you know have a plot area to add amazing graphs!
+And this is how to build a plot area to add amazing graphs!
 
 
 .. image:: ../docs/readme.png
@@ -57,7 +57,7 @@ Good Luck!
 Graphics
 ===========
 
-At the moment the following objects can be added to the plot area:
+The following objects can be added to the plot area:
 
 * Elements in the library
     * Cartesian Plane
@@ -67,14 +67,14 @@ At the moment the following objects can be added to the plot area:
     * Pie Chart
     * Colormap
     * Polar graph
-    * SVG Rudimentary support
+    * SVG (Rudimentary support)
     * Logging graph
 * Display_shapes library objects
 * Histograms from the uhistogram library
 * Boxplots from the uboxplot library
 * Individual Vectorio Objects
 
-In a more advanced method it is possible to add directly to the plot area using the plot bitmap object
+It is possible to add directly to the plot area using the plot bitmap object as shown below
 
 The following code shows an example adding a shape from the Adafruit_Display_shapes
 library
@@ -99,9 +99,9 @@ Ticks and Grid
 Plot axes are shown by default. To change this behaviour you would need
 to use the correct keyword in the `Plot.axs_params` function:
 
-.. py:function:: Plot.axs_params(axstype: Literal["box", "cartesian", "line"] = "box")
+.. py:function:: Plot.axs_params(axstype = "box")
 
-   :param axstype: Option to display the axes
+   :param axstype: Option to display the axes. Defaults to "box"
 
 Options available are:
     * box : draws a box
@@ -115,8 +115,10 @@ The following snippet shows how to create a cartesian plot
     plot = Plot(0, 0, display.width, display.height)
     plot.axs_params(axstype="cartesian")
 
-Tick spacing and numbers are selected by default. However it's possible to customize
-the following parameters:
+.. image:: ../docs/boxes_types.png
+
+Tick spacing and numbers are selected and calculated by default. In Cartesian and Logging Plots you can select the ticks to
+show in the plot. For other plots, it is possible to customize the following parameters:
 
 .. py:function:: Plot.tick_params(showtick, tickx_height, ticky_height, tickcolor, tickgrid, showtext, decimal_points)
 
@@ -131,7 +133,11 @@ the following parameters:
 
 .. code-block:: python
 
-    plot.tick_params(tickx_height=12, tickcolor=0xFF0008)
+    plot.tick_params(tickx_height=6, ticky_height=6, tickcolor=0x000000)
+
+.. image:: ../docs/ticks_params.png
+
+Be aware that ticks are not shown by default. If you want to show them you need to add a graph to the plot.
 
 
 Gridlines are normally ``OFF``. If you want visible gridlines then use:
@@ -141,19 +147,19 @@ Gridlines are normally ``OFF``. If you want visible gridlines then use:
     plot.tick_params(tickgrid=True)
 
 
-If you want to show the axes text. You can use:
+If you want to show the axes text, you can use:
 
 .. code-block:: python
 
     plot.tick_params(showtext=True)
 
-If you want to show some decimal places in the text. use:
+If you want to show some decimal places in the text use:
 
 .. code-block:: python
 
     plot.tick_params(decimal_points=2)
 
-
+.. image:: ../docs/grid_text.png
 
 Colors
 ===============

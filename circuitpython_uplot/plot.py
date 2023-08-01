@@ -26,7 +26,7 @@ Implementation Notes
 # pylint: disable=attribute-defined-outside-init
 
 try:
-    from typing import Union, Tuple
+    from typing import Union, Tuple, Optional
     from typing_extensions import Literal
 except ImportError:
     pass
@@ -171,6 +171,7 @@ class Plot(displayio.Group):
 
         """
         self._axesparams = axstype
+        self._update_plot()
 
     def _drawbox(self) -> None:
         """
@@ -179,6 +180,7 @@ class Plot(displayio.Group):
         :return: None
 
         """
+        self._plotbitmap.fill(0)
 
         if self._axesparams == "cartesian":
             draw_box = [True, True, False, False]
@@ -475,7 +477,7 @@ class Plot(displayio.Group):
                 )
                 start = start + self._grid_espace + self._grid_lenght
 
-    def update_plot(self) -> None:
+    def _update_plot(self) -> None:
         """
         Function to update graph
 
@@ -491,7 +493,7 @@ class Plot(displayio.Group):
         x: int,
         y: int,
         anchorpoint: Tuple = (0.5, 0.0),
-        text_color: int = 0xFFFFFF,
+        text_color: Optional[int] = None,
         free_text: bool = False,
     ) -> None:
         """
@@ -511,6 +513,10 @@ class Plot(displayio.Group):
             from adafruit_display_text import bitmap_label
 
             self.bitmap_label = bitmap_label
+
+        if text_color is None:
+            text_color = self._plot_palette[2]
+
         if self._showtext or free_text:
             text_toplot = self.bitmap_label.Label(
                 terminalio.FONT, text=text, x=x, y=y, color=text_color
