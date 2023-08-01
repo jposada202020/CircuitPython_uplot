@@ -22,7 +22,7 @@ For boards or feathers with an integrated screen the following statement will in
 For other displays please consult their support library
 
 After this, we are ready to add the plot area. The following code will create a plot area that will cover the whole screen.
-However you can select any area of the screen. 
+However you can select any area of the screen.
 
 .. code-block:: python
 
