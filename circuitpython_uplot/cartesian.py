@@ -240,3 +240,7 @@ class Cartesian:
             )
             if plot._showtext:
                 plot.show_text(f"{self.ticksy[i]:.0f}", plot._newxmin, tick, (1.0, 0.5))
+
+        if plot._tickgrid:
+            plot._draw_gridx(ticksxnorm)
+            plot._draw_gridy(ticksynorm)
