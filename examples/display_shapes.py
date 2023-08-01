@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-import time
 import board
 from adafruit_display_shapes.polygon import Polygon
 from adafruit_display_shapes.roundrect import RoundRect

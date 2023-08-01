@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-import time
 from random import choice
 import board
 from ulab import numpy as np

@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: MIT
 
-import time
 import board
 from circuitpython_uplot.plot import Plot
 

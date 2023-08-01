@@ -304,14 +304,12 @@ class Plot(displayio.Group):
         else:
             ticksynorm = np.array(ticksy)
 
-
         ticksxrenorm = np.array(
             self.transform(
                 np.min(x), np.max(x), self._newxmin, self._newxmax, ticksxnorm
             ),
             dtype=np.int16,
         )
-
 
         ticksyrenorm = np.array(
             self.transform(

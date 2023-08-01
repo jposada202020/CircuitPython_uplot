@@ -5,7 +5,6 @@
 Example to show how to draw stackplots
 """
 
-import time
 import board
 from ulab import numpy as np
 from circuitpython_uplot.plot import Plot
