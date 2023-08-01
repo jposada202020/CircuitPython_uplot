@@ -25,7 +25,3 @@ Scatter(plot, a, b)
 
 # Plotting and showing the plot
 display.show(plot)
-
-# Adding some wait time
-while True:
-    time.sleep(1)

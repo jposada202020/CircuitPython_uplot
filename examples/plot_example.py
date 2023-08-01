@@ -23,5 +23,3 @@ y = constant * np.exp((-(x**2)) / 2.0)
 Cartesian(plot, x, y)
 
 display.show(plot)
-while True:
-    time.sleep(1)

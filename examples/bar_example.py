@@ -21,7 +21,3 @@ Bar(plot, a, b, 0xFF1000, True)
 
 # Plotting and showing the plot
 display.show(plot)
-
-# Adding some wait time
-while True:
-    time.sleep(1)

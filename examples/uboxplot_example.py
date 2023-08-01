@@ -6,7 +6,7 @@ Simple test to display boxplot using plot
 """
 
 import board
-from examples.uboxplot_example import Boxplot
+from boxplot import Boxplot
 from circuitpython_uplot.plot import Plot
 
 
@@ -67,6 +67,3 @@ plot.append(my_box)
 plot.append(my_box2)
 plot.append(my_box3)
 display.show(plot)
-
-while True:
-    pass

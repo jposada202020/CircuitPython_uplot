@@ -19,7 +19,6 @@ my_plot = Plot(
     60,
     200,
     200,
-    padding=1,
     show_box=True,
     box_color=color.WHITE,
 )

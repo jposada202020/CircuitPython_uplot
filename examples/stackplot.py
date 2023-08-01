@@ -29,6 +29,3 @@ Cartesian(plot, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fill=
 
 
 display.show(plot)
-
-while True:
-    time.sleep(1)

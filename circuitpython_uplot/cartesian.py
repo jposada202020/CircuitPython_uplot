@@ -40,8 +40,8 @@ class Cartesian:
         rangey: Optional[list] = None,
         line_color: Optional[int] = None,
         line_style: Optional[str] = None,
-        ticksx: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
-        ticksy: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
+        ticksx: Union[np.array, list] = None,
+        ticksy: Union[np.array, list] = None,
         tick_pos: bool = False,
         fill: bool = False,
         nudge: bool = True,
@@ -65,8 +65,8 @@ class Cartesian:
 
         """
         self.points = []
-        self.ticksx = np.array(ticksx)
-        self.ticksy = np.array(ticksy)
+        self.ticksx = ticksx
+        self.ticksy = ticksy
 
         if tick_pos:
             self._tickposx = plot._tickheightx
@@ -160,7 +160,7 @@ class Cartesian:
                 if logging:
                     x = np.linspace(self.xmin, self.xmax, 100)
                     y = np.linspace(self.ymin, self.ymax, 100)
-                self._draw_ticks(plot)
+                plot._draw_ticks(x, y, self.ticksx, self.ticksy)
                 plot._cartesianfirst = False
                 plot._showticks = False
 
@@ -193,54 +193,3 @@ class Cartesian:
             ynorm[index + 1],
             plot._index_colorused,
         )
-
-    def _draw_ticks(self, plot) -> None:
-        """
-        Draw ticks in the plot area
-
-        """
-
-        ticksxnorm = np.array(
-            plot.transform(
-                self.xmin, self.xmax, plot._newxmin, plot._newxmax, self.ticksx
-            ),
-            dtype=np.int16,
-        )
-        ticksynorm = np.array(
-            plot.transform(
-                self.ymin, self.ymax, plot._newymin, plot._newymax, self.ticksy
-            ),
-            dtype=np.int16,
-        )
-
-        for i, tick in enumerate(ticksxnorm):
-            draw_line(
-                plot._plotbitmap,
-                tick,
-                plot._newymin + self._tickposx,
-                tick,
-                plot._newymin - plot._tickheightx + self._tickposx,
-                2,
-            )
-            if plot._showtext:
-                plot.show_text(
-                    f"{self.ticksx[i]:.{plot._decimal_points}f}",
-                    tick,
-                    plot._newymin,
-                    (0.5, 0.0),
-                )
-        for i, tick in enumerate(ticksynorm):
-            draw_line(
-                plot._plotbitmap,
-                plot._newxmin - self._tickposy,
-                tick,
-                plot._newxmin + plot._tickheighty - self._tickposy,
-                tick,
-                2,
-            )
-            if plot._showtext:
-                plot.show_text(f"{self.ticksy[i]:.0f}", plot._newxmin, tick, (1.0, 0.5))
-
-        if plot._tickgrid:
-            plot._draw_gridx(ticksxnorm)
-            plot._draw_gridy(ticksynorm)

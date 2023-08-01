@@ -23,7 +23,3 @@ Bar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=T
 
 # Plotting and showing the plot
 display.show(plot)
-
-# Adding some wait time
-while True:
-    time.sleep(1)

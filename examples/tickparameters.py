@@ -34,7 +34,3 @@ Cartesian(plot, x, y, line_color=color.BLACK)
 
 # Plotting and showing the plot
 display.show(plot)
-
-# Adding some wait time
-while True:
-    time.sleep(1)

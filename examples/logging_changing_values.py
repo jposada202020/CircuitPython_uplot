@@ -63,7 +63,7 @@ my_log = Logging(
 )
 
 
-while True:
+for i in range(2):
     for i in range(len(x)):
         my_log.draw_points(plot_1, x[0:i], temp_y[0:i])
         time.sleep(1)

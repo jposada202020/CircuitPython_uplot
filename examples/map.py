@@ -26,7 +26,3 @@ y1 = np.array(b).reshape((10, 10))
 Map(plot, y1, 0xFF0044, 0x4400FF)
 # Plotting and showing the plot
 display.show(plot)
-
-# Adding some wait time
-while True:
-    time.sleep(1)

@@ -100,5 +100,3 @@ for i in range(40, 110, 10):
     Cartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
 
 display.show(plot)
-while True:
-    time.sleep(1)

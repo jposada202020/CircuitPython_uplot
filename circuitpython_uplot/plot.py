@@ -270,7 +270,7 @@ class Plot(displayio.Group):
             / (oldrangemax - oldrangemin)
         ) + newrangemin
 
-    def _draw_ticks(self, x: int, y: int) -> None:
+    def _draw_ticks(self, x: int, y: int, ticksx=None, ticksy=None) -> None:
         """
         Draw ticks in the plot area
 
@@ -281,13 +281,29 @@ class Plot(displayio.Group):
 
         """
 
-        ticks = np.array([10, 30, 50, 70, 90])
-        subticks = np.array([20, 40, 60, 80])
-        ticksxnorm = np.array(self.transform(0, 100, np.min(x), np.max(x), ticks))
-        ticksynorm = np.array(self.transform(0, 100, np.min(y), np.max(y), ticks))
+        ticks_dummy = np.array([10, 30, 50, 70, 90])
+        subticks_dummy = np.array([20, 40, 60, 80])
 
-        subticksxnorm = np.array(self.transform(0, 100, np.min(x), np.max(x), subticks))
-        subticksynorm = np.array(self.transform(0, 100, np.min(y), np.max(y), subticks))
+        if ticksx is None:
+            ticksxnorm = np.array(
+                self.transform(0, 100, np.min(x), np.max(x), ticks_dummy)
+            )
+            subticksxnorm = np.array(
+                self.transform(0, 100, np.min(x), np.max(x), subticks_dummy)
+            )
+        else:
+            ticksxnorm = np.array(ticksx)
+
+        if ticksy is None:
+            ticksynorm = np.array(
+                self.transform(0, 100, np.min(y), np.max(y), ticks_dummy)
+            )
+            subticksynorm = np.array(
+                self.transform(0, 100, np.min(y), np.max(y), subticks_dummy)
+            )
+        else:
+            ticksynorm = np.array(ticksy)
+
 
         ticksxrenorm = np.array(
             self.transform(
@@ -295,24 +311,28 @@ class Plot(displayio.Group):
             ),
             dtype=np.int16,
         )
+
+
         ticksyrenorm = np.array(
             self.transform(
                 np.min(y), np.max(y), self._newymin, self._newymax, ticksynorm
             ),
             dtype=np.int16,
         )
-        subticksxrenorm = np.array(
-            self.transform(
-                np.min(x), np.max(x), self._newxmin, self._newxmax, subticksxnorm
-            ),
-            dtype=np.int16,
-        )
-        subticksyrenorm = np.array(
-            self.transform(
-                np.min(y), np.max(y), self._newymin, self._newymax, subticksynorm
-            ),
-            dtype=np.int16,
-        )
+        if ticksx is None:
+            subticksxrenorm = np.array(
+                self.transform(
+                    np.min(x), np.max(x), self._newxmin, self._newxmax, subticksxnorm
+                ),
+                dtype=np.int16,
+            )
+        if ticksy is None:
+            subticksyrenorm = np.array(
+                self.transform(
+                    np.min(y), np.max(y), self._newymin, self._newymax, subticksynorm
+                ),
+                dtype=np.int16,
+            )
         for i, tick in enumerate(ticksxrenorm):
             draw_line(
                 self._plotbitmap,
@@ -345,24 +365,28 @@ class Plot(displayio.Group):
                     tick,
                     (1.0, 0.5),
                 )
-        for tick in subticksxrenorm:
-            draw_line(
-                self._plotbitmap,
-                tick,
-                self._newymin,
-                tick,
-                self._newymin - self._tickheightx // 2,
-                2,
-            )
-        for tick in subticksyrenorm:
-            draw_line(
-                self._plotbitmap,
-                self._newxmin,
-                tick,
-                self._newxmin + self._tickheighty // 2,
-                tick,
-                2,
-            )
+
+        if ticksx is None:
+            for tick in subticksxrenorm:
+                draw_line(
+                    self._plotbitmap,
+                    tick,
+                    self._newymin,
+                    tick,
+                    self._newymin - self._tickheightx // 2,
+                    2,
+                )
+
+        if ticksy is None:
+            for tick in subticksyrenorm:
+                draw_line(
+                    self._plotbitmap,
+                    self._newxmin,
+                    tick,
+                    self._newxmin + self._tickheighty // 2,
+                    tick,
+                    2,
+                )
 
         if self._tickgrid:
             self._draw_gridx(ticksxrenorm)

@@ -18,7 +18,7 @@ my_plot = Plot(
     60,
     200,
     200,
-    padding=1,
+    padding=25,
     show_box=True,
     box_color=color.WHITE,
 )
@@ -78,7 +78,7 @@ my_loggraph = Logging(
 )
 
 # Showing the loggraph
-while True:
+for _ in range(20):
     if dist > len(x):
         y.pop(0)
         y.append(random.choice(random_numbers))

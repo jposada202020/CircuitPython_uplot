@@ -31,7 +31,3 @@ group.append(plot_scale1)
 group.append(plot_scale2)
 
 display.show(group)
-
-# Adding some wait time
-while True:
-    time.sleep(1)
