@@ -40,6 +40,9 @@ class Cartesian:
         rangey: Optional[list] = None,
         line_color: Optional[int] = None,
         line_style: Optional[str] = None,
+        ticksx: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
+        ticksy: Union[np.array, list] = np.array([0, 10, 30, 50, 70, 90]),
+        tick_pos: bool = False,
         fill: bool = False,
         nudge: bool = True,
         logging: bool = False,
@@ -53,12 +56,24 @@ class Cartesian:
         :param list|None rangey: y range limits. Defaults to None
         :param int|None line_color: line color. Defaults to None
         :param str|None line_style: line style. Defaults to None
+        :param np.array|list ticksx: X axis ticks values
+        :param np.array|list ticksy: Y axis ticks values
+        :param bool tick_pos: indicates ticks position. True for below the axes.
         :param bool fill: Show the filling. Defaults to `False`
         :param bool nudge: moves the graph a little for better displaying. Defaults to `True`
         :param bool logging: used to change the logic of the cartesian to work as a logger
 
         """
         self.points = []
+        self.ticksx = np.array(ticksx)
+        self.ticksy = np.array(ticksy)
+
+        if tick_pos:
+            self._tickposx = plot._tickheightx
+            self._tickposy = plot._tickheighty
+        else:
+            self._tickposx = 0
+            self._tickposy = 0
 
         if line_color is not None:
             plot._plot_palette[plot._index_colorused] = line_color
@@ -80,30 +95,32 @@ class Cartesian:
             nudge_factor = 0
 
         if rangex is None:
-            xmin = np.min(x) - nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
-            xmax = np.max(x) + nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
+            self.xmin = np.min(x) - nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
+            self.xmax = np.max(x) + nudge_factor * (abs(np.max(x) - np.min(x)) / 10)
+
         else:
-            xmin = min(rangex)
-            xmax = max(rangex)
+            self.xmin = min(rangex)
+            self.xmax = max(rangex)
 
         if rangey is None:
-            ymin = np.min(y) - nudge_factor * (abs(np.max(y) - np.min(y)) / 10)
-            ymax = np.max(y) + nudge_factor * (abs(np.max(y) - np.min(y)) / 10)
+            self.ymin = np.min(y) - nudge_factor * (abs(np.max(y) - np.min(y)) / 10)
+            self.ymax = np.max(y) + nudge_factor * (abs(np.max(y) - np.min(y)) / 10)
         else:
-            ymin = min(rangey)
-            ymax = max(rangey)
+            self.ymin = min(rangey)
+            self.ymax = max(rangey)
 
         x = np.array(x)
         y = np.array(y)
 
         xnorm = np.array(
-            plot.transform(xmin, xmax, plot._newxmin, plot._newxmax, x),
+            plot.transform(self.xmin, self.xmax, plot._newxmin, plot._newxmax, x),
             dtype=np.int16,
         )
         ynorm = np.array(
-            plot.transform(ymin, ymax, plot._newymin, plot._newymax, y),
+            plot.transform(self.ymin, self.ymax, plot._newymin, plot._newymax, y),
             dtype=np.int16,
         )
+
 
         if fill:
             self.points.append((xnorm[0], plot._newymin))
@@ -134,7 +151,7 @@ class Cartesian:
             for index, _ in enumerate(xnorm):
                 if index + 1 >= len(xnorm):
                     break
-                if y[index] >= ymax:
+                if y[index] >= self.ymax:
                     continue
 
                 self._draw_plotline(plot, index, xnorm, ynorm)
@@ -142,9 +159,9 @@ class Cartesian:
         if plot._showticks:
             if plot._cartesianfirst:
                 if logging:
-                    x = np.linspace(xmin, xmax, 100)
-                    y = np.linspace(ymin, ymax, 100)
-                plot._draw_ticks(x, y)
+                    x = np.linspace(self.xmin, self.xmax, 100)
+                    y = np.linspace(self.ymin, self.ymax, 100)
+                self._draw_ticks(plot)
                 plot._cartesianfirst = False
                 plot._showticks = False
 
@@ -177,3 +194,45 @@ class Cartesian:
             ynorm[index + 1],
             plot._index_colorused,
         )
+
+    def _draw_ticks(self, plot) -> None:
+        """
+        Draw ticks in the plot area
+
+        """
+
+        ticksxnorm = np.array(
+            plot.transform(
+                self.xmin, self.xmax, plot._newxmin, plot._newxmax, self.ticksx
+            ),
+            dtype=np.int16,
+        )
+        ticksynorm = np.array(
+            plot.transform(
+                self.ymin, self.ymax, plot._newymin, plot._newymax, self.ticksy
+            ),
+            dtype=np.int16,
+        )
+
+        for i, tick in enumerate(ticksxnorm):
+            draw_line(
+                plot._plotbitmap,
+                tick,
+                plot._newymin + self._tickposx,
+                tick,
+                plot._newymin - plot._tickheightx + self._tickposx,
+                2,
+            )
+            if plot._showtext:
+                plot.show_text(f"{self.ticksx[i]:.{plot._decimal_points}f}", tick, plot._newymin, (0.5, 0.0))
+        for i, tick in enumerate(ticksynorm):
+            draw_line(
+                plot._plotbitmap,
+                plot._newxmin - self._tickposy,
+                tick,
+                plot._newxmin + plot._tickheighty - self._tickposy,
+                tick,
+                2,
+            )
+            if plot._showtext:
+                plot.show_text(f"{self.ticksy[i]:.0f}", plot._newxmin, tick, (1.0, 0.5))
