@@ -498,7 +498,6 @@ class Plot(displayio.Group):
             self.append(text_toplot)
 
 
-
 # pylint: disable=missing-class-docstring, too-few-public-methods, invalid-name
 class color:
     WHITE = 0xFFFFFF

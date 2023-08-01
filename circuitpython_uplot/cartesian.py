@@ -121,7 +121,6 @@ class Cartesian:
             dtype=np.int16,
         )
 
-
         if fill:
             self.points.append((xnorm[0], plot._newymin))
             for index, item in enumerate(xnorm):
@@ -224,7 +223,12 @@ class Cartesian:
                 2,
             )
             if plot._showtext:
-                plot.show_text(f"{self.ticksx[i]:.{plot._decimal_points}f}", tick, plot._newymin, (0.5, 0.0))
+                plot.show_text(
+                    f"{self.ticksx[i]:.{plot._decimal_points}f}",
+                    tick,
+                    plot._newymin,
+                    (0.5, 0.0),
+                )
         for i, tick in enumerate(ticksynorm):
             draw_line(
                 plot._plotbitmap,
