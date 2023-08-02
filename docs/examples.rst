@@ -1,3 +1,7 @@
+=================
+Plot Examples
+=================
+
 Simple test
 ------------
 
@@ -31,16 +35,6 @@ Setting up the ticks parameters
 
 .. image:: ../docs/tickparameters.jpg
 
-Plot Line Style Example
----------------------------
-
-Plot some data for x and y with different line styles
-
-.. literalinclude:: ../examples/plot_line_styles.py
-    :caption: examples/plot_line_styles.py
-    :lines: 5-
-.. image:: ../docs/line_style.jpg
-
 Integration Example
 -------------------
 
@@ -50,6 +44,10 @@ Example showing different graphics elements integration
     :caption: examples/integration_example.py
     :lines: 5-
 .. image:: ../docs/integration_example.jpg
+
+==================
+Scatter examples
+==================
 
 Scatter Example
 -------------------
@@ -91,6 +89,9 @@ Example showing how to use different datasets
     :lines: 5-
 .. image:: ../docs/scatter_using_different_datasets.jpg
 
+==================
+Cartesian examples
+==================
 
 Cartesian and Scatter Example
 ------------------------------
@@ -102,16 +103,92 @@ Example showing how to use cartesian and scatter in the same plot
     :lines: 5-
 .. image:: ../docs/cartesian_scatter_polyfit.jpg
 
+Plot Line Style Example
+---------------------------
 
-Display_shapes Example
------------------------
+Plot some data for x and y with different line styles
 
-Display Shapes integration example
-
-.. literalinclude:: ../examples/display_shapes.py
-    :caption: examples/display_shapes.py
+.. literalinclude:: ../examples/plot_line_styles.py
+    :caption: examples/plot_line_styles.py
     :lines: 5-
-.. image:: ../docs/display_shapes.jpg
+.. image:: ../docs/line_style.jpg
+
+Cartesian fill Example
+---------------------------
+
+Cartesian fill example
+
+.. literalinclude:: ../examples/cartesian_fill.py
+    :caption: examples/cartesian_fill.py
+    :lines: 5-
+.. image:: ../docs/cartesian_fill.jpg
+
+Cartesian Advanced Example
+---------------------------
+
+Showing the ability to display to graphs in the same plot with different colors
+
+.. literalinclude:: ../examples/cartesian_advanced.py
+    :caption: examples/cartesian_advanced.py
+    :lines: 5-
+.. image:: ../docs/cartesian_advance.jpg
+
+Cartesian Table Example
+---------------------------
+
+Example showing how to add a data table to the plot
+
+.. literalinclude:: ../examples/cartesian_table.py
+    :caption: examples/cartesian_table.py
+    :lines: 5-
+
+Lissajous Curves Example
+---------------------------
+
+Example showing how to draw lissajous curves
+
+.. literalinclude:: ../examples/lissajous_curves.py
+    :caption: examples/lissajous_curves.py
+    :lines: 5-
+.. image:: ../docs/lissajous.jpg
+
+Cartesian Polar Plots Example
+--------------------------------
+
+Example showing how to draw polar plots using Cartesian
+
+.. literalinclude:: ../examples/polar_plots.py
+    :caption: examples/polar_plots.py
+    :lines: 5-
+.. image:: ../docs/polar_plots.jpg
+
+Cartesian Trigonometric Plots Example
+--------------------------------------
+
+Example showing how to draw Trigonometrics plots using Cartesian
+
+.. literalinclude:: ../examples/cartesian_trig_functions.py
+    :caption: examples/cartesian_trig_functions.py
+    :lines: 5-
+.. image:: ../docs/cartesian_trig_functions.jpg
+
+
+Cartesian Animation Example
+---------------------------
+
+Cartesian animation example
+
+.. literalinclude:: ../examples/cartesian_logging_data.py
+    :caption: examples/cartesian_logging_data.py
+    :lines: 5-
+.. image:: ../docs/cartesian_logging_data.gif
+
+
+
+
+==================
+Bar Examples
+==================
 
 Bar Example
 ----------------
@@ -174,6 +251,10 @@ Bar 3D example
     :lines: 5-
 .. image:: ../docs/3DBars.jpg
 
+================
+Pie Examples
+================
+
 Pie Example
 ----------------
 
@@ -184,54 +265,9 @@ Pie example
     :lines: 5-
 .. image:: ../docs/pie.jpg
 
-Cartesian Advanced Example
----------------------------
-
-Showing the ability to display to graphs in the same plot with different colors
-
-.. literalinclude:: ../examples/cartesian_advanced.py
-    :caption: examples/cartesian_advanced.py
-    :lines: 5-
-.. image:: ../docs/cartesian_advance.jpg
-
-Cartesian Table Example
----------------------------
-
-Example showing how to add a data table to the plot
-
-.. literalinclude:: ../examples/cartesian_table.py
-    :caption: examples/cartesian_table.py
-    :lines: 5-
-
-Lissajous Curves Example
----------------------------
-
-Example showing how to draw lissajous curves
-
-.. literalinclude:: ../examples/lissajous_curves.py
-    :caption: examples/lissajous_curves.py
-    :lines: 5-
-.. image:: ../docs/lissajous.jpg
-
-Cartesian Polar Plots Example
---------------------------------
-
-Example showing how to draw polar plots using Cartesian
-
-.. literalinclude:: ../examples/polar_plots.py
-    :caption: examples/polar_plots.py
-    :lines: 5-
-.. image:: ../docs/polar_plots.jpg
-
-Cartesian Trigonometric Plots Example
---------------------------------------
-
-Example showing how to draw Trigonometrics plots using Cartesian
-
-.. literalinclude:: ../examples/cartesian_trig_functions.py
-    :caption: examples/cartesian_trig_functions.py
-    :lines: 5-
-.. image:: ../docs/cartesian_trig_functions.jpg
+===================
+Stackplot Examples
+===================
 
 Stackplot Example
 ---------------------------
@@ -243,15 +279,9 @@ Stackplot simple example
     :lines: 8-
 .. image:: ../docs/stackplot_example.jpg
 
-Advanced Example
----------------------------
-
-plot different ulements in a single display
-
-.. literalinclude:: ../examples/readme_example.py
-    :caption: examples/readme_example.py
-    :lines: 5-
-.. image:: ../docs/readme.png
+====================
+Fillbetween Examples
+====================
 
 Fillbetween Example
 ---------------------------
@@ -263,15 +293,9 @@ Example of fillbetween plot
     :lines: 5-
 .. image:: ../docs/fillbetween_example.jpg
 
-Uboxplot Example
----------------------------
-
-example of uboxplot integration in a plot
-
-.. literalinclude:: ../examples/uboxplot_example.py
-    :caption: examples/uboxplot_example.py
-    :lines: 8-
-.. image:: ../docs/uboxplot_example.jpg
+====================
+Map Examples
+====================
 
 Map Example
 ---------------------------
@@ -283,24 +307,10 @@ map simple example
     :lines: 5-
 .. image:: ../docs/map.jpg
 
-Sparkline Animation Example
----------------------------
 
-Sparkline animation example
-
-.. literalinclude:: ../examples/sparkline.py
-    :caption: examples/sparkline.py
-    :lines: 5-
-
-Cartesian Animation Example
----------------------------
-
-Cartesian animation example
-
-.. literalinclude:: ../examples/cartesian_logging_data.py
-    :caption: examples/cartesian_logging_data.py
-    :lines: 5-
-.. image:: ../docs/cartesian_logging_data.gif
+====================
+Logging Examples
+====================
 
 Logging Example
 ---------------------------
@@ -361,6 +371,10 @@ This example shows how to add limits to our plot
     :lines: 5-
 .. image:: ../docs/logging_limits.jpg
 
+====================
+SVG Examples
+====================
+
 SVG Images examples
 ---------------------------
 
@@ -371,6 +385,10 @@ SVG Images example
     :lines: 5-
 .. image:: ../docs/svg.jpg
 
+====================
+Shade Examples
+====================
+
 Shade examples
 ---------------------------
 
@@ -380,6 +398,10 @@ Shade example
     :caption: examples/shade_example.py
     :lines: 5-
 .. image:: ../docs/shade.jpg
+
+====================
+Polar Plot Examples
+====================
 
 Polar example
 ---------------------------
@@ -400,3 +422,45 @@ Polar Advanced example
     :caption: examples/polar_advanced.py
     :lines: 5-
 .. image:: ../docs/polar_advanced.jpg
+
+==================
+Others
+==================
+Sparkline Animation Example
+---------------------------
+
+Sparkline animation example
+
+.. literalinclude:: ../examples/sparkline.py
+    :caption: examples/sparkline.py
+    :lines: 5-
+
+Display_shapes Example
+-----------------------
+
+Display Shapes integration example
+
+.. literalinclude:: ../examples/display_shapes.py
+    :caption: examples/display_shapes.py
+    :lines: 5-
+.. image:: ../docs/display_shapes.jpg
+
+Advanced Example
+---------------------------
+
+plot different ulements in a single display
+
+.. literalinclude:: ../examples/readme_example.py
+    :caption: examples/readme_example.py
+    :lines: 5-
+.. image:: ../docs/readme.png
+
+Uboxplot Example
+---------------------------
+
+example of uboxplot integration in a plot
+
+.. literalinclude:: ../examples/uboxplot_example.py
+    :caption: examples/uboxplot_example.py
+    :lines: 8-
+.. image:: ../docs/uboxplot_example.jpg

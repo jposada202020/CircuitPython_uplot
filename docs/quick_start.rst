@@ -190,23 +190,21 @@ This will allow you to use the colors in the list as color variable definitions
 ===========
 Cartesian
 ===========
-With the cartesian class is possible to add (x,y) plots. You can add different (x,y) plots to the
-same plot area. After you create your plot area you will need to define the xy plane
-for the plot. Secondly, you will need to give some ``x`` and ``y`` data.
-This data will be converted to a `ulab.numpy.ndarray`. For more information please refer
-to the `ulab` library
+With the cartesian class is possible to add (x,y) plots. You add it to the plot area created as explained
+above. Then you will need to give some ``x`` and ``y`` data. The following code
+
 
 .. code-block:: python
 
     from ulab import numpy as np
     from circuitpython_uplot.plot import Plot
     from circuitpython_uplot.cartesian import Cartesian
+
     display = board.DISPLAY
     plot = Plot(0, 0, display.width, display.height)
 
-    x = np.linspace(-4, 4, num=25)
-    constant = 1.0 / np.sqrt(2 * np.pi)
-    y = constant * np.exp((-(x**2)) / 2.0)
+    x = [0, 1, 2, 3]
+    y = [0, 2, 4, 6]
 
 After the initial setup we add our xy plane and show our plot
 
@@ -215,10 +213,13 @@ After the initial setup we add our xy plane and show our plot
     Cartesian(plot, x, y)
     display.show(plot)
 
+You can add more than one graph to the same plot. Howver, you need to define the range of the graph as the two
+graphs will share the same axes.
 
 There are some parameters that you can customize:
-    * rangex and rangey: you could specify the ranges of your graph. Allowing you to move your graph according to your needs. This parameters only accept lists
-    * line color: you could specify the color in HEX
+    * rangex and rangey: you could specify the ranges of your graph. Allowing you to move your graph according to your needs. This parameters only accept lists. This is needed for plotting more than one curve in the plot area.
+    * line color: you could specify the color in HEX. Or you could use the color class as explained above.
+    * line style: you could specify the line style. The default is a solid line. see below for more details
     * fill: if you selected this as `True` the area under your graph will be filled
     * nudge: this parameter allows yuo to move a little bit the graph. This is useful when the data start/end in the limits of your range
 
@@ -242,9 +243,43 @@ if you want to add more than un line to your plot, you could do something like t
     x = np.linspace(-4, 4, num=25)
     y1 = x**2 / 2
     y2 = 2 + x**2 + 3 * x
-    Cartesian(plot, x, y1)
-    Cartesian(plot, x, y1)
+    Cartesian(plot, x, y1, rangex=[-5, 5], rangey=[0, 1])
+    Cartesian(plot, x, y2, rangex=[-5, 5], rangey=[0, 1])
     display.show(plot)
+
+if you need to override the ticks automatic rendering, you can use the following code:
+
+.. code-block:: python
+
+    plot = Plot(0, 0, display.width, display.height)
+    x = np.linspace(-4, 4, num=25)
+    y1 = x**2 / 2
+    Cartesian(plot, x, y1, ticksx=[-4, -2, 0, 2, 4], ticksy=[0, 5, 10, 15, 20])
+
+    display.show(plot)
+
+If you are adding more than one curve to the plot ticks will be defined for all curves.
+And needs to be defined in the first cartesian graph added to the plot.
+
+Line styles
+============
+You can select the line style of your Cartesian graph. The following line styles are available:
+    * LineStyle.SOLID
+    * LineStyle.DOTTED
+    * LineStyle.DASHED
+    * LineStyle.DASH_DOT
+
+This can be done by importing the color class, from the cartesian library:
+
+.. code-block:: python
+
+    from circuitpython_uplot.plot import LineStyle
+
+You could select a dotted line by using the following code: ``line_style=LineStyle.DOTTED``.
+
+.. code-block:: python
+
+    Cartesian(plot, x, y, line_style=LineStyle.DOTTED)
 
 
 ===============

@@ -42,7 +42,6 @@ class Cartesian:
         line_style: Optional[str] = None,
         ticksx: Union[np.array, list] = None,
         ticksy: Union[np.array, list] = None,
-        tick_pos: bool = False,
         fill: bool = False,
         nudge: bool = True,
         logging: bool = False,
@@ -58,7 +57,6 @@ class Cartesian:
         :param str|None line_style: line style. Defaults to None
         :param np.array|list ticksx: X axis ticks values
         :param np.array|list ticksy: Y axis ticks values
-        :param bool tick_pos: indicates ticks position. True for below the axes.
         :param bool fill: Show the filling. Defaults to `False`
         :param bool nudge: moves the graph a little for better displaying. Defaults to `True`
         :param bool logging: used to change the logic of the cartesian to work as a logger
@@ -67,13 +65,6 @@ class Cartesian:
         self.points = []
         self.ticksx = ticksx
         self.ticksy = ticksy
-
-        if tick_pos:
-            self._tickposx = plot._tickheightx
-            self._tickposy = plot._tickheighty
-        else:
-            self._tickposx = 0
-            self._tickposy = 0
 
         if line_color is not None:
             plot._plot_palette[plot._index_colorused] = line_color
@@ -193,3 +184,14 @@ class Cartesian:
             ynorm[index + 1],
             plot._index_colorused,
         )
+
+
+class LineStyle:
+    """
+    Line style class
+    """
+
+    SOLID = "-"
+    DASHED = "- -"
+    DASH_DOT = "-.-"
+    DOTTED = "."
