@@ -78,13 +78,13 @@ class Plot(displayio.Group):
             height = 100
         if x + width > 481:
             print(
-                "Modify this settings. Some of the graphics will not shown int the screen"
+                "Modify this setting. Some of the graphics will not shown int the screen"
             )
             print("Defaulting to x=0")
             x = 0
         if y + height > 321:
             print(
-                "Modify this settings. Some of the graphics will not shown int the screen"
+                "Modify this setting. Some of the graphics will not shown int the screen"
             )
             print("Defaulting to y=0")
             y = 0
@@ -162,7 +162,7 @@ class Plot(displayio.Group):
         """
         Setting up axs visibility
 
-        :param axstype: argument with the kind of axs you selected
+        :param str axstype: argument with the kind of axs you selected
 
         :return: None
 
@@ -230,7 +230,8 @@ class Plot(displayio.Group):
 
     def draw_circle(self, radius: int = 5, x: int = 100, y: int = 100) -> None:
         """
-        Draw a circle in the plot area
+        Draw a circle in the plot area. This function is kept here for
+        historical reasons. Please use :meth:`scatter` instead.
 
         :param int radius: circle radius
         :param int x: circles center x coordinate position in pixels, Defaults to 100.
