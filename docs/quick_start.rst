@@ -185,12 +185,12 @@ This will allow you to use the colors in the list as color variable definitions
 
     plot = Plot(0, 0, display.width, display.height, background_color=color.WHITE, box_color=color.BLACK)
 
-
+.. image:: ../docs/colors.png
 
 ===========
 Cartesian
 ===========
-With the cartesian class it's possible to add (x,y) plots. You can add different (x,y) plots to the
+With the cartesian class is possible to add (x,y) plots. You can add different (x,y) plots to the
 same plot area. After you create your plot area you will need to define the xy plane
 for the plot. Secondly, you will need to give some ``x`` and ``y`` data.
 This data will be converted to a `ulab.numpy.ndarray`. For more information please refer
