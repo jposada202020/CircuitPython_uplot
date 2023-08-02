@@ -6,7 +6,7 @@ from random import choice
 import board
 from ulab import numpy as np
 from circuitpython_uplot.plot import Plot
-from circuitpython_uplot.scatter import Scatter
+from circuitpython_uplot.scatter import Scatter, Pointer
 
 
 # Setting up the display
@@ -52,6 +52,6 @@ Scatter(
     b,
     rangex=[0, 210],
     rangey=[0, 210],
-    pointer="triangle",
+    pointer=Pointer.TRIANGLE,
     pointer_color=0x00FFFF,
 )

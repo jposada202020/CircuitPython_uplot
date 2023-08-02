@@ -8,7 +8,7 @@ import displayio
 import board
 from ulab import numpy as np
 from circuitpython_uplot.plot import Plot
-from circuitpython_uplot.scatter import Scatter
+from circuitpython_uplot.scatter import Scatter, Pointer
 
 
 # Setting up the display
@@ -34,6 +34,6 @@ display.show(g)
 a = np.linspace(1, 100)
 b = [choice(a) for _ in a]
 Scatter(plot, a, b)
-Scatter(plot2, a, b, pointer="triangle", pointer_color=0x00FF00)
-Scatter(plot3, a, b, pointer="square", pointer_color=0xFFFFFF)
-Scatter(plot4, a, b, pointer="diamond", pointer_color=0xFF32FF)
+Scatter(plot2, a, b, pointer=Pointer.TRIANGLE, pointer_color=0x00FF00)
+Scatter(plot3, a, b, pointer=Pointer.SQUARE, pointer_color=0xFFFFFF)
+Scatter(plot4, a, b, pointer=Pointer.DIAMOND, pointer_color=0xFF32FF)

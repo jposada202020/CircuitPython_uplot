@@ -273,9 +273,9 @@ This can be done by importing the color class, from the cartesian library:
 
 .. code-block:: python
 
-    from circuitpython_uplot.plot import LineStyle
+    from circuitpython_uplot.cartesian import LineStyle
 
-You could select a dotted line by using the following code: ``line_style=LineStyle.DOTTED``.
+You can select a dotted line by using the following code: ``line_style=LineStyle.DOTTED``.
 
 .. code-block:: python
 
@@ -328,7 +328,8 @@ Creates a scatter plot with x,y data. You can customize the circle diameter if y
 There are some parameters that you can customize:
     * rangex and rangey: you can specify the ranges of your graph. This allows you to move your graph according to your needs. This parameters only accept lists
     * radius: circles radius/radii. If a different value is given for each point, the radius should be a list of values. If selected pointer is not a circle, this parameter will be ignored
-    * pointer_color: you can specify the color in HEX
+    * pointer_color: you can specify the color in HEX. Or you could use the color class as explained above.
+    * pointer: you can select the pointer shape. The default is a circle. See below for more details
     * nudge: this parameter allows you to move the graph slighty. This is useful when the data start/end in the limits of your range
 
 
@@ -340,12 +341,33 @@ There are some parameters that you can customize:
     b = [choice(a) for _ in a]
     Scatter(plot, a, b, rangex=[0,210], rangey=[0, 210], radius=radi, pointer_color=0xF456F3)
 
+
+Pointer styles
+==============
+You can select the pointer style of your Scatter graph. The following pointer styles are available:
+    * Pointer.CIRCLE
+    * Pointer.SQUARE
+    * Pointer.TRIANGLE
+    * Pointer.DIAMOND
+
+This can be done by importing the color class, from the cartesian library:
+
+.. code-block:: python
+
+    from circuitpython_uplot.scatter import Pointer
+
+You can select a square pointer using the following code: ``pointer=Pointer.SQUARE``.
+
+.. code-block:: python
+
+    Scatter(plot, a, b, pointer=Pointer.SQUARE)
+
 ===============
 Bar Plot
 ===============
 
 Allows you to graph bar plots. You just need to give the values of the bar in a python list.
-You can choose to create shell or filled bars.
+You can choose to create shell or filled bars or 3D projected bars.
 
 .. code-block:: python
 
@@ -362,21 +384,21 @@ You can choose to create shell or filled bars.
     Bar(plot, a, b)
 
 
-You can select the color or and if the bars are filled
+You can select the color or/and if the bars are filled
 
 .. code-block:: python
 
-    Bar(plot, a, b, 0xFF1000, True)
+    Bar(plot, a, b, color=0xFF1000, fill=True)
 
 
 You can also select the bar spacing and the xstart position:
 
 .. code-block:: python
 
-    Bar(plot, a, b, 0xFF1000, fill=True, bar_space=30, xstart=70)
+    Bar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70)
 
 For bar filled graphs you can pass a color_palette list. This will allow you to select the color of each bar
-This will not work for shell bars sadly.
+This will not work for shell bars.
 
 .. code-block:: python
 
@@ -389,7 +411,7 @@ This will not work for shell bars sadly.
     Bar(plot, a, b, fill=True, bar_space=30, xstart=70, color_palette=[0xFF1000, 0x00FF00, 0x0000FF, 0x00FFFF])
 
 
-with the projection argument you can show the bars with projection. This will give them a 3D
+With the projection argument you can show the bars with projection. This will give them a 3D
 appearance
 
 .. code-block:: python
@@ -407,7 +429,7 @@ appearance
     Bar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
 
 
-For filled unprojected bars you can update their values. This is useful for data logging.
+For filled unprojected bars you can update their values in real time. This is useful for data logging.
 The max_value argument will allow you to set the maximum value of the graph. The plot will scale
 according to this max value, and bar plot will update their values accordingly
 
@@ -425,7 +447,7 @@ according to this max value, and bar plot will update their values accordingly
     b = [3, 5, 1, 7]
     my_bar = Bar(plot, a, b, color=0xFF1000, fill=True, color_palette=[0xFF1000, 0x00FF00, 0xFFFF00, 0x123456], max_value=10)
 
-Then you can update the values of the bar plot:
+Then you can update the values of the bar plot in a loop:
 
 .. code-block:: python
 
@@ -439,14 +461,11 @@ code will change all the bar's color to red
 
     my_bar.update_colors(0xFF0000, 0xFF0000, 0xFF0000, 0xFF0000)
 
-If you prefer, you can change the color of a single bar using the following code:
+If you prefer, you can change the color of a single bar using the code below that will change the first bar to Blue.:
 
 .. code-block:: python
 
     my_bar.update_bar_color(0, 0x0000FF)
-
-This will change the first bar to Blue.
-
 
 
 ===============
@@ -567,3 +586,17 @@ For example, if you want to load the Temperature icon with a scale of 2
     plot = Plot(0, 0, display.width, display.height)
     SVG(plot, Temperature, 250, 50, 2)
     display.show(plot)
+
+===============
+SHADE
+===============
+Shade is a small module to add a shaded area to the plot. This is useful to highlight a specific area in the plot.
+By itself will only fill rectangular areas in the plot area. However, it can be used in conjunction with other modules to create
+more complex plots. Refer to the examples for more details.
+
+=====================
+Polar Plot
+=====================
+
+Allows to plot polar graphs. You just need to give the values of the graph in a python list.
+See the examples folder for more information.

@@ -173,3 +173,14 @@ class Scatter:
                             y=self._ynorm[i],
                         )
                     )
+
+
+class Pointer:
+    """
+    Pointer container class
+    """
+
+    CIRCLE = "circle"
+    TRIANGLE = "triangle"
+    SQUARE = "square"
+    DIAMOND = "diamond"
