@@ -21,10 +21,6 @@ Implementation Notes
 
 """
 
-# pylint: disable=too-many-statements, unused-import, no-member
-# pylint: disable=unused-import, import-outside-toplevel, undefined-variable
-# pylint: disable=attribute-defined-outside-init
-
 try:
     from typing import Union, Tuple, Optional
     from typing_extensions import Literal
@@ -96,6 +92,7 @@ class Plot(displayio.Group):
         super().__init__(x=x, y=y, scale=scale)
 
         self._axesparams = "box"
+        self._decimal_points = None
 
         self._width = width
         self._height = height
@@ -278,6 +275,8 @@ class Plot(displayio.Group):
 
         :param int x: x coord
         :param int y: y coord
+        :param list[int] ticksx: x ticks data. Defaults to None
+        :param list[int] ticksy: y ticks data. Defaults to None
 
         :return:None
 
@@ -495,6 +494,7 @@ class Plot(displayio.Group):
         anchorpoint: Tuple = (0.5, 0.0),
         text_color: Optional[int] = None,
         free_text: bool = False,
+        font=None,
     ) -> None:
         """
 
@@ -503,10 +503,13 @@ class Plot(displayio.Group):
         :param int x: x coordinate
         :param int y: y coordinate
         :param Tuple anchorpoint: Display_text anchor point. Defaults to (0.5, 0.0)
-        :param int color: text color. Defaults to :const:`0xFFFFFF`
+        :param int color: text color. Defaults to None
         :param bool free_text: Select to show free text
+        :param font: font to be used. Defaults to None
         :return: None
         """
+        if font is None:
+            font = terminalio.FONT
         try:
             self.bitmap_label
         except AttributeError:
@@ -519,15 +522,19 @@ class Plot(displayio.Group):
 
         if self._showtext or free_text:
             text_toplot = self.bitmap_label.Label(
-                terminalio.FONT, text=text, x=x, y=y, color=text_color
+                font, text=text, x=x, y=y, color=text_color
             )
             text_toplot.anchor_point = anchorpoint
             text_toplot.anchored_position = (x, y)
             self.append(text_toplot)
 
 
-# pylint: disable=missing-class-docstring, too-few-public-methods, invalid-name
+# pylint: disable=too-few-public-methods, invalid-name
 class color:
+    """
+    Class to define colors in HEX
+    """
+
     WHITE = 0xFFFFFF
     BLACK = 0x000000
     RED = 0xFF0000
