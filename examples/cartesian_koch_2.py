@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2023 Jose D. Montoya
 #
 # SPDX-License-Identifier: MIT
-
+# pylint: disable=unused-argument, use-dict-literal
 # Example adapted to use in CircuitPython and Microplot from
 # Heltonbiker
 # https://stackoverflow.com/questions/7409938/fractal-koch-curve
@@ -36,7 +36,7 @@ decode = dict(L=L, R=R, F=F)
 
 def koch(steps, length=200, startPos=(0, 0)):
     pathcodes = "F"
-    for i in range(steps):
+    for _ in range(steps):
         pathcodes = pathcodes.replace("F", "FLFRFLF")
 
     jump = float(length) / (3**steps)
