@@ -194,6 +194,17 @@ Cartesian koch snowflake example
     :lines: 5-
 .. image:: ../docs/koch.jpg
 
+
+Cartesian Koch Curve
+---------------------------
+
+Cartesian koch curve example
+
+.. literalinclude:: ../examples/cartesian_koch_2.py
+    :caption: examples/cartesian_koch_2.py
+    :lines: 5-
+.. image:: ../docs/koch2.jpg
+
 ==================
 Bar Examples
 ==================
