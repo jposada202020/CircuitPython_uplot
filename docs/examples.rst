@@ -184,7 +184,15 @@ Cartesian animation example
 .. image:: ../docs/cartesian_logging_data.gif
 
 
+Cartesian Koch Snowflake
+---------------------------
 
+Cartesian koch snowflake example
+
+.. literalinclude:: ../examples/cartesian_koch.py
+    :caption: examples/cartesian_koch.py
+    :lines: 5-
+.. image:: ../docs/koch.jpg
 
 ==================
 Bar Examples

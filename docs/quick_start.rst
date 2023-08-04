@@ -180,6 +180,14 @@ This will allow you to use the colors in the list as color variable definitions
     * ORANGE
     * TEAL
     * GRAY
+    * PINK
+    * LIGHT_GRAY
+    * BROWN
+    * DARK_GREEN
+    * TURQUOISE
+    * DARK_BLUE
+    * DARK_RED
+
 
 .. code-block:: python
 
@@ -264,10 +272,10 @@ And needs to be defined in the first cartesian graph added to the plot.
 Line styles
 ============
 You can select the line style of your Cartesian graph. The following line styles are available:
-    * LineStyle.SOLID
-    * LineStyle.DOTTED
-    * LineStyle.DASHED
-    * LineStyle.DASH_DOT
+    * SOLID
+    * DOTTED
+    * DASHED
+    * DASH_DOT
 
 This can be done by importing the color class, from the cartesian library:
 
@@ -345,10 +353,10 @@ There are some parameters that you can customize:
 Pointer styles
 ==============
 You can select the pointer style of your Scatter graph. The following pointer styles are available:
-    * Pointer.CIRCLE
-    * Pointer.SQUARE
-    * Pointer.TRIANGLE
-    * Pointer.DIAMOND
+    * CIRCLE
+    * SQUARE
+    * TRIANGLE
+    * DIAMOND
 
 This can be done by importing the color class, from the cartesian library:
 

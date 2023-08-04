@@ -346,7 +346,7 @@ class Plot(displayio.Group):
                 self.show_text(
                     "{:.{}f}".format(ticksxnorm[i], self._decimal_points),
                     tick,
-                    self._newymin,
+                    self._newymin + 5,
                     (0.5, 0.0),
                 )
         for i, tick in enumerate(ticksyrenorm):
@@ -361,7 +361,7 @@ class Plot(displayio.Group):
             if self._showtext:
                 self.show_text(
                     "{:.{}f}".format(ticksynorm[i], self._decimal_points),
-                    self._newxmin,
+                    self._newxmin - 5,
                     tick,
                     (1.0, 0.5),
                 )
@@ -546,3 +546,10 @@ class color:
     ORANGE = 0xFF9933
     TEAL = 0x158FAD
     GRAY = 0x808080
+    PINK = 0xFF40C0
+    LIGHT_GRAY = 0xAAAAAA
+    BROWN = 0xCA801D
+    DARK_GREEN = 0x008700
+    TURQUOISE = 0x00C0C0
+    DARK_BLUE = 0x0000AA
+    DARK_RED = 0x800000
