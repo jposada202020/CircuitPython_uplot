@@ -7,9 +7,9 @@
 # License MIT
 
 import board
+from ulab import numpy
 from circuitpython_uplot.plot import Plot
 from circuitpython_uplot.cartesian import Cartesian
-from ulab import numpy
 
 
 def iterate(initial_vectors: list[numpy.ndarray], steps: int) -> list[numpy.ndarray]:
