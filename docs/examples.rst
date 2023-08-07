@@ -390,6 +390,17 @@ This example shows how to add limits to our plot
     :lines: 5-
 .. image:: ../docs/logging_limits.jpg
 
+
+Logging with Dial Gauge Library
+---------------------------------------
+
+This example shows how to add limits to our plot
+
+.. literalinclude:: ../examples/logging_with_dial_gauge.py
+    :caption: examples/logging_with_dial_gauge.py
+    :lines: 5-
+.. image:: ../docs/logging_dial.jpg
+
 ====================
 SVG Examples
 ====================
