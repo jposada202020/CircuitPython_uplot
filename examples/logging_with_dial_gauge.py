@@ -3,12 +3,13 @@
 # SPDX-License-Identifier: MIT
 
 import time
+import random
 import board
 import displayio
-import random
+from dial_gauge import DIAL_GAUGE
 from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
-from dial_gauge import DIAL_GAUGE
+
 
 # In order to run this example you need to install the following library:
 # - CircuitPython_DIAL_GAUGE (from https://github.com/jposada202020/CircuitPython_DIAL_GAUGE)
