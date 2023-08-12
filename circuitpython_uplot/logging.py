@@ -9,7 +9,7 @@
 
 CircuitPython logging data graph
 
-* Author(s): Jose D. Montoya
+* Author: Jose D. Montoya
 
 
 """
@@ -87,6 +87,8 @@ class Logging:
                 dtype=np.int16,
             )
             plot._plot_palette[9] = limits_color
+        else:
+            self._limits = None
 
         self.draw_points(plot, x, y, fill)
 
@@ -163,7 +165,8 @@ class Logging:
         :return: None
         """
         self.clear_plot(plot)
-
+        if self._limits:
+            self._draw_limit_lines(plot)
         self.draw_new_lines(plot, x, y, fill)
 
     def draw_new_lines(self, plot: Plot, x: list, y: list, fill: bool = False) -> None:
@@ -215,17 +218,17 @@ class Logging:
     def _draw_limit_lines(self, plot: Plot) -> None:
         draw_line(
             plot._plotbitmap,
-            plot._newxmin,
+            plot._newxmin + 1,
             self._limits[0],
-            plot._newxmax,
+            plot._newxmax - 1,
             self._limits[0],
             9,
         )
         draw_line(
             plot._plotbitmap,
-            plot._newxmin,
+            plot._newxmin + 1,
             self._limits[1],
-            plot._newxmax,
+            plot._newxmax - 1,
             self._limits[1],
             9,
         )

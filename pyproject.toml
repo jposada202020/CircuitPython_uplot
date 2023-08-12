@@ -3,24 +3,19 @@
 # SPDX-License-Identifier: MIT
 
 [build-system]
-requires = [
-    "setuptools",
-    "wheel",
-    "setuptools-scm",
-]
+requires = ["setuptools", "wheel", "setuptools-scm"]
 
 [project]
 name = "circuitpython-uplot"
 description = "framework to display different plots in displayio. similar to widget"
 version = "0.0.0+auto.0"
 readme = "README.rst"
-authors = [
-    {name = "JDM", email = "uplot@mailmeto.mozmail.com"}
-]
-urls = {Homepage = "https://github.com/jposada202020/CircuitPython_uplot"}
+authors = [{ name = "JDM", email = "uplot@mailmeto.mozmail.com" }]
+urls = { Homepage = "https://github.com/jposada202020/CircuitPython_uplot" }
 keywords = [
     "circuitpython",
     "uplot",
+    "microplot",
     "bar",
     "stackplot",
     "fillbetween",
@@ -41,7 +36,7 @@ keywords = [
     "plot",
     "plotter",
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries",
@@ -56,5 +51,5 @@ dynamic = ["dependencies", "optional-dependencies"]
 packages = ["circuitpython_uplot"]
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-optional-dependencies = {optional = {file = ["optional_requirements.txt"]}}
+dependencies = { file = ["requirements.txt"] }
+optional-dependencies = { optional = { file = ["optional_requirements.txt"] } }
