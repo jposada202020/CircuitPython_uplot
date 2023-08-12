@@ -27,6 +27,9 @@ For detailed view of the library please refer to the `Quick start guide <https:/
 
 .. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme2.png
 
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme3.png
+
+.. image:: https://github.com/jposada202020/CircuitPython_uplot/blob/main/docs/readme4.png
 
 Below a picture of a real live application. for more information visit the project `page <https://github.com/casainho/temperature_humidity_sensor_eink_display>`_. Thanks to @Casainho
 

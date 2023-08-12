@@ -100,7 +100,7 @@ class shade:
             plot._plotbitmap,
             min(xnorm),
             min(y1norm),
-            max(xnorm),
+            max(xnorm) + 1,
             max(y2norm),
             plot._index_colorused,
         )

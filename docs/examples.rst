@@ -84,8 +84,8 @@ Scatter using different datasets
 
 Example showing how to use different datasets
 
-.. literalinclude:: ../examples/scatter.py
-    :caption: examples/scatter.py
+.. literalinclude:: ../examples/scatter_using_different_datasets.py
+    :caption: examples/scatter_using_different_datasets.py
     :lines: 5-
 .. image:: ../docs/scatter_using_different_datasets.jpg
 
