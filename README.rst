@@ -1,7 +1,3 @@
-.. image:: https://readthedocs.org/projects/circuitpython-uplot/badge/?version=latest
-    :target: https://circuitpython-uplot.readthedocs.io/
-    :alt: Documentation Status
-
 .. image:: https://github.com/jposada202020/CircuitPython_uplot/workflows/Build%20CI/badge.svg
     :target: https://github.com/jposada202020/CircuitPython_uplot/actions
     :alt: Build Status
@@ -13,10 +9,6 @@
 .. image:: https://static.pepy.tech/personalized-badge/circuitpython-uplot?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Pypi%20Downloads
     :alt: Total PyPI downloads
     :target: https://pepy.tech/project/circuitpython-uplot
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-    :alt: Code Style: Black
 
 Framework to display different graphical plots in displayio.
 Take a look in the `examples <https://circuitpython-uplot.readthedocs.io/en/latest/examples.html>`_ section in RTD to see the gallery
