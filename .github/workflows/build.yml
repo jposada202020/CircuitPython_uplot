@@ -88,26 +88,3 @@ jobs:
           name: bundles
           path: ${{ github.workspace }}/bundles/
 
-  build-docs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Install deps
-        run: |
-          pip install -r docs/requirements.txt -r requirements.txt
-
-      - name: Build docs
-        working-directory: docs
-        run: sphinx-build -E -W -b html . _build/html
-
-      - name: Archive docs
-        uses: actions/upload-artifact@v3
-        with:
-          name: docs
-          path: ${{ github.workspace }}/docs/_build/html
