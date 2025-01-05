@@ -58,7 +58,7 @@ temp_y = [26, 25, 24, 23, 28]
 
 g.append(plot_1)
 
-display.show(g)
+display.root_group = g
 display.refresh()
 
 dist = 3

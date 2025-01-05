@@ -29,4 +29,4 @@ Bar(plot_scale2, a, b, 0xFF1000, True, bar_space=4, xstart=5)
 group.append(plot_scale1)
 group.append(plot_scale2)
 
-display.show(group)
+display.root_group = group

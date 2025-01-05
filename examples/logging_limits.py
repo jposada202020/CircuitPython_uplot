@@ -60,7 +60,7 @@ y = [26, 32, 34, 30, 28, 35, 46, 65, 37, 23, 40, 27, 26, 36, 44, 53, 69, 27, 26]
 random_numbers = [32, 34, 45, 65, 24, 40, 18, 27]
 
 
-display.show(my_plot)
+display.root_group = my_plot
 display.refresh()
 
 dist = 1

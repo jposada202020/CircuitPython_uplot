@@ -19,4 +19,4 @@ a = [5, 2, 7, 3]
 Pie(plot, a)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

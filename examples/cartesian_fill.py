@@ -14,7 +14,7 @@ display = board.DISPLAY
 # Adding the plot area
 plot = Plot(0, 0, display.width - 125, display.height, padding=25)
 
-display.show(plot)
+display.root_group = plot
 
 # Creating the values
 x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])

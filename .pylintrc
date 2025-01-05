@@ -14,7 +14,7 @@ unsafe-load-any-extension=no
 
 [MESSAGES CONTROL]
 confidence=
-disable=raw-checker-failed,bad-inline-option,locally-disabled,file-ignored,suppressed-message,useless-suppression,deprecated-pragma,import-error,pointless-string-statement,unspecified-encoding,protected-access,unnecessary-list-index-lookup,duplicate-code,import-outside-toplevel,attribute-defined-outside-init
+disable=raw-checker-failed,bad-inline-option,locally-disabled,file-ignored,suppressed-message,useless-suppression,deprecated-pragma,import-error,pointless-string-statement,unspecified-encoding,protected-access,unnecessary-list-index-lookup,duplicate-code,import-outside-toplevel,attribute-defined-outside-init, too-many-positional-arguments
 enable=
 
 [REPORTS]

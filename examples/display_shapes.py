@@ -41,4 +41,4 @@ plot.append(polygon)
 plot.append(roundrect)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

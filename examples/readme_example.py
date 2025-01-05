@@ -91,4 +91,4 @@ Cartesian(plot7, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fill
 plot.append(plot7)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

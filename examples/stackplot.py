@@ -27,4 +27,4 @@ y = [1, 4, 6, 3, 6, 6, 5, 0, 9, 2]
 Cartesian(plot, x, y, rangex=[0, 11], rangey=[0, 12], line_color=0x4444FF, fill=True)
 
 
-display.show(plot)
+display.root_group = plot

@@ -17,4 +17,4 @@ SVG(plot, Humidity, 150, 50, 2, color.TEAL)
 SVG(plot, Temperature, 250, 50, 2, color.GREEN)
 
 SVG(plot, Temperature2, 300, 50, 0.25, color.BLUE)
-display.show(plot)
+display.root_group = plot

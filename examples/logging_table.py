@@ -74,7 +74,7 @@ my_log = Logging(
 g.append(plot_1)
 g.append(my_table)
 # Show the group
-display.show(g)
+display.root_group = g
 
 for _ in range(2):
     for i in range(len(x)):

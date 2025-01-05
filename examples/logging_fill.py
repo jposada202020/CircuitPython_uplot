@@ -77,4 +77,4 @@ Logging(
 group.append(plot_1)
 group.append(plot_2)
 
-display.show(group)
+display.root_group = group

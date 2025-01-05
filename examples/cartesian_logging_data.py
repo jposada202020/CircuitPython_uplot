@@ -79,7 +79,7 @@ humidity_y = [choice(humidity) for _ in x]
 g.append(plot_1)
 g.append(plot_2)
 
-display.show(g)
+display.root_group = g
 display.refresh()
 
 for i, element in enumerate(x):

@@ -98,4 +98,4 @@ x = np.linspace(25, 50, num=25)
 for i in range(40, 110, 10):
     Cartesian(plot, x, heat_index(x, i), rangex=[25, 50], rangey=[25, 60])
 
-display.show(plot)
+display.root_group = plot

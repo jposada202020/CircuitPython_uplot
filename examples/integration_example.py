@@ -31,4 +31,4 @@ Cartesian(plot, x, y)
 plot.draw_circle(radius=8, x=120, y=120)
 
 # Showing in the screen
-display.show(plot)
+display.root_group = plot

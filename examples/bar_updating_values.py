@@ -31,7 +31,7 @@ a = ["a", "b", "c", "d", "e", "f"]
 
 add = 1
 # Showing the plot
-display.show(plot)
+display.root_group = plot
 
 # Creating the bar
 my_bar = Bar(

@@ -48,7 +48,7 @@ g.append(plot3)
 g.append(plot4)
 
 # Plotting and showing the plot
-display.show(g)
+display.root_group = g
 
 
 # Some Variables

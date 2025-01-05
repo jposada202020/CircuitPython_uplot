@@ -48,7 +48,7 @@ temp_y = [26, 25, 24, 23, 28, 24, 54, 76, 34, 23]
 
 g.append(plot_1)
 
-display.show(g)
+display.root_group = g
 display.refresh()
 
 my_log = Logging(
