@@ -21,4 +21,4 @@ y = constant * np.exp((-(x**2)) / 2.0)
 # Drawing the graph
 Cartesian(plot, x, y)
 
-display.show(plot)
+display.root_group = plot

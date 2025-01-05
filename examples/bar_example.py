@@ -19,4 +19,4 @@ b = [3, 5, 1, 7]
 Bar(plot, a, b, 0xFF1000, True)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

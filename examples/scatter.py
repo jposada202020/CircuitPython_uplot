@@ -23,4 +23,4 @@ b = [choice(a) for _ in a]
 Scatter(plot, a, b)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

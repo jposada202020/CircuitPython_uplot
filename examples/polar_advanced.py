@@ -72,4 +72,4 @@ Polar(
 g.append(plot4)
 
 # Show the Display
-display.show(g)
+display.root_group = g

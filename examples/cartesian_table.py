@@ -119,4 +119,4 @@ my_table = Table(
     color.BLUE,
 )
 g.append(my_table)
-display.show(g)
+display.root_group = g

@@ -18,7 +18,16 @@ a = ["a", "b", "c", "d", "e"]
 b = [3, 5, 1, 9, 7]
 
 # Creating a 3D bar
-Bar(plot, a, b, color=0xFF1000, fill=True, bar_space=30, xstart=70, projection=True)
+Bar(
+    plot,
+    a,
+    b,
+    color=0xFF1000,
+    fill=True,
+    bar_space=30,
+    xstart=70,
+    projection=True,
+)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot

@@ -39,4 +39,4 @@ g.append(plot)
 g.append(text_area)
 g.append(text2_area)
 
-display.show(g)
+display.root_group = g

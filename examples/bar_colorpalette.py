@@ -39,4 +39,4 @@ Bar(
 )
 
 # Showing the plot
-display.show(plot)
+display.root_group = plot

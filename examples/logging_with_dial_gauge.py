@@ -28,7 +28,7 @@ plot2.append(my_dial)
 g = displayio.Group()
 g.append(my_plot)
 g.append(plot2)
-display.show(g)
+display.root_group = g
 
 
 my_plot.tick_params(

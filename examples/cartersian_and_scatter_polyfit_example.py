@@ -26,10 +26,14 @@ display = board.DISPLAY
 plot = Plot(0, 0, display.width - table_width, display.height, padding=1)
 plot.tick_params(tickx_height=12, ticky_height=12, tickcolor=0x939597, tickgrid=True)
 plot_table = Plot(
-    display.width - table_width - 1, 0, table_width - 1, display.height, padding=1
+    display.width - table_width - 1,
+    0,
+    table_width - 1,
+    display.height,
+    padding=1,
 )
 
-display.show(g)
+display.root_group = g
 g.append(plot)
 g.append(plot_table)
 

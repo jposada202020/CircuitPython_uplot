@@ -13,4 +13,4 @@ plot = Plot(0, 0, display.width, display.height)
 
 plot.draw_circle(radius=8, x=120, y=120)
 
-display.show(plot)
+display.root_group = plot

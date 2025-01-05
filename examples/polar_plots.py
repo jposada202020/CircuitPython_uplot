@@ -25,7 +25,7 @@ g.append(plot3)
 g.append(plot4)
 
 # Plotting and showing the plot
-display.show(g)
+display.root_group = g
 
 
 def rose_function(n=3, angle_range=[0, 360], radius=30):

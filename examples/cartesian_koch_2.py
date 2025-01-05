@@ -26,7 +26,10 @@ def R(angle, coords, jump):
 
 def F(angle, coords, jump):
     coords.append(
-        (coords[-1][0] + jump * cosin[angle], coords[-1][1] + jump * sines[angle])
+        (
+            coords[-1][0] + jump * cosin[angle],
+            coords[-1][1] + jump * sines[angle],
+        )
     )
     return angle
 
@@ -57,4 +60,4 @@ x_coordinates, y_coordinates = zip(*points)
 
 # Adding the Cartesian plot
 Cartesian(plot, x_coordinates, y_coordinates)
-display.show(plot)
+display.root_group = plot

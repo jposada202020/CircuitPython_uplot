@@ -23,20 +23,32 @@ plot.tick_params(
     decimal_points=0,
 )
 
-display.show(plot)
+display.root_group = plot
 
 a = np.linspace(4, 200, 50)
 z = [4, 5, 6, 7, 8]
 radi = [choice(z) for _ in a]
 b = [choice(a) for _ in a]
 Scatter(
-    plot, a, b, rangex=[0, 210], rangey=[0, 210], radius=radi, pointer_color=0xF456F3
+    plot,
+    a,
+    b,
+    rangex=[0, 210],
+    rangey=[0, 210],
+    radius=radi,
+    pointer_color=0xF456F3,
 )
 a = np.linspace(50, 170, 50)
 radi = [choice(z) for _ in a]
 b = [choice(a) for _ in a]
 Scatter(
-    plot, a, b, rangex=[0, 210], rangey=[0, 210], radius=radi, pointer_color=0x00FF00
+    plot,
+    a,
+    b,
+    rangex=[0, 210],
+    rangey=[0, 210],
+    radius=radi,
+    pointer_color=0x00FF00,
 )
 a = np.linspace(50, 100, 25)
 z = [

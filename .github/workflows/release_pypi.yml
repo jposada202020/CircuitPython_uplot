@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2017 Scott Shawcroft, written for Adafruit Industries
+# SPDX-FileCopyrightText: 2025 Jose D. Montoya
 #
 # SPDX-License-Identifier: MIT
 
@@ -9,11 +9,28 @@ on:
     types: [published]
 
 jobs:
-  upload-release-assets:
+  pypi-publish:
+    name: Publish release to PyPI
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/circuitpython-uplot
+    permissions:
+      id-token: write
     steps:
-    - name: Run PyPI Release CI workflow
-      uses: adafruit/workflows-circuitpython-libs/release-pypi@main
-      with:
-        pypi-username: ${{ secrets.pypi_username }}
-        pypi-password: ${{ secrets.pypi_password }}
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade build
+      - name: Build package
+        run: |
+          find -type f -not -path "./.*" -not -path "./docs*" \( -name "*.py" -o -name "*.toml" \) -exec sed -i -e "s/0.0.0+auto.0/${{github.event.release.tag_name}}/" {} +
+          python -m build
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

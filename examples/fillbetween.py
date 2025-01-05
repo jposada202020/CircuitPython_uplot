@@ -20,4 +20,4 @@ y2 = 2 + x**2 + 3 * x
 
 Fillbetween(plot, x, y1, y2)
 
-display.show(plot)
+display.root_group = plot

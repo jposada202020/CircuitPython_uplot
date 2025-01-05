@@ -32,7 +32,7 @@ some_values = [45, 20, 25, 30, 35, 10]
 a = ["a", "b", "c", "d", "e", "f"]
 
 # Showing the plot
-display.show(plot)
+display.root_group = plot
 
 # Creating the bar
 my_bar = Bar(
@@ -47,7 +47,14 @@ my_bar = Bar(
 time.sleep(2)
 # Changing all the bars to Yellow
 my_bar.update_colors(
-    [color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW, color.YELLOW]
+    [
+        color.YELLOW,
+        color.YELLOW,
+        color.YELLOW,
+        color.YELLOW,
+        color.YELLOW,
+        color.YELLOW,
+    ]
 )
 
 time.sleep(2)

@@ -17,4 +17,4 @@ theta = 2 * np.pi * r
 
 # Plotting and showing the plot
 Polar(plot, theta, r, rangex=[-2, 2], rangey=[-2, 2], line_color=color.ORANGE)
-display.show(plot)
+display.root_group = plot

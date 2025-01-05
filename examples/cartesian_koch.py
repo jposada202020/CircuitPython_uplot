@@ -60,4 +60,4 @@ x_coordinates, y_coordinates = zip(*processed_vectors)
 
 # Adding the Cartesian plot
 Cartesian(plot, x_coordinates, y_coordinates)
-display.show(plot)
+display.root_group = plot

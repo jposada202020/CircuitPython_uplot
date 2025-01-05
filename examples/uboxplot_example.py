@@ -66,4 +66,4 @@ my_box3.draw()
 plot.append(my_box)
 plot.append(my_box2)
 plot.append(my_box3)
-display.show(plot)
+display.root_group = plot

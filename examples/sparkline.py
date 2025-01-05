@@ -37,7 +37,7 @@ sparkline = Sparkline(
 plot.append(sparkline)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot
 
 for element in y:
     display.auto_refresh = False

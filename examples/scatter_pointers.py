@@ -27,7 +27,7 @@ g.append(plot)
 g.append(plot2)
 g.append(plot3)
 g.append(plot4)
-display.show(g)
+display.root_group = plot
 # Setting up tick parameters
 
 

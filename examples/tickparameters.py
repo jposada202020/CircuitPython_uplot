@@ -32,4 +32,4 @@ y = constant * np.exp((-(x**2)) / 2.0)
 Cartesian(plot, x, y, line_color=color.BLACK)
 
 # Plotting and showing the plot
-display.show(plot)
+display.root_group = plot
