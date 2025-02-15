@@ -14,11 +14,11 @@ display.auto_refresh = False
 
 # Drawing the graph
 my_plot = Plot(
-    140,
-    60,
-    200,
-    200,
-    padding=25,
+    5,
+    5,
+    480,
+    300,
+    padding=20,
     show_box=True,
     box_color=color.WHITE,
 )
@@ -29,6 +29,7 @@ my_plot.tick_params(
     ticky_height=4,
     show_ticks=True,
     tickcolor=color.TEAL,
+    tickgrid=True,
     showtext=True,
 )
 
@@ -75,6 +76,7 @@ my_loggraph = Logging(
     line_color=color.BLUE,
     ticksx=[25, 50, 75, 100, 125, 150, 175, 200],
     ticksy=[25, 50, 75, 100],
+    fill=False,
 )
 
 # Showing the loggraph

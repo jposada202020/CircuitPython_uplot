@@ -2,12 +2,14 @@
 #
 # SPDX-License-Identifier: MIT
 
+import time
 import displayio
 import terminalio
 import board
 from adafruit_display_text import label
 from circuitpython_uplot.plot import Plot, color
 from circuitpython_uplot.logging import Logging
+
 
 # Setting up the display
 display = board.DISPLAY
@@ -59,7 +61,7 @@ temp_y = [26, 25, 24, 23, 28]
 g.append(plot_1)
 
 display.root_group = g
-display.refresh()
+
 
 dist = 3
 
@@ -75,3 +77,5 @@ Logging(
 )
 
 text_temperature.text = "{}C".format(temp_y[dist])
+
+time.sleep(5)

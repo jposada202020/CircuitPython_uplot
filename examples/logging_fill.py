@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+import time
 import displayio
 import board
 from circuitpython_uplot.plot import Plot, color
@@ -11,7 +12,6 @@ from circuitpython_uplot.logging import Logging
 display = board.DISPLAY
 
 group = displayio.Group()
-
 
 palette = displayio.Palette(1)
 palette[0] = 0x000000
@@ -78,3 +78,5 @@ group.append(plot_1)
 group.append(plot_2)
 
 display.root_group = group
+
+time.sleep(10)

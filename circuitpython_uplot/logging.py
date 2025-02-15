@@ -63,6 +63,7 @@ class Logging:
         self.points = []
         self.ticksx = np.array(ticksx)
         self.ticksy = np.array(ticksy)
+        self._fill = fill
         if tick_pos:
             self._tickposx = plot._tickheightx
             self._tickposy = plot._tickheighty
@@ -82,7 +83,11 @@ class Logging:
         if limits is not None:
             self._limits = np.array(
                 plot.transform(
-                    self.ymin, self.ymax, plot._newymin, plot._newymax, np.array(limits)
+                    self.ymin,
+                    self.ymax,
+                    plot._newymin,
+                    plot._newymax,
+                    np.array(limits),
                 ),
                 dtype=np.int16,
             )
@@ -90,13 +95,7 @@ class Logging:
         else:
             self._limits = None
 
-        self.draw_points(plot, x, y, fill)
-
-        if plot._showticks:
-            if plot._loggingfirst:
-                self._draw_ticks(plot)
-                plot._loggingfirst = False
-                plot._showticks = False
+        self.draw_points(plot, x, y)
 
     def _draw_ticks(self, plot) -> None:
         """
@@ -104,20 +103,20 @@ class Logging:
 
         """
 
-        ticksxnorm = np.array(
+        self._ticksxnorm = np.array(
             plot.transform(
                 self.xmin, self.xmax, plot._newxmin, plot._newxmax, self.ticksx
             ),
             dtype=np.int16,
         )
-        ticksynorm = np.array(
+        self._ticksynorm = np.array(
             plot.transform(
                 self.ymin, self.ymax, plot._newymin, plot._newymax, self.ticksy
             ),
             dtype=np.int16,
         )
 
-        for i, tick in enumerate(ticksxnorm):
+        for i, tick in enumerate(self._ticksxnorm):
             draw_line(
                 plot._plotbitmap,
                 tick,
@@ -128,7 +127,7 @@ class Logging:
             )
             if plot._showtext:
                 plot.show_text(f"{self.ticksx[i]:.0f}", tick, plot._newymin, (0.5, 0.0))
-        for i, tick in enumerate(ticksynorm):
+        for i, tick in enumerate(self._ticksynorm):
             draw_line(
                 plot._plotbitmap,
                 plot._newxmin - self._tickposy,
@@ -155,7 +154,7 @@ class Logging:
             0,
         )
 
-    def draw_points(self, plot: Plot, x: list, y: list, fill: bool = False) -> None:
+    def draw_points(self, plot: Plot, x: list, y: list) -> None:
         """
         Draws points in the plot
         :param Plot plot: plot object provided
@@ -164,12 +163,22 @@ class Logging:
         :param bool fill: parameter to fill the plot graphic. Defaults to False
         :return: None
         """
+
         self.clear_plot(plot)
         if self._limits:
             self._draw_limit_lines(plot)
-        self.draw_new_lines(plot, x, y, fill)
+        self.draw_new_lines(plot, x, y)
+        if plot._showticks:
+            if plot._loggingfirst:
+                self._draw_ticks(plot)
+                plot._loggingfirst = False
+                plot._showticks = False
 
-    def draw_new_lines(self, plot: Plot, x: list, y: list, fill: bool = False) -> None:
+        if plot._tickgrid:
+            plot._draw_gridx(self._ticksxnorm)
+            plot._draw_gridy(self._ticksynorm)
+
+    def draw_new_lines(self, plot: Plot, x: list, y: list) -> None:
         """
         Draw the plot lines
         :param Plot plot: plot object provided
@@ -204,7 +213,8 @@ class Logging:
                     ynorm[index + 1],
                     self._line_index,
                 )
-            if fill:
+
+            if self._fill:
                 for index, _ in enumerate(xnorm):
                     draw_line(
                         plot._plotbitmap,
