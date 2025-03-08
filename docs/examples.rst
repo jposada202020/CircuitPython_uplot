@@ -478,7 +478,7 @@ Display Shapes integration example
 Advanced Example
 ---------------------------
 
-plot different ulements in a single display
+plot different elements in a single display
 
 .. literalinclude:: ../examples/readme_example.py
     :caption: examples/readme_example.py
